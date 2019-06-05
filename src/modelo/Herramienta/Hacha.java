@@ -6,16 +6,22 @@ import modelo.EstrategiaDeDurabilidad.EstrategiaDeDurabilidad;
 
 public class Hacha extends Herramienta {
   
+    // Atributos
+    private List<Class> bloquesQuePuedoDañar;
+
+
     // Constructor
-    public Hacha(double fuerza, EstrategiaDeDurabilidad estrategia) {
+    public Hacha(double fuerza, EstrategiaDeDurabilidad estrategia){
+
         super(fuerza, estrategia);
+        this.bloquesQuePuedoDañar = new ArrayList<Class>(Arrays.asList(BloqueMadera.class));
     }
-    
-    
+
+
     // Metodos
     public boolean esBloqueRompible(Bloque bloque){
 
-        return (bloque.getClass().isAssignableFrom(BloqueMadera.class));
+        return this.bloquesQuePuedoDañar.contains(bloque.getClass());
     }
 
 }
