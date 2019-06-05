@@ -10,7 +10,7 @@ public abstract class Herramienta{
 
     protected EstrategiaDeDurabilidad estrategiaDeDurabilidad;
 
-
+  
     // Constructor
     public Herramienta(double fuerza, EstrategiaDeDurabilidad estrategia) {
 
@@ -30,4 +30,15 @@ public abstract class Herramienta{
         return this.estrategiaDeDurabilidad.obtenerValorActual();
     }
 
+  
+    // Metodos
+    abstract boolean esBloqueRompible(Bloque bloque);
+
+    public void impactar(Bloque bloque){
+
+        if (this.esBloqueRompible(bloque)){
+            bloque.esGolpeado(this.fuerza);
+        }
+        this.estrategiaDeDurabilidad.desgastar();
+    }
 }
