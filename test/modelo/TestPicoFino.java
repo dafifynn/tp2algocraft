@@ -3,6 +3,7 @@ package test;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 
+import modelo.Constantes;
 import modelo.Bloque.*;
 import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Jugador;
