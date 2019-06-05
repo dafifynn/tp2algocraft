@@ -32,4 +32,17 @@ class TestHachaDePiedra extends TestCase {
         assertEquals(hachaDePiedra.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_HACHA_PIEDRA -
                 Constantes.FUERZA_INICIAL_HACHA_PIEDRA );
     }
+
+    @Test
+    void hachaDePiedraSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+
+        Jugador jugador = new Jugador();
+        Hacha hachaDePiedra = jugador.crearHachaDePiedra();
+        BloquePiedra bloqueDePiedra = new BloquePiedra();
+
+        hachaDePiedra.impactar(bloqueDePiedra);
+
+        assertEquals(hachaDePiedra.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_HACHA_PIEDRA -
+                Constantes.FUERZA_INICIAL_HACHA_PIEDRA );
+    }
 }
