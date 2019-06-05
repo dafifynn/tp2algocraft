@@ -25,5 +25,4 @@ public abstract class EstrategiaDeDurabilidad {
     // Metodos
     public abstract void desgastar();
   
-
 }
