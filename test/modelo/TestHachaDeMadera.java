@@ -8,7 +8,7 @@ import modelo.Herramienta.Hacha;
 import modelo.Jugador.Jugador;
 
 class TestHachaDeMadera extends TestCase {
-    
+
     // Tests de integracion
     @Test
     public void seCreaHachaDeMaderaPorDefecto() {
@@ -18,5 +18,18 @@ class TestHachaDeMadera extends TestCase {
 
         assertEquals(hachaDeMadera.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_MADERA);
         assertEquals(hachaDeMadera.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_MADERA);
+    }
+
+    @Test
+    void hachaDeMaderaSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+
+        Jugador jugador = new Jugador();
+        Hacha hachaDeMadera = jugador.crearHachaDeMadera();
+        BloqueMadera bloqueDeMadera = new BloqueMadera();
+
+        hachaDeMadera.impactar(bloqueDeMadera);
+
+        assertEquals(hachaDeMadera.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_HACHA_MADERA -
+                Constantes.FUERZA_INICIAL_HACHA_MADERA );
     }
 }
