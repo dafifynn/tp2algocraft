@@ -13,5 +13,17 @@ public abstract class EstrategiaDeDurabilidad {
         this.total = total;
         this.constanteDeDesgaste = constanteDeDesgaste;
     }
+  
+
+    // Getters
+    public double obtenerValorActual(){
+
+        return this.total;
+    }
+
+
+    // Metodos
+    public abstract void desgastar();
+  
 
 }
