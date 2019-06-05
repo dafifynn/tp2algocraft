@@ -8,5 +8,16 @@ import modelo.Herramienta.Hacha;
 import modelo.Jugador.Jugador;
 
 class TestHachaDeMetal extends TestCase {
-    
+
+    // Tests de integracion
+
+    @Test
+    void seCreaHachaDeMetalPorDefecto() {
+
+        Jugador jugador = new Jugador();
+        Hacha hachaDeMetal = jugador.crearHachaDeMetal();
+
+        assertEquals(hachaDeMetal.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_METAL);
+        assertEquals(hachaDeMetal.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_METAL);
+    }
 }
