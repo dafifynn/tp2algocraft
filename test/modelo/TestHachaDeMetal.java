@@ -46,4 +46,30 @@ class TestHachaDeMetal extends TestCase {
         assertEquals(hachaDeMetal.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_HACHA_METAL  -
                 (Constantes.FUERZA_INICIAL_HACHA_METAL/2) );
     }
+
+    @Test
+    void hachaDeMetalSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+
+        Jugador jugador = new Jugador();
+        Hacha hachaDeMetal = jugador.crearHachaDeMetal();
+        BloqueMetal bloqueDeMetal = new BloqueMetal();
+
+        hachaDeMetal.impactar(bloqueDeMetal);
+
+        assertEquals(hachaDeMetal.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_HACHA_METAL  -
+                (Constantes.FUERZA_INICIAL_HACHA_METAL/2) );
+    }
+
+    @Test
+    void hachaDeMetalSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+
+        Jugador jugador = new Jugador();
+        Hacha hachaDeMetal = jugador.crearHachaDeMetal();
+        BloqueDiamante bloqueDeDiamante = new BloqueDiamante();
+
+        hachaDeMetal.impactar(bloqueDeDiamante);
+
+        assertEquals(hachaDeMetal.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_HACHA_METAL  -
+                (Constantes.FUERZA_INICIAL_HACHA_METAL/2) );
+    }
 }
