@@ -1,4 +1,4 @@
-package tests;
+package test;
 
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,6 @@ import modelo.Jugador.Jugador;
 class TestHachaDeMetal extends TestCase {
 
     // Tests de integracion
-
     @Test
     void seCreaHachaDeMetalPorDefecto() {
 
