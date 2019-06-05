@@ -11,4 +11,25 @@ public class NUsos extends EstrategiaDeDurabilidad {
         this.cantDeUsos = cantDeUsos;
     }
   
+    // Metodos
+    private boolean usosAgotados() {
+
+        return this.cantDeUsos == 0;
+    }
+
+    private void reducirUsos() {
+
+        this.cantDeUsos--;
+    }
+
+    public void desgastar () {
+
+        this.reducirUsos();
+
+        if (this.usosAgotados()) {
+
+            this.total = 0;
+        }
+    }
+    
 }
