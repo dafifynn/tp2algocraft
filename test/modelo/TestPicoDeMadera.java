@@ -7,7 +7,7 @@ import modelo.Bloque.*;
 import modelo.Herramienta.Pico;
 import modelo.Jugador.Jugador;
 
-class TestHachaDeMadera extends TestCase {
+class TestPicoDeMadera extends TestCase {
 
     // Tests de integracion
     @Test
