@@ -1,6 +1,9 @@
-import modelo.Herramienta.Hacha;
-import modelo.Herramienta.Pico;
-import modelo.Herramienta.PicoFino;
+package modelo.Jugador;
+
+import modelo.Herramienta.*;
+import modelo.Constantes;
+import modelo.EstrategiaDeDurabilidad.*;
+
 
 public class Jugador {
 
