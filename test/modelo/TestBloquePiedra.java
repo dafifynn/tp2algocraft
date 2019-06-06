@@ -11,7 +11,6 @@ import modelo.Jugador.Jugador;
 class TestBloquePiedra extends TestCase {
 
     // Tests de integracion de Bloque de Piedra
-    
     @Test
     void seGolpeaBloqueDePiedraConHachaDeMetalImpactandoSoloLaHerramienta() {
 

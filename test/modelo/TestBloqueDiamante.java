@@ -8,7 +8,7 @@ import modelo.Bloque.BloqueDiamante;
 import modelo.Herramienta.*;
 import modelo.Jugador.Jugador;
 
-class TestBloqueMadera extends TestCase {
+class TestBloqueDiamante extends TestCase {
 
     // Tests de integracion de Bloque de Diamante
     @Test
@@ -27,5 +27,5 @@ class TestBloqueMadera extends TestCase {
 
         assertEquals(picoDeMetal.obtenerDurabilidad(),0.0);
     }
-    
+
 }

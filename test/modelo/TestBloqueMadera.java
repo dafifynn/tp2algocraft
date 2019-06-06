@@ -10,8 +10,7 @@ import modelo.Jugador.Jugador;
 
 class TestBloqueMadera extends TestCase {
 
-// Tests de integracion
-
+    // Tests de integracion
     @Test
     void seGolpeaBloqueDeMaderaConHachaDeMaderaImpactandoAmbos() {
 
@@ -25,3 +24,4 @@ class TestBloqueMadera extends TestCase {
 
         assertEquals(bloqueDeMadera.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_BLOQUE_MADERA - hachaDeMadera.obtenerFuerza());
     }
+}
