@@ -4,11 +4,10 @@ import modelo.Bloque.Bloque;
 import modelo.Bloque.BloqueMadera;
 import modelo.EstrategiaDeDurabilidad.EstrategiaDeDurabilidad;
 
-public class Hacha extends Herramienta {
-  
-    // Atributos
-    private List<Class> bloquesQuePuedoDañar;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+public class Hacha extends Herramienta {
 
     // Constructor
     public Hacha(double fuerza, EstrategiaDeDurabilidad estrategia){
@@ -16,12 +15,4 @@ public class Hacha extends Herramienta {
         super(fuerza, estrategia);
         this.bloquesQuePuedoDañar = new ArrayList<Class>(Arrays.asList(BloqueMadera.class));
     }
-
-
-    // Metodos
-    public boolean esBloqueRompible(Bloque bloque){
-
-        return this.bloquesQuePuedoDañar.contains(bloque.getClass());
-    }
-
 }

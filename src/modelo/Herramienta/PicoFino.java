@@ -8,13 +8,8 @@ import modelo.EstrategiaDeDurabilidad.EstrategiaDeDurabilidad;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class PicoFino extends Herramienta {
-  
-    // Atributos
-    private List<Class> bloquesQuePuedoDañar;
-
 
     // Constructor
     public PicoFino(double fuerza, EstrategiaDeDurabilidad estrategia) {
@@ -23,14 +18,9 @@ public class PicoFino extends Herramienta {
         this.bloquesQuePuedoDañar = new ArrayList<Class>(
                 Arrays.asList(BloquePiedra.class, BloqueMetal.class, BloqueDiamante.class));
     }
-  
-  
+
+
     // Metodos
-    public boolean esBloqueRompible(Bloque bloque) {
-
-        return this.bloquesQuePuedoDañar.contains(bloque.getClass());
-    }
-
     private boolean meAfectaImpacto(Bloque bloque) {
 
         return (bloque.getClass().isAssignableFrom(BloqueDiamante.class));
