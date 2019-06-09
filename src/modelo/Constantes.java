@@ -24,6 +24,7 @@ public final class Constantes {
 
     public static final double VALOR_DE_DESGASTE_DE_HACHA_PIEDRA = 5;
 
+
     // Pico Madera
     public static final double DURABILIDAD_INICIAL_PICO_MADERA = 100;
 
@@ -46,6 +47,7 @@ public final class Constantes {
     public static final double VALOR_DE_DESGASTE_DE_PICO_METAL = 0;
 
     public static final double CANTIDAD_DE_USOS_DE_PICO_METAL = 10;
+
 
     // Pico Fino
     public static final double DURABILIDAD_INICIAL_PICO_FINO = 1000;
@@ -92,5 +94,5 @@ public final class Constantes {
     public static final String PICO_DE_METAL = "333010010";
 
     public static final String PICO_FINO = "333210010";
-    
+
 }
