@@ -1,7 +1,6 @@
 package modelo.Herramienta;
 
-import modelo.Bloque.Bloque;
-import modelo.Bloque.BloqueMadera;
+import modelo.Material.MaterialMadera;
 import modelo.EstrategiaDeDurabilidad.EstrategiaDeDurabilidad;
 
 import java.util.ArrayList;
@@ -13,6 +12,6 @@ public class Hacha extends Herramienta {
     public Hacha(double fuerza, EstrategiaDeDurabilidad estrategia){
 
         super(fuerza, estrategia);
-        this.bloquesQuePuedoDañar = new ArrayList<Class>(Arrays.asList(BloqueMadera.class));
+        this.bloquesQuePuedoDaniar = new ArrayList<Class>(Arrays.asList(MaterialMadera.class));
     }
 }

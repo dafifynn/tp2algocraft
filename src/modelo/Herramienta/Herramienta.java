@@ -1,6 +1,6 @@
 package modelo.Herramienta;
 
-import modelo.Bloque.Bloque;
+import modelo.Material.Material;
 import modelo.EstrategiaDeDurabilidad.EstrategiaDeDurabilidad;
 
 import java.util.List;
@@ -9,10 +9,9 @@ public abstract class Herramienta{
 
     // Atributos
     protected double fuerza;
-
     protected EstrategiaDeDurabilidad estrategiaDeDurabilidad;
+    protected List<Class> bloquesQuePuedoDaniar;
 
-    protected List<Class> bloquesQuePuedoDañar;
 
 
     // Constructor
@@ -36,15 +35,16 @@ public abstract class Herramienta{
 
 
     // Metodos
-    protected boolean esBloqueRompible(Bloque bloque){
 
-        return this.bloquesQuePuedoDañar.contains(bloque.getClass());
+    protected boolean esBloqueRompible(Material material){
+
+        return this.bloquesQuePuedoDaniar.contains(material.getClass());
     }
 
-    public void impactar(Bloque bloque){
+    public void impactar(Material material){
 
-        if (this.esBloqueRompible(bloque)){
-            bloque.esGolpeado(this.fuerza);
+        if (this.esBloqueRompible(material)){
+            material.esGolpeado(this.fuerza);
         }
         this.estrategiaDeDurabilidad.desgastar();
     }

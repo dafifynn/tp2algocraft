@@ -1,9 +1,8 @@
 package modelo.Herramienta;
 
-import modelo.Bloque.Bloque;
-import modelo.Bloque.BloqueDiamante;
-import modelo.Bloque.BloqueMetal;
-import modelo.Bloque.BloquePiedra;
+import modelo.Material.*;
+import modelo.Material.MaterialDiamante;
+import modelo.Material.MaterialPiedra;
 import modelo.EstrategiaDeDurabilidad.EstrategiaDeDurabilidad;
 
 import java.util.ArrayList;
@@ -15,25 +14,25 @@ public class PicoFino extends Herramienta {
     public PicoFino(double fuerza, EstrategiaDeDurabilidad estrategia) {
 
         super(fuerza, estrategia);
-        this.bloquesQuePuedoDañar = new ArrayList<Class>(
-                Arrays.asList(BloquePiedra.class, BloqueMetal.class, BloqueDiamante.class));
+        this.bloquesQuePuedoDaniar = new ArrayList<Class>(
+                Arrays.asList(MaterialPiedra.class, MaterialMetal.class, MaterialDiamante.class));
     }
 
 
     // Metodos
-    private boolean meAfectaImpacto(Bloque bloque) {
+    private boolean meAfectaImpacto(Material material) {
 
-        return (bloque.getClass().isAssignableFrom(BloqueDiamante.class));
+        return (material.getClass().isAssignableFrom(MaterialDiamante.class));
     }
 
     @Override
-    public void impactar(Bloque bloque){
+    public void impactar(Material material){
 
-        if (this.esBloqueRompible(bloque)){
-            bloque.esGolpeado(this.fuerza);
+        if (this.esBloqueRompible(material)){
+            material.esGolpeado(this.fuerza);
         }
 
-        if(this.meAfectaImpacto(bloque)){
+        if(this.meAfectaImpacto(material)){
             this.estrategiaDeDurabilidad.desgastar();
         }
     }

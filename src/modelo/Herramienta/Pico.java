@@ -1,8 +1,7 @@
 package modelo.Herramienta;
 
-import modelo.Bloque.Bloque;
-import modelo.Bloque.BloqueMetal;
-import modelo.Bloque.BloquePiedra;
+import modelo.Material.MaterialMetal;
+import modelo.Material.MaterialPiedra;
 import modelo.EstrategiaDeDurabilidad.EstrategiaDeDurabilidad;
 
 import java.util.ArrayList;
@@ -13,6 +12,6 @@ public class Pico extends Herramienta {
     // Constructor
     public Pico(double fuerza, EstrategiaDeDurabilidad estrategia){
         super(fuerza, estrategia);
-        this.bloquesQuePuedoDañar = new ArrayList<Class>(Arrays.asList(BloquePiedra.class, BloqueMetal.class));
+        this.bloquesQuePuedoDaniar = new ArrayList<Class>(Arrays.asList(MaterialPiedra.class, MaterialMetal.class));
     }
 }
