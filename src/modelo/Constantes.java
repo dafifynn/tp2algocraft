@@ -1,5 +1,6 @@
 package modelo;
 
+
 public final class Constantes {
 
     // Hacha Madera
@@ -74,9 +75,22 @@ public final class Constantes {
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_DIAMANTE = FUERZA_INICIAL_PICO_FINO;
 
-    // Material Vacio
-    public static final double DURABILIDAD_INICIAL_BLOQUE_VACIO = 0;
 
-    public static final double RESISTENCIA_INICIAL_BLOQUE_VACIO = 1000;
+    // Representacion Numerica de las combinaciones de construccion de herramientas
+    // Madera: 1, Piedra: 2, Metal: 3, Diamante: 4, Vacio: 0.
+
+    public static final String HACHA_DE_MADERA = "110110010";
+
+    public static final String HACHA_DE_PIEDRA = "220210010";
+
+    public static final String HACHA_DE_METAL = "330310010";
+
+    public static final String PICO_DE_MADERA = "111010010";
+
+    public static final String PICO_DE_PIEDRA = "222010010";
+
+    public static final String PICO_DE_METAL = "333010010";
+
+    public static final String PICO_FINO = "333210010";
     
 }
