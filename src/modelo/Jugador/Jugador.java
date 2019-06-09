@@ -1,59 +1,57 @@
 package modelo.Jugador;
 
-import modelo.Herramienta.*;
-import modelo.Constantes;
-import modelo.EstrategiaDeDurabilidad.*;
+import modelo.Herramienta.Herramienta;
 
 
 public class Jugador {
 
-    // Hacha
-    public Hacha crearHachaDeMadera() {
+    // Atributo
+    private Inventario inventario;
+    private int x;
+    private int y;
+    private Herramienta herramientaEquipada;
 
-        Lineal estrategiaDurabilidad = new Lineal(Constantes.DURABILIDAD_INICIAL_HACHA_MADERA, Constantes.VALOR_DE_DESGASTE_DE_HACHA_MADERA);
+    // Constructor
+    public Jugador(){
 
-        return (new Hacha(Constantes.FUERZA_INICIAL_HACHA_MADERA, estrategiaDurabilidad));
-
-    }
-
-    public Hacha crearHachaDePiedra() {
-
-        Lineal estrategiaDurabilidad = new Lineal(Constantes.DURABILIDAD_INICIAL_HACHA_PIEDRA, Constantes.VALOR_DE_DESGASTE_DE_HACHA_PIEDRA);
-
-        return (new Hacha(Constantes.FUERZA_INICIAL_HACHA_PIEDRA, estrategiaDurabilidad));
-    }
-
-    public Hacha crearHachaDeMetal() {
-        Lineal estrategiaDurabilidad = new Lineal(Constantes.DURABILIDAD_INICIAL_HACHA_METAL, Constantes.VALOR_DE_DESGASTE_DE_HACHA_METAL);
-
-        return (new Hacha(Constantes.FUERZA_INICIAL_HACHA_METAL,estrategiaDurabilidad));
+        this.inventario = new Inventario;
+        this.herramientaEquipada = this.inventario.equipar(0);
     }
 
 
-    // Pico
-    public Pico crearPicoDeMadera() {
-        Lineal estrategiaDurabilidad = new Lineal(Constantes.DURABILIDAD_INICIAL_PICO_MADERA, Constantes.VALOR_DE_DESGASTE_DE_PICO_MADERA);
+    // Metodos Privados
+    private void guardarEnInventario(){
 
-        return new Pico(Constantes.FUERZA_INICIAL_PICO_MADERA, estrategiaDurabilidad);
+        this.inventario.guardar(this.herramientaEquipada);
     }
 
-    public Pico crearPicoDePiedra() {
-        Lineal estrategiaDurabilidad = new Lineal(Constantes.DURABILIDAD_INICIAL_PICO_PIEDRA, Constantes.VALOR_DE_DESGASTE_DE_PICO_PIEDRA);
+    private boolean tengoHerramientaEquipada(){
 
-        return new Pico(Constantes.FUERZA_INICIAL_PICO_PIEDRA, estrategiaDurabilidad);
-    }
-
-    public Pico crearPicoDeMetal() {
-        NUsos estrategiaDurabilidad = new NUsos(Constantes.DURABILIDAD_INICIAL_PICO_METAL, Constantes.VALOR_DE_DESGASTE_DE_PICO_METAL, Constantes.CANTIDAD_DE_USOS_DE_PICO_METAL);
-
-        return new Pico(Constantes.FUERZA_INICIAL_PICO_METAL, estrategiaDurabilidad);
+        return this.herramientaEquipada.getClass().isAssignableFrom(Herramienta.class)
     }
 
 
-    // Pico Fino
-    public PicoFino crearPicoFino() {
-        Dinamica estrategiaDurabilidad = new Dinamica(Constantes.DURABILIDAD_INICIAL_PICO_FINO, Constantes.VALOR_DE_DESGASTE_DE_PICO_FINO);
+    // Metodos Publicos
+    public void moverse(){
 
-        return new PicoFino(Constantes.FUERZA_INICIAL_PICO_FINO, estrategiaDurabilidad);
     }
+
+    public void golpearMaterial(){
+
+    }
+
+    public void equipar(int posicion){
+
+        if (this.tengoHerramientaEquipada()){
+            this.guardarEnInventario();
+        }
+
+        this.herramientaEquipada = this.inventario.extraerHerramienta(posicion);
+    }
+
+    public void abrirInventario(){
+
+        this.inventario.dibujar();
+    }
+    
 }
