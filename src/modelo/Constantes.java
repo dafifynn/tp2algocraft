@@ -54,27 +54,27 @@ public final class Constantes {
     public static final double VALOR_DE_DESGASTE_DE_PICO_FINO = 0.1;
 
 
-    // Bloque Madera
+    // Material Madera
     public static final double DURABILIDAD_INICIAL_BLOQUE_MADERA = 10;
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_MADERA = FUERZA_INICIAL_HACHA_MADERA;
 
-    // Bloque Piedra
+    // Material Piedra
     public static final double DURABILIDAD_INICIAL_BLOQUE_PIEDRA = 30;
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_PIEDRA = FUERZA_INICIAL_PICO_MADERA;
 
-    // Bloque Metal
+    // Material Metal
     public static final double DURABILIDAD_INICIAL_BLOQUE_METAL = 50;
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_METAL = FUERZA_INICIAL_PICO_PIEDRA;
 
-    // Bloque Diamante
+    // Material Diamante
     public static final double DURABILIDAD_INICIAL_BLOQUE_DIAMANTE = 100;
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_DIAMANTE = FUERZA_INICIAL_PICO_FINO;
 
-    // Bloque Vacio
+    // Material Vacio
     public static final double DURABILIDAD_INICIAL_BLOQUE_VACIO = 0;
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_VACIO = 1000;
