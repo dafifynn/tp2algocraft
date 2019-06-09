@@ -1,18 +1,18 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.*;
 import modelo.Herramienta.Hacha;
 import modelo.Jugador.Jugador;
 
-class TestHachaDePiedra extends TestCase {
+public class TestHachaDePiedra {
 
     // Tests de integracion
     @Test
-    void seCreaHachaDePiedraPorDefecto() {
+    public void seCreaHachaDePiedraPorDefecto() {
 
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();
@@ -22,7 +22,7 @@ class TestHachaDePiedra extends TestCase {
     }
 
     @Test
-    void hachaDePiedraSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDePiedraSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();
@@ -35,7 +35,7 @@ class TestHachaDePiedra extends TestCase {
     }
 
     @Test
-    void hachaDePiedraSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDePiedraSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();
@@ -48,7 +48,7 @@ class TestHachaDePiedra extends TestCase {
     }
 
     @Test
-    void hachaDePiedraSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDePiedraSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();
@@ -61,7 +61,7 @@ class TestHachaDePiedra extends TestCase {
     }
 
     @Test
-    void hachaDePiedraSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDePiedraSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();

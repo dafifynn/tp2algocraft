@@ -1,18 +1,18 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.*;
 import modelo.Herramienta.Pico;
 import modelo.Jugador.Jugador;
 
-class TestPicoDePiedra extends TestCase {
+public class TestPicoDePiedra {
 
     // Tests de integracion
     @Test
-    void seCreaPicoDePiedraPorDefecto() {
+    public void seCreaPicoDePiedraPorDefecto() {
 
         Jugador jugador = new Jugador();
         Pico picoDePiedra = jugador.crearPicoDePiedra();
@@ -22,7 +22,7 @@ class TestPicoDePiedra extends TestCase {
     }
 
     @Test
-    void picoDePiedraSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDePiedraSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDePiedra = jugador.crearPicoDePiedra();
@@ -35,7 +35,7 @@ class TestPicoDePiedra extends TestCase {
     }
 
     @Test
-    void picoDePiedraSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDePiedraSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDePiedra = jugador.crearPicoDePiedra();
@@ -48,7 +48,7 @@ class TestPicoDePiedra extends TestCase {
     }
 
     @Test
-    void picoDePiedraSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDePiedraSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDePiedra = jugador.crearPicoDePiedra();
@@ -61,7 +61,7 @@ class TestPicoDePiedra extends TestCase {
     }
 
     @Test
-    void picoDePiedraSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDePiedraSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDePiedra = jugador.crearPicoDePiedra();

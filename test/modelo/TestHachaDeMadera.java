@@ -1,14 +1,14 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.*;
 import modelo.Herramienta.Hacha;
 import modelo.Jugador.Jugador;
 
-class TestHachaDeMadera extends TestCase {
+public class TestHachaDeMadera {
 
     // Tests de integracion
     @Test
@@ -22,7 +22,7 @@ class TestHachaDeMadera extends TestCase {
     }
 
     @Test
-    void hachaDeMaderaSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDeMaderaSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMadera = jugador.crearHachaDeMadera();
@@ -35,7 +35,7 @@ class TestHachaDeMadera extends TestCase {
     }
 
     @Test
-    void hachaDeMaderaSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDeMaderaSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMadera = jugador.crearHachaDeMadera();
@@ -48,7 +48,7 @@ class TestHachaDeMadera extends TestCase {
     }
 
     @Test
-    void hachaDeMaderaSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDeMaderaSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMadera = jugador.crearHachaDeMadera();
@@ -61,7 +61,7 @@ class TestHachaDeMadera extends TestCase {
     }
 
     @Test
-    void hachaDeMaderaSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDeMaderaSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMadera = jugador.crearHachaDeMadera();

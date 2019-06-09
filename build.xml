@@ -40,7 +40,7 @@
 			<classpath location="${build}" />
 			<classpath refid="classpath" />
 			<batchtest>
-				<fileset dir="${build}/tests" includes="**/*Test.class" />
+				<fileset dir="${build}/tests" includes="**/Test*.class" />
 				<formatter type="plain" usefile="false"/>
 			</batchtest>
 		</junit>

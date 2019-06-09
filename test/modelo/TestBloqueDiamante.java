@@ -1,18 +1,18 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.BloqueDiamante;
 import modelo.Herramienta.*;
 import modelo.Jugador.Jugador;
 
-class TestBloqueDiamante extends TestCase {
+public class TestBloqueDiamante {
 
     // Tests de integracion de Bloque de Diamante
     @Test
-    void picoDeMetalSeUsaContraDiamanteALaDecimaSeRompe() {
+    public void picoDeMetalSeUsaContraDiamanteALaDecimaSeRompe() {
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();

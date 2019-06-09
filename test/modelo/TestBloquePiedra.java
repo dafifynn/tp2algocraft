@@ -1,18 +1,18 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.BloquePiedra;
 import modelo.Herramienta.*;
 import modelo.Jugador.Jugador;
 
-class TestBloquePiedra extends TestCase {
+public class TestBloquePiedra {
 
     // Tests de integracion de Bloque de Piedra
     @Test
-    void seGolpeaBloqueDePiedraConHachaDeMetalImpactandoSoloLaHerramienta() {
+    public void seGolpeaBloqueDePiedraConHachaDeMetalImpactandoSoloLaHerramienta() {
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMetal = jugador.crearHachaDeMetal();

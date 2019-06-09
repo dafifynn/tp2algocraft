@@ -1,18 +1,18 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.*;
 import modelo.Herramienta.Pico;
 import modelo.Jugador.Jugador;
 
-class TestPicoDeMetal extends TestCase {
+public class TestPicoDeMetal {
 
     // Tests de integracion
     @Test
-    void seCreaPicoDeMetalPorDefecto() {
+    public void seCreaPicoDeMetalPorDefecto() {
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
@@ -22,7 +22,7 @@ class TestPicoDeMetal extends TestCase {
     }
 
     @Test
-    void picoDeMetalSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDeMetalSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
@@ -34,7 +34,7 @@ class TestPicoDeMetal extends TestCase {
     }
 
     @Test
-    void picoDeMetalSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDeMetalSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
@@ -46,7 +46,7 @@ class TestPicoDeMetal extends TestCase {
     }
 
     @Test
-    void picoDeMetalSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDeMetalSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
         BloqueMetal bloqueDeMetal = new BloqueMetal();
@@ -57,7 +57,7 @@ class TestPicoDeMetal extends TestCase {
     }
 
     @Test
-    void picoDeMetalSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDeMetalSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();

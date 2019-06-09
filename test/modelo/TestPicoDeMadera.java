@@ -1,14 +1,14 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.*;
 import modelo.Herramienta.Pico;
 import modelo.Jugador.Jugador;
 
-class TestPicoDeMadera extends TestCase {
+public class TestPicoDeMadera {
 
     // Tests de integracion
     @Test
@@ -22,7 +22,7 @@ class TestPicoDeMadera extends TestCase {
     }
 
     @Test
-    void picoDeMaderaSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDeMaderaSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDeMadera = jugador.crearPicoDeMadera();
@@ -35,7 +35,7 @@ class TestPicoDeMadera extends TestCase {
     }
 
     @Test
-    void picoDeMaderaSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDeMaderaSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDeMadera = jugador.crearPicoDeMadera();
@@ -48,7 +48,7 @@ class TestPicoDeMadera extends TestCase {
     }
 
     @Test
-    void picoDeMaderaSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDeMaderaSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDeMadera = jugador.crearPicoDeMadera();
@@ -61,7 +61,7 @@ class TestPicoDeMadera extends TestCase {
     }
 
     @Test
-    void picoDeMaderaSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoDeMaderaSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Pico picoDeMadera = jugador.crearPicoDeMadera();

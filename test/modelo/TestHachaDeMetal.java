@@ -1,18 +1,18 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.*;
 import modelo.Herramienta.Hacha;
 import modelo.Jugador.Jugador;
 
-class TestHachaDeMetal extends TestCase {
+public class TestHachaDeMetal {
 
     // Tests de integracion
     @Test
-    void seCreaHachaDeMetalPorDefecto() {
+    public void seCreaHachaDeMetalPorDefecto() {
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMetal = jugador.crearHachaDeMetal();
@@ -22,7 +22,7 @@ class TestHachaDeMetal extends TestCase {
     }
 
     @Test
-    void hachaDeMetalSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDeMetalSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMetal = jugador.crearHachaDeMetal();
@@ -35,7 +35,7 @@ class TestHachaDeMetal extends TestCase {
     }
 
     @Test
-    void hachaDeMetalSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDeMetalSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMetal = jugador.crearHachaDeMetal();
@@ -48,7 +48,7 @@ class TestHachaDeMetal extends TestCase {
     }
 
     @Test
-    void hachaDeMetalSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDeMetalSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMetal = jugador.crearHachaDeMetal();
@@ -61,7 +61,7 @@ class TestHachaDeMetal extends TestCase {
     }
 
     @Test
-    void hachaDeMetalSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void hachaDeMetalSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMetal = jugador.crearHachaDeMetal();

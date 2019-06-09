@@ -1,18 +1,18 @@
 package test;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
 import modelo.Bloque.*;
 import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Jugador;
 
-class TestPicoFino extends TestCase {
+public class TestPicoFino {
 
     // Tests de integracion
     @Test
-    void seCreaPicoFinoPorDefecto() {
+    public void seCreaPicoFinoPorDefecto() {
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
@@ -22,7 +22,7 @@ class TestPicoFino extends TestCase {
     }
 
     @Test
-    void picoFinoSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoFinoSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
@@ -34,7 +34,7 @@ class TestPicoFino extends TestCase {
     }
 
     @Test
-    void picoFinoSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoFinoSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
@@ -46,7 +46,7 @@ class TestPicoFino extends TestCase {
     }
 
     @Test
-    void picoFinoSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoFinoSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
@@ -58,7 +58,7 @@ class TestPicoFino extends TestCase {
     }
 
     @Test
-    void picoFinoSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
+    public void picoFinoSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
