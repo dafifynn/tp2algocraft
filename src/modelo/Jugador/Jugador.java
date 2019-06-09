@@ -28,7 +28,7 @@ public class Jugador {
 
     private boolean tengoHerramientaEquipada(){
 
-        return this.herramientaEquipada.getClass().isAssignableFrom(Herramienta.class)
+        return this.herramientaEquipada.getClass().isAssignableFrom(Herramienta.class);
     }
 
 
