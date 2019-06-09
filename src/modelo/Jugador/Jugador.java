@@ -11,6 +11,7 @@ public class Jugador {
     private int y;
     private Herramienta herramientaEquipada;
 
+
     // Constructor
     public Jugador(){
 
@@ -53,5 +54,5 @@ public class Jugador {
 
         this.inventario.dibujar();
     }
-    
+
 }
