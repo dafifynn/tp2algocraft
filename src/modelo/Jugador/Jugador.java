@@ -47,7 +47,7 @@ public class Jugador {
             this.guardarEnInventario();
         }
 
-        this.herramientaEquipada = this.inventario.extraerHerramienta(posicion);
+        this.herramientaEquipada = this.inventario.extraerHerramienta(posFila, posColumna);
     }
 
     public void abrirInventario(){
