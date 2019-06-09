@@ -1,11 +1,11 @@
-package modelo.Bloque;
+package modelo.Material;
 
 import modelo.Constantes;
 
-public class BloqueDiamante extends Bloque {
+public class MaterialDiamante extends Material {
 
     // Constructor
-    public BloqueDiamante(){
+    public MaterialDiamante(){
         this.resistencia = Constantes.RESISTENCIA_INICIAL_BLOQUE_DIAMANTE;
         this.durabilidad = Constantes.DURABILIDAD_INICIAL_BLOQUE_DIAMANTE;
     }

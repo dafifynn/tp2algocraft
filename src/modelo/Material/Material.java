@@ -1,6 +1,6 @@
-package modelo.Bloque;
+package modelo.Material;
 
-public abstract class Bloque {
+public abstract class Material {
 
     //atributos
     protected double durabilidad;
