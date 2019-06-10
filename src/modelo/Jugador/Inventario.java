@@ -5,10 +5,6 @@ import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Herramienta;
 import modelo.Constantes;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import java.util.List;
 
 public class Inventario {
@@ -16,20 +12,10 @@ public class Inventario {
     // Atributos
 
     private Herrero herrero;
-    private Grilla grillaInventario;
+    private Grilla grillaInventario ;
     private int capacidadUsadaDeInventario;
 
     //Constructor
-
-    public Inventario(){
-        this.herrero = new Herrero();
-        this.grillaInventario = new Grilla(FILAS_INVENTARIO,COLUMNAS_INVENTARIO);
-        Hacha hachaMadera = herrero.crearHachaDeMadera();
-        Celda actual = this.grillaInventario.obtener(1,1);
-        actual.asignar(hachaMadera);
-
-    }
-    //Metodos
 
     public Inventario(){
         this.herrero = new Herrero();
@@ -37,10 +23,16 @@ public class Inventario {
         Hacha hachaMadera = herrero.crearHachaDeMadera();
         Celda actual = this.grillaInventario.obtener(1,1);
         actual.asignar(hachaMadera);
-        this.capacidadUsadaDeInventario = 1;
 
     }
-     public void guardar(Herramienta herramienta){
+    //Metodos
+
+    public Herramienta extraerHerramienta(int fila, int columna ){
+        Celda actual = this.grillaInventario.obtener(fila, columna);
+        Herramienta herramienta = actual.obtener();
+        return herramienta;
+    }
+    public void guardar(Herramienta herramienta){
         if(capacidadUsadaDeInventario <= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO) {
             int indice = grillaInventario.indiceDe(herramienta);
             int fila = indice / FILAS_INVENTARIO;
