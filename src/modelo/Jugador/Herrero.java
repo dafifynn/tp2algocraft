@@ -22,7 +22,7 @@ public class Herrero {
     // Metodos
     public Herramienta construirHerramienta(String combinacionDeMateriales){
 
-        return (herramientasPosiblesDeConstruir.get(combinacionDeMateriales));
+        return herramientasPosiblesDeConstruir.get(combinacionDeMateriales);
     }
 
     private void inicializarHashDeCombinacionesPosiblesDeHerramientas(){
