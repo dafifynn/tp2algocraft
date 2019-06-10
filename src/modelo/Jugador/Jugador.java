@@ -6,24 +6,22 @@ import modelo.Herramienta.Herramienta;
 public class Jugador {
 
     // Atributo
-    private Inventario inventario;
-    private int x;
-    private int y;
+    //private Inventario inventario;
     private Herramienta herramientaEquipada;
 
 
     // Constructor
     public Jugador(){
 
-        this.inventario = new Inventario;
-        this.herramientaEquipada = this.inventario.equipar(0);
+        //this.inventario = new Inventario();
+        //this.herramientaEquipada = this.inventario.equipar(0);
     }
 
 
     // Metodos Privados
     private void guardarEnInventario(){
 
-        this.inventario.guardar(this.herramientaEquipada);
+        //this.inventario.guardar(this.herramientaEquipada);
     }
 
     private boolean tengoHerramientaEquipada(){
@@ -47,12 +45,12 @@ public class Jugador {
             this.guardarEnInventario();
         }
 
-        this.herramientaEquipada = this.inventario.extraerHerramienta(posFila, posColumna);
+        //this.herramientaEquipada = this.inventario.extraerHerramienta(posicion);
     }
 
     public void abrirInventario(){
 
-        this.inventario.dibujar();
+        //this.inventario.dibujar();
     }
 
 }

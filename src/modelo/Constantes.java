@@ -3,6 +3,25 @@ package modelo;
 
 public final class Constantes {
 
+    // Grilla
+    public static final int GRILLA_FILAS_DEFECTO = 30;
+
+    public static final int GRILLA_COLUMNAS_DEFECTO = 30;
+
+    // Jugador
+
+    public static final int JUGADOR_POSICION_X_DEFECTO = 5;
+
+    public static final int JUGADOR_POSICION_Y_DEFECTO = 5;
+
+    public static final String NORTE = "N";
+
+    public static final String SUR = "S";
+
+    public static final String OESTE = "O";
+
+    public static final String ESTE = "E";
+
     // Hacha Madera
     public static final double DURABILIDAD_INICIAL_HACHA_MADERA = 100;
 
