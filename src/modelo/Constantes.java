@@ -8,8 +8,8 @@ public final class Constantes {
 
     public static final int GRILLA_COLUMNAS_DEFECTO = 30;
 
-    // Jugador
 
+    // Jugador
     public static final int JUGADOR_POSICION_X_DEFECTO = 5;
 
     public static final int JUGADOR_POSICION_Y_DEFECTO = 5;
@@ -21,6 +21,7 @@ public final class Constantes {
     public static final String OESTE = "O";
 
     public static final String ESTE = "E";
+
 
     // Hacha Madera
     public static final double DURABILIDAD_INICIAL_HACHA_MADERA = 100;
@@ -95,7 +96,8 @@ public final class Constantes {
     public static final double DURABILIDAD_INICIAL_BLOQUE_DIAMANTE = 100;
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_DIAMANTE = FUERZA_INICIAL_PICO_FINO;
-    
+
+
      // Inventario
     public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO = 36;
     
