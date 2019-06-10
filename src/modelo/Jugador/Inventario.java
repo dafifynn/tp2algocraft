@@ -33,20 +33,22 @@ public class Inventario {
      public void guardar(Object elemento) {
 
         boolean seEncontroCasillaLibre = false;
+        int fila = 1;
+        int columna = 1;
 
         while(!seEncontroCasillaLibre) {
-
-            int fila = 1;
-            int columna = 1;
-
+            
             if(columna < Constantes.COLUMNAS_INVENTARIO) {
                 columna++;
             }
             else {
                 if(fila < Constantes.FILAS_INVENTARIO) {
                     fila++;
+                    columna = 1;
                 }
             }
+            
+            this.ava
             Casilla actual = ranuras.obtener(fila,columna);
             if(actual.estaVacio()) {
                 actual.asignar(elemento);
