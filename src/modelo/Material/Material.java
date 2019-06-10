@@ -2,9 +2,8 @@ package modelo.Material;
 
 public abstract class Material {
 
-    //atributos
+    // Atributos
     protected double durabilidad;
-
     protected double resistencia;
 
 
@@ -16,6 +15,7 @@ public abstract class Material {
     public void esGolpeado(double danio){
 
         if(this.danioAfectaAResistencia(danio)){
+
             this.reducirDurabilidad(danio);
         }
     }
