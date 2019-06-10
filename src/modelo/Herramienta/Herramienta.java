@@ -13,7 +13,6 @@ public abstract class Herramienta{
     protected List<Class> bloquesQuePuedoDaniar;
 
 
-
     // Constructor
     public Herramienta(double fuerza, EstrategiaDeDurabilidad estrategia) {
 
@@ -44,8 +43,10 @@ public abstract class Herramienta{
     public void impactar(Material material){
 
         if (this.esBloqueRompible(material)){
+
             material.esGolpeado(this.fuerza);
         }
         this.estrategiaDeDurabilidad.desgastar();
     }
+
 }

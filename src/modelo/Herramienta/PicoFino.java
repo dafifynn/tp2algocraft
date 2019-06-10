@@ -29,10 +29,12 @@ public class PicoFino extends Herramienta {
     public void impactar(Material material){
 
         if (this.esBloqueRompible(material)){
+
             material.esGolpeado(this.fuerza);
         }
 
         if(this.meAfectaImpacto(material)){
+
             this.estrategiaDeDurabilidad.desgastar();
         }
     }

@@ -14,4 +14,5 @@ public class Hacha extends Herramienta {
         super(fuerza, estrategia);
         this.bloquesQuePuedoDaniar = new ArrayList<Class>(Arrays.asList(MaterialMadera.class));
     }
+
 }
