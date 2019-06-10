@@ -30,6 +30,12 @@ public class Inventario {
 
 
     //Metodos
+    public Herramienta extraerHerramienta(int fila, int columna ){
+        Casilla actual = this.ranuras.obtener(fila, columna);
+        Herramienta herramienta = actual.obtener();
+        return herramienta;
+    }
+    
      public void guardar(Object elemento) {
 
         boolean seEncontroCasillaLibre = false;
