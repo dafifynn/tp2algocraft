@@ -8,19 +8,18 @@ import modelo.Constantes;
 public class Inventario {
 
     // Atributos
-
     private Herrero herrero;
     private Grilla ranuras;
     private int capacidadUsadaDeInventario;
 
-    //Constructor
 
+    //Constructor
     public Inventario(){
 
         this.herrero = new Herrero();
         this.ranuras = new Grilla(Constantes.FILAS_INVENTARIO,Constantes.COLUMNAS_INVENTARIO);
 
-        Hacha hachaMadera = herrero.crearHachaDeMadera();
+        Hacha hachaMadera = (Hacha) herrero.construirHerramienta(Constantes.HACHA_DE_MADERA);
 
         Casilla primera = this.ranuras.obtener(1,1);
         primera.asignar(hachaMadera);
@@ -56,6 +55,7 @@ public class Inventario {
     public void eliminar(int fila, int columna){
         ranuras.eliminar(fila,columna);
     }
+
     public void dibujarInventario(){
         //FALTA IMPLEMENTAR
     }
