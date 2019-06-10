@@ -18,15 +18,18 @@ public class Inventario {
 
         this.herrero = new Herrero();
         this.ranuras = new Grilla(Constantes.FILAS_INVENTARIO,Constantes.COLUMNAS_INVENTARIO);
+        this.capacidadUsadaDeInventario = Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO;
 
         Hacha hachaMadera = (Hacha) herrero.construirHerramienta(Constantes.HACHA_DE_MADERA);
 
         Casilla primera = this.ranuras.obtener(1,1);
-        primera.asignar(hachaMadera);
+        primera.asignar((Hacha) herrero.construirHerramienta(Constantes.HACHA_DE_MADERA));
 
         this.capacidadUsadaDeInventario++;
     }
 
+
+    //Metodos
      public void guardar(Object elemento) {
 
         boolean seEncontroCasillaLibre = false;

@@ -2,8 +2,11 @@ package modelo.Grilla;
 
 public class Casilla {
 
+    // Atributos
     private Object elemento;
 
+
+    // Constructor
     public Casilla() {
         elemento = null;
     }
@@ -12,6 +15,8 @@ public class Casilla {
         elemento = nuevo;
     }
 
+
+    // Metodos
     public void asignar(Object nuevo) {
         this.elemento = nuevo;
     }

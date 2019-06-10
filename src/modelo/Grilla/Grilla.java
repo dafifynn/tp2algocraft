@@ -2,12 +2,13 @@ package modelo.Grilla;
 
 public class Grilla {
 
-    //atributo
+    // Atributo
     private int cantidadFilas;
     private int cantidadColumnas;
     private Casilla[][] casillas;
 
-    //metodos
+
+    // Constructor
     public Grilla(int cantidadFilas, int cantidadColumnas) {
 
         this.cantidadFilas = cantidadFilas;
@@ -21,6 +22,8 @@ public class Grilla {
         }
     }
 
+
+    // Metodos
     public void dibujar() {
 
         for(int y = 0; y < cantidadFilas; y++) {
