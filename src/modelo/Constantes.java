@@ -76,7 +76,10 @@ public final class Constantes {
     public static final double DURABILIDAD_INICIAL_BLOQUE_DIAMANTE = 100;
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_DIAMANTE = FUERZA_INICIAL_PICO_FINO;
-
+    
+     // Inventario
+    public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO = 36;
+    
 
     // Representacion Numerica de las combinaciones de construccion de herramientas
     // Madera: 1, Piedra: 2, Metal: 3, Diamante: 4, Vacio: 0.
