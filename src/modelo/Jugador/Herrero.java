@@ -5,12 +5,11 @@ import modelo.EstrategiaDeDurabilidad.*;
 import modelo.Herramienta.*;
 
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class Herrero {
 
-    private static Map<String, Herramienta> herramientasPosiblesDeConstruir;
+    private static HashMap<String, Herramienta> herramientasPosiblesDeConstruir;
 
     public Herrero(){
 
@@ -22,7 +21,7 @@ public class Herrero {
     // Metodos
     public Herramienta construirHerramienta(String combinacionDeMateriales){
 
-        return herramientasPosiblesDeConstruir.get(combinacionDeMateriales);
+        return (Herramienta) herramientasPosiblesDeConstruir.get(combinacionDeMateriales);
     }
 
     private void inicializarHashDeCombinacionesPosiblesDeHerramientas(){
