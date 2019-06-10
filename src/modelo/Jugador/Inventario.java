@@ -65,6 +65,14 @@ public class Inventario {
         }
 
     }
+    public void eliminar(int fila, int columna){
+        Celda actual = this.grillaInventario.obtener(fila, columna);
+        List<Material> materiales = actual.obtener();
+        if(materiales.size()>0) {
+            materiales.remove(0);
+            capacidadUsadaDeInventario--;
+        }
+    }
     public void dibujarInventario(){
 
         for(i=0 ; i<Constantes.FILAS_INVENTARIO ; i++) {
