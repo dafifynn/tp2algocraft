@@ -27,7 +27,7 @@
 	</target>
 
 	<target name="compilar.tests.sin.instrumentar" depends="compilar.aplicacion">
-		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.8">
+		<javac srcdir="testHerrero" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.8">
 			<classpath refid="classpath" />
 		</javac>
 	</target>
@@ -35,8 +35,8 @@
 
 
 
-	<target name="test" depends="compilar.tests.sin.instrumentar">
-		<junit fork="no" failureProperty="test.failure" showoutput="true">
+	<target name="testHerrero" depends="compilar.tests.sin.instrumentar">
+		<junit fork="no" failureProperty="testHerrero.failure" showoutput="true">
 			<classpath location="${build}" />
 			<classpath refid="classpath" />
 			<batchtest>
