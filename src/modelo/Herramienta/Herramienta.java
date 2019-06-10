@@ -34,7 +34,6 @@ public abstract class Herramienta{
 
 
     // Metodos
-
     protected boolean esBloqueRompible(Material material){
 
         return this.bloquesQuePuedoDaniar.contains(material.getClass());
