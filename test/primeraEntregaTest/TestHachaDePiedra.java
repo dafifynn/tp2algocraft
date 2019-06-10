@@ -1,12 +1,12 @@
-package test;
+package modeloTest;
 
-import org.junit.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
-import modelo.Bloque.*;
+import modelo.Material.*;
 import modelo.Herramienta.Hacha;
 import modelo.Jugador.Jugador;
+import org.junit.Test;
 
 public class TestHachaDePiedra {
 
@@ -26,7 +26,7 @@ public class TestHachaDePiedra {
 
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();
-        BloqueMadera bloqueDeMadera = new BloqueMadera();
+        MaterialMadera bloqueDeMadera = new MaterialMadera();
 
         hachaDePiedra.impactar(bloqueDeMadera);
 
@@ -39,7 +39,7 @@ public class TestHachaDePiedra {
 
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();
-        BloquePiedra bloqueDePiedra = new BloquePiedra();
+        MaterialPiedra bloqueDePiedra = new MaterialPiedra();
 
         hachaDePiedra.impactar(bloqueDePiedra);
 
@@ -52,7 +52,7 @@ public class TestHachaDePiedra {
 
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();
-        BloqueMetal bloqueDeMetal = new BloqueMetal();
+        MaterialMetal bloqueDeMetal = new MaterialMetal();
 
         hachaDePiedra.impactar(bloqueDeMetal);
 
@@ -66,7 +66,7 @@ public class TestHachaDePiedra {
         Jugador jugador = new Jugador();
         Hacha hachaDePiedra = jugador.crearHachaDePiedra();
 
-        BloqueDiamante bloqueDeDiamante = new BloqueDiamante();
+        MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         hachaDePiedra.impactar(bloqueDeDiamante);
 

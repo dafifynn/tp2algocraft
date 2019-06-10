@@ -1,22 +1,22 @@
-package test;
+package modeloTest;
 
-import org.junit.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
-import modelo.Bloque.BloqueDiamante;
+import modelo.Material.MaterialDiamante;
 import modelo.Herramienta.*;
 import modelo.Jugador.Jugador;
+import org.junit.Test;
 
-public class TestBloqueDiamante {
+public class TestMaterialDiamante {
 
-    // Tests de integracion de Bloque de Diamante
+    // Tests de integracion de Material de Diamante
     @Test
     public void picoDeMetalSeUsaContraDiamanteALaDecimaSeRompe() {
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
-        BloqueDiamante bloqueDeDiamante = new BloqueDiamante();
+        MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         for(int i = 0; i < 9 ; i++){
             picoDeMetal.impactar(bloqueDeDiamante);

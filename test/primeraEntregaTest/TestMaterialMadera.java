@@ -1,14 +1,14 @@
-package test;
+package modeloTest;
 
-import org.junit.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import modelo.Material.MaterialMadera;
 import modelo.Constantes;
-import modelo.Bloque.BloqueMadera;
 import modelo.Herramienta.*;
 import modelo.Jugador.Jugador;
+import org.junit.Test;
 
-public class TestBloqueMadera {
+public class TestMaterialMadera {
 
     // Tests de integracion
     @Test
@@ -16,7 +16,7 @@ public class TestBloqueMadera {
 
         Jugador jugador = new Jugador();
         Hacha hachaDeMadera = jugador.crearHachaDeMadera();
-        BloqueMadera bloqueDeMadera = new BloqueMadera();
+        MaterialMadera bloqueDeMadera = new MaterialMadera();
 
         assertEquals(bloqueDeMadera.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_BLOQUE_MADERA);
 

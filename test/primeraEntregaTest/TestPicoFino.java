@@ -1,12 +1,12 @@
-package test;
+package modeloTest;
 
-import org.junit.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
-import modelo.Bloque.*;
+import modelo.Material.*;
 import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Jugador;
+import org.junit.Test;
 
 public class TestPicoFino {
 
@@ -26,7 +26,7 @@ public class TestPicoFino {
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
-        BloqueMadera bloqueDeMadera = new BloqueMadera();
+        MaterialMadera bloqueDeMadera = new MaterialMadera();
 
         picoFino.impactar(bloqueDeMadera);
 
@@ -38,7 +38,7 @@ public class TestPicoFino {
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
-        BloquePiedra bloqueDePiedra = new BloquePiedra();
+        MaterialPiedra bloqueDePiedra = new MaterialPiedra();
 
         picoFino.impactar(bloqueDePiedra);
 
@@ -50,7 +50,7 @@ public class TestPicoFino {
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
-        BloqueMetal bloqueDeMetal = new BloqueMetal();
+        MaterialMetal bloqueDeMetal = new MaterialMetal();
 
         picoFino.impactar(bloqueDeMetal);
 
@@ -62,7 +62,7 @@ public class TestPicoFino {
 
         Jugador jugador = new Jugador();
         PicoFino picoFino = jugador.crearPicoFino();
-        BloqueDiamante bloqueDeDiamante = new BloqueDiamante();
+        MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         picoFino.impactar(bloqueDeDiamante);
 

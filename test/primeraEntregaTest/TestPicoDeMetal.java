@@ -1,12 +1,12 @@
-package test;
+package modeloTest;
 
-import org.junit.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
-import modelo.Bloque.*;
+import modelo.Material.*;
 import modelo.Herramienta.Pico;
 import modelo.Jugador.Jugador;
+import org.junit.Test;
 
 public class TestPicoDeMetal {
 
@@ -26,7 +26,7 @@ public class TestPicoDeMetal {
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
-        BloqueMadera bloqueDeMadera = new BloqueMadera();
+        MaterialMadera bloqueDeMadera = new MaterialMadera();
 
         picoDeMetal.impactar(bloqueDeMadera);
 
@@ -38,7 +38,7 @@ public class TestPicoDeMetal {
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
-        BloquePiedra bloqueDePiedra = new BloquePiedra();
+        MaterialPiedra bloqueDePiedra = new MaterialPiedra();
 
         picoDeMetal.impactar(bloqueDePiedra);
 
@@ -49,7 +49,7 @@ public class TestPicoDeMetal {
     public void picoDeMetalSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
-        BloqueMetal bloqueDeMetal = new BloqueMetal();
+        MaterialMetal bloqueDeMetal = new MaterialMetal();
 
         picoDeMetal.impactar(bloqueDeMetal);
 
@@ -61,7 +61,7 @@ public class TestPicoDeMetal {
 
         Jugador jugador = new Jugador();
         Pico picoDeMetal = jugador.crearPicoDeMetal();
-        BloqueDiamante bloqueDeDiamante = new BloqueDiamante();
+        MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         picoDeMetal.impactar(bloqueDeDiamante);
 
