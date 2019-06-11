@@ -6,7 +6,7 @@ import modelo.Jugador.Jugador;
 
 public class Juego {
 
-    private Grilla mapa;
+    private Grilla<Object> mapa;
 
     private int xJugador;
 
@@ -49,8 +49,8 @@ public class Juego {
 //            this.xJugador = xActualizada;
 //        }
 //    }
-//
-//    public void dibujar() {
-//        this.mapa.dibujar();
-//    }
+
+    public void dibujar() {
+        Artista.dibujarMundo(this.mapa);
+    }
 }
