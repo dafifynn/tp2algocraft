@@ -30,28 +30,27 @@ public class Juego {
         mapa.agregar(jugador,xJugador,yJugador);
     }
 
-    public void moverJugador(String direccion) {
-
-        int xActualizada = this.xJugador;
-        int yActualizada = this.xJugador;
-
-        switch (direccion) {
-            case Constantes.NORTE: yActualizada--;
-            break;
-            case Constantes.SUR: yActualizada++;
-            break;
-            case Constantes.OESTE: xActualizada--;
-            break;
-            case Constantes.ESTE: xActualizada++;
-        }
-
-        if(mapa.desplazar(this.xJugador, this.yJugador, xActualizada, yActualizada)) {
-            this.xJugador = xActualizada;
-            this.yJugador = yActualizada;
-        }
-    }
-
-    public void dibujar() {
-        this.mapa.dibujar();
-    }
+//    public void moverJugador(String direccion) {
+//
+//        int xActualizada = this.xJugador;
+//        int yActualizada = this.xJugador;
+//
+//        switch (direccion) {
+//            case Constantes.NORTE: yActualizada--;
+//            break;
+//            case Constantes.SUR: yActualizada++;
+//            break;
+//            case Constantes.OESTE: xActualizada--;
+//            break;
+//            case Constantes.ESTE: xActualizada++;
+//        }
+//
+//        if(mapa.desplazar(this.xJugador, this.yJugador, xActualizada, yActualizada)) {
+//            this.xJugador = xActualizada;
+//        }
+//    }
+//
+//    public void dibujar() {
+//        this.mapa.dibujar();
+//    }
 }

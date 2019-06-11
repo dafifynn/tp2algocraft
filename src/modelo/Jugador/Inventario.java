@@ -4,12 +4,13 @@ import modelo.Grilla.Casilla;
 import modelo.Grilla.Grilla;
 import modelo.Herramienta.Hacha;
 import modelo.Constantes;
+import modelo.Herramienta.Herramienta;
 
 public class Inventario {
 
     // Atributos
     private Herrero herrero;
-    private Grilla ranuras;
+    private Grilla<Herramienta> ranuras;
     private int capacidadUsadaDeInventario;
 
 
@@ -17,7 +18,7 @@ public class Inventario {
     public Inventario(){
 
         this.herrero = new Herrero();
-        this.ranuras = new Grilla(Constantes.FILAS_INVENTARIO,Constantes.COLUMNAS_INVENTARIO);
+        this.ranuras = new Grilla<>(Constantes.FILAS_INVENTARIO,Constantes.COLUMNAS_INVENTARIO);
         this.capacidadUsadaDeInventario = Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO;
 
         Hacha hachaMadera = (Hacha) herrero.construirHerramienta(Constantes.HACHA_DE_MADERA);
@@ -31,9 +32,16 @@ public class Inventario {
 
     //Metodos
     public Herramienta extraerHerramienta(int fila, int columna ){
-        Casilla actual = this.ranuras.obtener(fila, columna);
-        Herramienta herramienta = actual.obtener();
-        return herramienta;
+
+        Casilla<Herramienta> elegida = this.ranuras.obtener(fila, columna);
+        Herramienta extraida = null;
+
+        if(!elegida.estaVacio()) {
+            extraida = elegida.elemento();
+        }
+        // TODO: THROW EXCEPTION
+
+        return extraida;
     }
     
      public void guardar(Object elemento) {
@@ -53,8 +61,7 @@ public class Inventario {
                     columna = 1;
                 }
             }
-            
-            this.ava
+
             Casilla actual = ranuras.obtener(fila,columna);
             if(actual.estaVacio()) {
                 actual.asignar(elemento);
