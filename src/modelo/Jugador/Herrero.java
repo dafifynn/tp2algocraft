@@ -11,9 +11,9 @@ public class Herrero {
 
     private static HashMap<String, Herramienta> herramientasPosiblesDeConstruir;
 
-    public Herrero(){
+    public Herrero() {
 
-        herramientasPosiblesDeConstruir = new HashMap();
+        herramientasPosiblesDeConstruir = new HashMap<>();
         this.inicializarHashDeCombinacionesPosiblesDeHerramientas();
     }
 
@@ -21,7 +21,7 @@ public class Herrero {
     // Metodos
     public Herramienta construirHerramienta(String combinacionDeMateriales){
 
-        return (Herramienta) herramientasPosiblesDeConstruir.get(combinacionDeMateriales);
+        return herramientasPosiblesDeConstruir.get(combinacionDeMateriales);
     }
 
     private void inicializarHashDeCombinacionesPosiblesDeHerramientas(){
