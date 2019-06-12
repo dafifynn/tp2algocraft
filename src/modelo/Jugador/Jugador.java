@@ -1,7 +1,16 @@
 package modelo.Jugador;
 
+import modelo.Acciones.Accion;
+import modelo.Constantes;
+import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
+import modelo.Excepciones.MaterialInexistenteException;
+import modelo.Excepciones.MovimientoInvalidoException;
+import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
+import modelo.Material.Material;
+
+import java.util.HashMap;
 
 
 public class Jugador {
@@ -18,8 +27,10 @@ public class Jugador {
 
         this.coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO, Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
         this.inventario = new Inventario();
-        this.herramientaEquipada = null;
-        //this.herramientaEquipada = this.inventario.equipar(0);
+        Forja forja = new Forja();
+        Hacha hachaDeMadera = (Hacha)forja.construirHerramienta(Constantes.HACHA_DE_MADERA);
+        this.herramientaEquipada = hachaDeMadera;
+        
     }
 
 
@@ -55,19 +66,20 @@ public class Jugador {
     public void cambiarUbicacion (EstrategiaDeDireccion direccion, HashMap<Coordenada, Material> materialesDelMapa) throws MovimientoInvalidoException {
         Coordenada nuevaCoordenada = this.crearCoordenadaAdyacente(direccion);
         if (this.hayMaterialEnLaCoordenada(nuevaCoordenada, materialesDelMapa)) {
-            throw new MovimientoInvalidoException;
+            throw new MovimientoInvalidoException();
         }
         this.coordenada = nuevaCoordenada;
     }
 
     public void accion (Accion accion, HashMap<Coordenada, Material> materialesDelMapa) {
+
         accion.accion(this, materialesDelMapa);
     }
 
     public void impactar(EstrategiaDeDireccion direccion, HashMap<Coordenada, Material> materialesDelMapa) {
-        Coordenada nuevaCoordenada = this.crearCoordenadaAdyacente(direccion);
+        Coordenada coordenadaAdyacente = this.crearCoordenadaAdyacente(direccion);
         if (!this.hayMaterialEnLaCoordenada(coordenadaAdyacente, materialesDelMapa)) {
-            throw new MaterialInexistenteException;
+            throw new MaterialInexistenteException();
         }
         this.herramientaEquipada.impactar(materialesDelMapa.get(coordenadaAdyacente));
         // falta agregar material al inventario y ver que pasa cuando se rompe el material

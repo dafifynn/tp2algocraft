@@ -7,11 +7,11 @@ import modelo.Herramienta.*;
 import java.util.HashMap;
 
 
-public class Herrero {
+public class Forja {
 
     private static HashMap<String, Herramienta> herramientasPosiblesDeConstruir;
 
-    public Herrero() {
+    public Forja() {
 
         herramientasPosiblesDeConstruir = new HashMap<>();
         this.inicializarHashDeCombinacionesPosiblesDeHerramientas();

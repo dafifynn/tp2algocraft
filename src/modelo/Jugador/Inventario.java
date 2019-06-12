@@ -1,15 +1,16 @@
 package modelo.Jugador;
 
-import modelo.Grilla.Casilla;
+
 import modelo.Grilla.Grilla;
 import modelo.Herramienta.Hacha;
 import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
+import modelo.Mapa.Casilla;
 
 public class Inventario {
 
     // Atributos
-    private Herrero herrero;
+
     private Grilla<Herramienta> ranuras;
     private int capacidadUsadaDeInventario;
 
@@ -17,16 +18,10 @@ public class Inventario {
     //Constructor
     public Inventario(){
 
-        this.herrero = new Herrero();
+
         this.ranuras = new Grilla<>(Constantes.FILAS_INVENTARIO,Constantes.COLUMNAS_INVENTARIO);
         this.capacidadUsadaDeInventario = Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO;
 
-        Hacha hachaMadera = (Hacha) herrero.construirHerramienta(Constantes.HACHA_DE_MADERA);
-
-        Casilla primera = this.ranuras.obtener(1,1);
-        primera.asignar((Hacha) herrero.construirHerramienta(Constantes.HACHA_DE_MADERA));
-
-        this.capacidadUsadaDeInventario++;
     }
 
 
@@ -37,7 +32,7 @@ public class Inventario {
         Herramienta extraida = null;
 
         if(!elegida.estaVacio()) {
-            extraida = elegida.elemento();
+            extraida = elegida.verElemento();
         }
         // TODO: THROW EXCEPTION
 
@@ -51,7 +46,12 @@ public class Inventario {
         int columna = 1;
 
         while(!seEncontroCasillaLibre) {
-            
+
+            Casilla actual = this.ranuras.obtener(fila,columna);
+            if(actual.estaVacio()) {
+                actual.asignarElemento(elemento);
+                seEncontroCasillaLibre = true;
+            }
             if(columna < Constantes.COLUMNAS_INVENTARIO) {
                 columna++;
             }
@@ -62,11 +62,7 @@ public class Inventario {
                 }
             }
 
-            Casilla actual = ranuras.obtener(fila,columna);
-            if(actual.estaVacio()) {
-                actual.asignar(elemento);
-                seEncontroCasillaLibre = true;
-            }
+
         }
     }
 
