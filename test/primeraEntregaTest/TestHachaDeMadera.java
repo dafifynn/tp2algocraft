@@ -1,12 +1,15 @@
 package primeraEntregaTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import modelo.Constantes;
-import modelo.Material.*;
 import modelo.Herramienta.Hacha;
 import modelo.Jugador.Jugador;
-import org.junit.Test;
+import modelo.Material.MaterialDiamante;
+import modelo.Material.MaterialMadera;
+import modelo.Material.MaterialMetal;
+import modelo.Material.MaterialPiedra;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestHachaDeMadera {
 

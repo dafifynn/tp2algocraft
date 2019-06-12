@@ -10,9 +10,9 @@ public final class Constantes {
 
 
     // Jugador
-    public static final int JUGADOR_POSICION_X_DEFECTO = 0;
+    public static final int JUGADOR_COORDENADA_X_DEFECTO = 0;
 
-    public static final int JUGADOR_POSICION_Y_DEFECTO = 0;
+    public static final int JUGADOR_COORDENADA_Y_DEFECTO = 0;
 
     public static final String NORTE = "N";
 
@@ -100,11 +100,11 @@ public final class Constantes {
 
      // Inventario
     public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO = 36;
-    
+
     public static final int FILAS_INVENTARIO = 3;
-    
+
     public static final int COLUMNAS_INVENTARIO = 4;
-    
+
 
     // Representacion Numerica de las combinaciones de construccion de herramientas
     // Madera: 1, Piedra: 2, Metal: 3, Diamante: 4, Vacio: 0.
