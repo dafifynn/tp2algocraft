@@ -23,7 +23,7 @@ public class Mapa<Material>{
         this.mapa = new Casilla[Constantes.MAPA_FILAS_DEFECTO][Constantes.MAPA_COLUMNAS_DEFECTO];
 
         this.inicializarMapa();
-        this.posicionarJugadorEnEstadoInicial();
+        this.posicionarJugador(Constantes.JUGADOR_POSICION_X_DEFECTO, Constantes.JUGADOR_POSICION_Y_DEFECTO);
 
 
     }
@@ -41,10 +41,10 @@ public class Mapa<Material>{
         }
     }
 
-    private void posicionarJugadorEnEstadoInicial() {
+    private void posicionarJugador(int posEnX, int posEnY) {
 
-        this.posJugadorEnX = Constantes.JUGADOR_POSICION_X_DEFECTO;
-        this.posJugadorEnY = Constantes.JUGADOR_POSICION_Y_DEFECTO;
+        this.posJugadorEnX = posEnX;
+        this.posJugadorEnY = posEnY;
     }
 
     private void guardarDimensionesDeMapa() {
@@ -54,10 +54,34 @@ public class Mapa<Material>{
     }
 
 
+    private boolean movimientoValido(int nuevoPosX, int nuevoPosY) {
+
+        return this.mapa[nuevoPosX][nuevoPosY].verElemento() == null;
+    }
+
+    private boolean estaAfueraDeMapa(int nuevoPosX, int nuevoPosY) {
+
+        boolean estaAfuera = false;
+
+        if(nuevoPosX < 0 || nuevoPosX >= this.cantidadFilas){ estaAfuera = true; }
+
+        if(nuevoPosY < 0 || nuevoPosY >= this.cantidadColumnas){ estaAfuera = true; }
+
+        return estaAfuera;
+    }
+
     // Metodos publicos
-    public void mover(){
+    public void mover(int direccionEnX, int direccionEnY){
+        
+        int nuevoPosX = this.posJugadorEnX + direccionEnX;
+        int nuevoPosY = this.posJugadorEnY + direccionEnY;
 
+        if(this.estaAfueraDeMapa(nuevoPosX, nuevoPosY)){ return; }
 
+        if(this.movimientoValido(nuevoPosX, nuevoPosY)){
+
+            this.posicionarJugador(nuevoPosX, nuevoPosY);
+        }
     }
 
     public void golpear(){
