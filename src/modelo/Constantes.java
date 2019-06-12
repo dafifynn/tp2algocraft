@@ -3,16 +3,16 @@ package modelo;
 
 public final class Constantes {
 
-    // Grilla
-    public static final int GRILLA_FILAS_DEFECTO = 30;
+    // Mapa
+    public static final int MAPA_FILAS_DEFECTO = 30;
 
-    public static final int GRILLA_COLUMNAS_DEFECTO = 30;
+    public static final int MAPA_COLUMNAS_DEFECTO = 30;
 
 
     // Jugador
-    public static final int JUGADOR_POSICION_X_DEFECTO = 5;
+    public static final int JUGADOR_POSICION_X_DEFECTO = 0;
 
-    public static final int JUGADOR_POSICION_Y_DEFECTO = 5;
+    public static final int JUGADOR_POSICION_Y_DEFECTO = 0;
 
     public static final String NORTE = "N";
 
