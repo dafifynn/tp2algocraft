@@ -107,6 +107,16 @@ public final class Constantes {
 
 
     // Representacion Numerica de las combinaciones de construccion de herramientas
+    public static final int MADERA = 1;
+
+    public static final int PIEDRA = 2;
+
+    public static final int METAL = 3;
+
+    public static final int DIAMANTE = 4;
+
+    public static final int VACIO = 0;
+
     // Madera: 1, Piedra: 2, Metal: 3, Diamante: 4, Vacio: 0.
 
     public static final String HACHA_DE_MADERA = "110110010";
