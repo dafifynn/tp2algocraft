@@ -1,12 +1,13 @@
-package modeloTest;
+package primeraEntregaTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
+import modelo.Herramienta.Herramienta;
+import modelo.Jugador.Forja;
 import modelo.Material.*;
 import modelo.Herramienta.Hacha;
-import modelo.Jugador.Jugador;
-import org.junit.Test;
+import org.junit.*;
 
 public class TestHachaDeMetal {
 
@@ -14,8 +15,8 @@ public class TestHachaDeMetal {
     @Test
     public void seCreaHachaDeMetalPorDefecto() {
 
-        Jugador jugador = new Jugador();
-        Hacha hachaDeMetal = jugador.crearHachaDeMetal();
+        Forja forja = new Forja();
+        Herramienta hachaDeMetal = forja.construirHerramienta(Constantes.HACHA_DE_METAL);
 
         assertEquals(hachaDeMetal.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_METAL);
         assertEquals(hachaDeMetal.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_METAL);
@@ -24,8 +25,8 @@ public class TestHachaDeMetal {
     @Test
     public void hachaDeMetalSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
-        Jugador jugador = new Jugador();
-        Hacha hachaDeMetal = jugador.crearHachaDeMetal();
+        Forja forja = new Forja();
+        Herramienta hachaDeMetal = forja.construirHerramienta(Constantes.HACHA_DE_METAL);
         MaterialMadera bloqueDeMadera = new MaterialMadera();
 
         hachaDeMetal.impactar(bloqueDeMadera);
@@ -37,8 +38,8 @@ public class TestHachaDeMetal {
     @Test
     public void hachaDeMetalSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
-        Jugador jugador = new Jugador();
-        Hacha hachaDeMetal = jugador.crearHachaDeMetal();
+        Forja forja = new Forja();
+        Herramienta hachaDeMetal = forja.construirHerramienta(Constantes.HACHA_DE_METAL);
         MaterialPiedra bloqueDePiedra = new MaterialPiedra();
 
         hachaDeMetal.impactar(bloqueDePiedra);
@@ -50,8 +51,8 @@ public class TestHachaDeMetal {
     @Test
     public void hachaDeMetalSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
-        Jugador jugador = new Jugador();
-        Hacha hachaDeMetal = jugador.crearHachaDeMetal();
+        Forja forja = new Forja();
+        Herramienta hachaDeMetal = forja.construirHerramienta(Constantes.HACHA_DE_METAL);
         MaterialMetal bloqueDeMetal = new MaterialMetal();
 
         hachaDeMetal.impactar(bloqueDeMetal);
@@ -63,8 +64,8 @@ public class TestHachaDeMetal {
     @Test
     public void hachaDeMetalSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
-        Jugador jugador = new Jugador();
-        Hacha hachaDeMetal = jugador.crearHachaDeMetal();
+        Forja forja = new Forja();
+        Herramienta hachaDeMetal = forja.construirHerramienta(Constantes.HACHA_DE_METAL);
         MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         hachaDeMetal.impactar(bloqueDeDiamante);

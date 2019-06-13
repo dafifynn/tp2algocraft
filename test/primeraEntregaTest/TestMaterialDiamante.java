@@ -1,12 +1,12 @@
-package modeloTest;
+package primeraEntregaTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import modelo.Constantes;
+import modelo.Jugador.Forja;
 import modelo.Material.MaterialDiamante;
 import modelo.Herramienta.*;
-import modelo.Jugador.Jugador;
-import org.junit.Test;
+import org.junit.*;
 
 public class TestMaterialDiamante {
 
@@ -14,8 +14,8 @@ public class TestMaterialDiamante {
     @Test
     public void picoDeMetalSeUsaContraDiamanteALaDecimaSeRompe() {
 
-        Jugador jugador = new Jugador();
-        Pico picoDeMetal = jugador.crearPicoDeMetal();
+        Forja forja = new Forja();
+        Herramienta picoDeMetal = forja.construirHerramienta(Constantes.PICO_DE_METAL);
         MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         for(int i = 0; i < 9 ; i++){

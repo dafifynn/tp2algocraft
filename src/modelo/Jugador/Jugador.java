@@ -5,7 +5,6 @@ import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
 import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Excepciones.MovimientoInvalidoException;
-import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
 import modelo.Material.Material;
@@ -16,7 +15,6 @@ import java.util.HashMap;
 public class Jugador {
 
     // Atributo
-    private Coordenada ubicacion;
     private Inventario inventario;
     private Forja forja;
     private Herramienta herramientaEquipada;
@@ -99,14 +97,9 @@ public class Jugador {
         //this.inventario.dibujar();
     }
 
-    public Coordenada obtenerUbicacion() {
-
-        return this.ubicacion;
-    }
-
     public void mover(EstrategiaDeDireccion direccion) {
 
-        this.ubicacion = direccion.crearCoordenadaAdyacente(this.ubicacion);
+        this.coordenada = direccion.crearCoordenadaAdyacente(this.coordenada);
     }
 
 }

@@ -1,7 +1,7 @@
 package pruebasUnitarias;
 
 import modelo.Grilla.Casilla;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,7 +31,7 @@ public class CasillaTest {
 
         assertEquals(casillaEntero.estaVacio(),false);
 
-        casillaEntero.remover();
+        casillaEntero.removerElemento();
 
         assertEquals(casillaEntero.estaVacio(),true);
     }
@@ -42,7 +42,7 @@ public class CasillaTest {
         Double insertado = 2.2;
         Casilla<Double> casillaNumero = new Casilla<>(insertado);
 
-        Double recuperado = casillaNumero.elemento();
+        Double recuperado = casillaNumero.verElemento();
 
         assertEquals(recuperado, insertado);
     }
@@ -53,9 +53,9 @@ public class CasillaTest {
         String insertado = "soyUnString";
         Casilla<String> casillaCadena = new Casilla<>();
 
-        casillaCadena.asignar(insertado);
+        casillaCadena.asignarElemento(insertado);
 
         assertEquals(casillaCadena.estaVacio(),false);
-        assertEquals(casillaCadena.elemento(),insertado);
+        assertEquals(casillaCadena.verElemento(),insertado);
     }
 }

@@ -1,12 +1,12 @@
-package modeloTest;
+package primeraEntregaTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import modelo.Jugador.Forja;
 import modelo.Material.MaterialMetal;
 import modelo.Constantes;
 import modelo.Herramienta.*;
-import modelo.Jugador.Jugador;
-import org.junit.Test;
+import org.junit.*;
 
 public class TestMaterialMetal {
 
@@ -15,8 +15,8 @@ public class TestMaterialMetal {
     @Test
     public void seGolpeaBloqueDeMetalConPicoDeMaderaImpactandoSoloLaHerramienta() {
 
-        Jugador jugador = new Jugador();
-        Pico picoDeMadera = jugador.crearPicoDeMadera();
+        Forja forja = new Forja();
+        Herramienta picoDeMadera = forja.construirHerramienta(Constantes.PICO_DE_MADERA);
         MaterialMetal bloqueDeMetal = new MaterialMetal();
 
         assertEquals(bloqueDeMetal.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_BLOQUE_METAL);

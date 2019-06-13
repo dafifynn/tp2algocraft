@@ -1,7 +1,7 @@
 package pruebasUnitarias;
 
 import modelo.Grilla.Grilla;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -47,7 +47,7 @@ public class GrillaTest {
         String letraAsignada = "A";
 
         grillaDeLetras.agregar(letraAsignada,1,1);
-        String letraObtenida = grillaDeLetras.obtener(1,1).elemento();
+        String letraObtenida = grillaDeLetras.obtener(1,1).verElemento();
 
         assertEquals(letraObtenida,letraAsignada);
     }
