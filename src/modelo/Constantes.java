@@ -103,7 +103,7 @@ public final class Constantes {
 
     public static final int FILAS_INVENTARIO = 3;
 
-    public static final int COLUMNAS_INVENTARIO = 4;
+    public static final int COLUMNAS_INVENTARIO = 3;
 
 
     // Representacion Numerica de las combinaciones de construccion de herramientas

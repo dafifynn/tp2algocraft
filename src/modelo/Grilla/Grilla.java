@@ -51,7 +51,7 @@ public class Grilla<Object>{
     }
     public String obtenerClave() {
 
-        String clave = null;
+        String clave = new String();
         for (int i = 0; i < cantidadFilas; i++) {
             for (int j = 0; j < cantidadColumnas; j++) {
                 clave = clave + Integer.toString(elementos[i][j]);

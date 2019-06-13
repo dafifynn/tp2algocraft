@@ -41,7 +41,7 @@ public class Jugador {
     // Metodos Privados
     private void guardarEnInventario(){
 
-        this.inventario.guardar(this.herramientaEquipada);
+        this.inventario.agregarHerramienta(this.herramientaEquipada);
     }
 
     private boolean tengoHerramientaEquipada(){
