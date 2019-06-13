@@ -31,17 +31,9 @@ public class Inventario {
 
 
     //Metodos
-    public Herramienta extraerHerramienta(int fila, int columna ){
+    public Herramienta extraerHerramienta(int indice ){
 
-        Casilla<Herramienta> elegida = this.ranuras.obtener(fila, columna);
-        Herramienta extraida = null;
-
-        if(!elegida.estaVacio()) {
-            extraida = elegida.verElemento();
-        }
-        // TODO: THROW EXCEPTION
-
-        return extraida;
+        return herramientas.get(indice);
     }
     
     public void agregarMaterial(Material material){
@@ -57,7 +49,27 @@ public class Inventario {
 
     }
 
+    public void guardarPiedraEnGrilla(int fila, int columna){
 
+        ranuras.agregar(Constantes.PIEDRA,fila,columna);
+    }
+
+    public void guardarMetalEnGrilla(int fila, int columna){
+
+        ranuras.agregar(Constantes.METAL,fila,columna);
+    }
+
+    public void guardarMaderaEnGrilla(int fila, int columna){
+
+        ranuras.agregar(Constantes.MADERA,fila,columna);
+    }
+    public Herramienta obtenerHerramientaDeGrilla(){
+
+        String clave = this.ranuras.obtenerClave();
+        Forja forja = new Forja();
+        return forja.construirHerramienta(clave);
+
+    }
     public void eliminar(int fila, int columna){
         ranuras.eliminar(fila,columna);
     }
