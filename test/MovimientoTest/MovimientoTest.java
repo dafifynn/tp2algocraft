@@ -24,6 +24,6 @@ public class MovimientoTest {
         coordenada = coordenada.crearCoordenadaAdyacente(0, 1);
         Coordenada coordenadaActual = mapa.obtenerCoordenadaDeJugador();
 
-        assertEquals(coordenada == coordenadaActual, 1);
+        assertEquals( coordenada.equals(coordenadaActual), true);
     }
 }

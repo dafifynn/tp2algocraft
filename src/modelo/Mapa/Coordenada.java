@@ -67,9 +67,12 @@ public class Coordenada {
         return (this.coordenadaFila == coordenadaFila) && (this.coordenadaColumna == coordenadaColumna);
     }
 
+    @Override
+    public boolean equals (Object o) {
 
-    public boolean equals (Coordenada otraCoordenada) {
+        if(!(o instanceof Coordenada)) { return false;}
 
+        Coordenada otraCoordenada = (Coordenada) o;
         return otraCoordenada.tienenCoordenadasIguales(this.coordenadaFila, this.coordenadaColumna);
     }
 }
