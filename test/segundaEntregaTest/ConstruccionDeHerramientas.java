@@ -4,6 +4,7 @@ package segundaEntregaTest;
 import modelo.Constantes;
 import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Pico;
+import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Inventario;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -55,11 +56,11 @@ public class ConstruccionDeHerramientas {
         inventario.guardarMaderaEnGrilla(2,2);
         inventario.guardarMaderaEnGrilla(3,2);
 
-        Hacha hachaDeMadera = (Hacha)inventario.obtenerHerramientaDeGrilla();
+        Hacha hachaDePiedra = (Hacha)inventario.obtenerHerramientaDeGrilla();
 
-        assertEquals(hachaDeMadera.getClass().isAssignableFrom(Hacha.class),true);
-        assertEquals(hachaDeMadera.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_PIEDRA);
-        assertEquals(hachaDeMadera.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_PIEDRA);
+        assertEquals(hachaDePiedra.getClass().isAssignableFrom(Hacha.class),true);
+        assertEquals(hachaDePiedra.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_PIEDRA);
+        assertEquals(hachaDePiedra.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_PIEDRA);
     }
 
     @Test
@@ -68,15 +69,64 @@ public class ConstruccionDeHerramientas {
         Inventario inventario = new Inventario();
         inventario.guardarPiedraEnGrilla(1,1);
         inventario.guardarPiedraEnGrilla(1,2);
+        inventario.guardarPiedraEnGrilla(1,3);
+        inventario.guardarMaderaEnGrilla(2,2);
+        inventario.guardarMaderaEnGrilla(3,2);
+
+        Pico PicoDePiedra = (Pico)inventario.obtenerHerramientaDeGrilla();
+
+        assertEquals(PicoDePiedra.getClass().isAssignableFrom(Pico.class),true);
+        assertEquals(PicoDePiedra.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_PICO_PIEDRA);
+        assertEquals(PicoDePiedra.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_PIEDRA);
+    }
+
+    @Test
+    public void contruirHachaDeMetal() {
+
+        Inventario inventario = new Inventario();
+        inventario.guardarMetalEnGrilla(1,1);
+        inventario.guardarMetalEnGrilla(1,2);
+        inventario.guardarMetalEnGrilla(2,1);
+        inventario.guardarMaderaEnGrilla(2,2);
+        inventario.guardarMaderaEnGrilla(3,2);
+
+        Hacha HachaDeMetal = (Hacha)inventario.obtenerHerramientaDeGrilla();
+
+        assertEquals(HachaDeMetal.getClass().isAssignableFrom(Hacha.class),true);
+        assertEquals(HachaDeMetal.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_METAL);
+        assertEquals(HachaDeMetal.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_METAL);
+    }
+
+    public void construirPicoDeMetal() {
+
+        Inventario inventario = new Inventario();
+        inventario.guardarMetalEnGrilla(1,1);
+        inventario.guardarMetalEnGrilla(1,2);
+        inventario.guardarMetalEnGrilla(1,3);
+        inventario.guardarMaderaEnGrilla(2,2);
+        inventario.guardarMaderaEnGrilla(3,2);
+
+        Pico PicoDeMetal = (Pico)inventario.obtenerHerramientaDeGrilla();
+
+        assertEquals(PicoDeMetal.getClass().isAssignableFrom(Pico.class),true);
+        assertEquals(PicoDeMetal.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_PICO_METAL);
+        assertEquals(PicoDeMetal.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_METAL);
+    }
+
+    public void construirPicoFino() {
+
+        Inventario inventario = new Inventario();
+        inventario.guardarMetalEnGrilla(1,1);
+        inventario.guardarMetalEnGrilla(1,2);
+        inventario.guardarMetalEnGrilla(1,3);
         inventario.guardarPiedraEnGrilla(2,1);
         inventario.guardarMaderaEnGrilla(2,2);
         inventario.guardarMaderaEnGrilla(3,2);
 
-        Hacha hachaDeMadera = (Hacha)inventario.obtenerHerramientaDeGrilla();
+        PicoFino PicoFino = (PicoFino)inventario.obtenerHerramientaDeGrilla();
 
-        assertEquals(hachaDeMadera.getClass().isAssignableFrom(Hacha.class),true);
-        assertEquals(hachaDeMadera.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_PIEDRA);
-        assertEquals(hachaDeMadera.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_PIEDRA);
+        assertEquals(PicoFino.getClass().isAssignableFrom(Pico.class),true);
+        assertEquals(PicoFino.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_PICO_FINO);
+        assertEquals(PicoFino.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_FINO);
     }
-
 }
