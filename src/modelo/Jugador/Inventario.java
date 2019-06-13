@@ -67,7 +67,9 @@ public class Inventario {
 
         String clave = this.ranuras.obtenerClave();
         Forja forja = new Forja();
-        return forja.construirHerramienta(clave);
+        Herramienta construida = forja.construirHerramienta(clave);
+        this.agregarHerramienta(construida);
+        return construida;
 
     }
     public void eliminar(int fila, int columna){
