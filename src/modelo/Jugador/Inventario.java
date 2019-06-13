@@ -5,12 +5,18 @@ import modelo.Grilla.Grilla;
 import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
 import modelo.Grilla.Casilla;
+import modelo.Material.Material;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class Inventario {
 
     // Atributos
 
     private Grilla<Herramienta> ranuras;
+    private HashMap<Material ,Integer> materiales;
+    private List<Herramienta> herramientas;
     private int capacidadUsadaDeInventario;
 
 
@@ -38,32 +44,19 @@ public class Inventario {
         return extraida;
     }
     
-     public void guardar(Object elemento) {
+    public void agregarMaterial(Material material){
 
-        boolean seEncontroCasillaLibre = false;
-        int fila = 1;
-        int columna = 1;
+        Integer cantidad =  this.materiales.get(material);
+        this.materiales.put(material,(cantidad +1));
 
-        while(!seEncontroCasillaLibre) {
-
-            Casilla actual = this.ranuras.obtener(fila,columna);
-            if(actual.estaVacio()) {
-                actual.asignarElemento(elemento);
-                seEncontroCasillaLibre = true;
-            }
-            if(columna < Constantes.COLUMNAS_INVENTARIO) {
-                columna++;
-            }
-            else {
-                if(fila < Constantes.FILAS_INVENTARIO) {
-                    fila++;
-                    columna = 1;
-                }
-            }
-
-
-        }
     }
+
+    public void agregarHerramienta(Herramienta herramienta){
+
+        this.herramientas.add(herramienta);
+
+    }
+
 
     public void eliminar(int fila, int columna){
         ranuras.eliminar(fila,columna);
