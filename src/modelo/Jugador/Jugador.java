@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class Jugador {
 
     // Atributo
+    private Coordenada ubicacion;
     private Inventario inventario;
     private Forja forja;
     private Herramienta herramientaEquipada;
@@ -96,6 +97,16 @@ public class Jugador {
     public void abrirInventario(){
 
         //this.inventario.dibujar();
+    }
+
+    public Coordenada obtenerUbicacion() {
+
+        return this.ubicacion;
+    }
+
+    public void mover(EstrategiaDeDireccion direccion) {
+
+        this.ubicacion = direccion.crearCoordenadaAdyacente(this.ubicacion);
     }
 
 }

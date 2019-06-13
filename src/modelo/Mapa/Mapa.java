@@ -11,7 +11,6 @@ public class Mapa {
 
     // Atributo
     private HashMap<Coordenada, Material> materialesDelMapa;
-    private Coordenada coordenadaDelJugador;
     private Jugador jugador;
 
 
@@ -19,8 +18,7 @@ public class Mapa {
     public Mapa() {
 
         this.materialesDelMapa = new HashMap<>();
-        this.coordenadaDelJugador = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO, Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
-        this.jugador = new Jugador();
+       this.jugador = new Jugador();
     }
 
 
@@ -30,17 +28,12 @@ public class Mapa {
     }
 
 
-    // Getter
-    public Coordenada ubicacionDelJugador(){
-        return this.jugador.obtenerCoordenada();
-    }
-
-
     // Metodos publicos
     public void moverJugador (Movimiento movimiento) {
 
         movimiento.accion(this.jugador, this.materialesDelMapa);
     }
+
 
     public void golpear(){
 
