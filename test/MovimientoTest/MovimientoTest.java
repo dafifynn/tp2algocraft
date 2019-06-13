@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MovimientoTest {
 
+
     @Test
     public void moverJugadorHaciaArriba(){
 
