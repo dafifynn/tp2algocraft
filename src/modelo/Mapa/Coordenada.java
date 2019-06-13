@@ -1,7 +1,7 @@
 package modelo.Mapa;
 
 import modelo.Constantes;
-import modelo.Excepciones.CreacionCoordenadaInvalidaException;
+import modelo.Excepciones.CoordenadaInvalidaException;
 
 public class Coordenada {
 
@@ -9,14 +9,17 @@ public class Coordenada {
     private int coordenadaFila;
     private int coordenadaColumna;
 
+
     // Constructor
     public Coordenada (int coordenadaFila, int coordenadaColumna) throws CoordenadaInvalidaException {
+
         if (!estaEnRango(coordenadaFila, coordenadaColumna)) {
-            throw new CreacionCoordenadaInvalidaException;
+            throw new CoordenadaInvalidaException();
         }
         this.coordenadaFila = coordenadaFila;
         this.coordenadaColumna = coordenadaColumna;
     }
+
 
     // Metodos Privados
     private boolean esCoordenadaColumnaValida (int coordenadaColumna) {
@@ -27,7 +30,7 @@ public class Coordenada {
 
     private boolean esCoordenadaFilaValida (int coordenadaFila) {
 
-        return (0 <= int coordenadaFila) && (int coordenadaFila <= Constantes.MAPA_FILAS_DEFECTO);
+        return (0 <=  coordenadaFila) && (coordenadaFila <= Constantes.MAPA_FILAS_DEFECTO);
     }
 
 
@@ -38,7 +41,6 @@ public class Coordenada {
 
 
     // Metodos Publicos
-
     public void moverCoordenada (int cantMovimientosFila, int cantMovimientosColumna) {
 
         int nuevaCoordenadaFila = this.coordenadaFila + cantMovimientosFila;
@@ -66,8 +68,8 @@ public class Coordenada {
     }
 
 
-    @Override
     public boolean equals (Coordenada otraCoordenada) {
+
         return otraCoordenada.tienenCoordenadasIguales(this.coordenadaFila, this.coordenadaColumna);
     }
 }

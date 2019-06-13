@@ -2,10 +2,9 @@ package modelo.Jugador;
 
 
 import modelo.Grilla.Grilla;
-import modelo.Herramienta.Hacha;
 import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
-import modelo.Mapa.Casilla;
+import modelo.Grilla.Casilla;
 
 public class Inventario {
 

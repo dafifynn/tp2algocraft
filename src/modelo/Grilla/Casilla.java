@@ -1,9 +1,9 @@
-package modelo.Mapa;
+package modelo.Grilla;
 
-public class Casilla<Material> {
+public class Casilla<Object> {
 
     // Atributos
-    private Material elemento;
+    private Object elemento;
 
 
     // Constructor
@@ -12,18 +12,18 @@ public class Casilla<Material> {
         this.elemento = null;
     }
 
-    public Casilla(Material nuevo) {
+    public Casilla(Object nuevo) {
 
         this.elemento = nuevo;
     }
 
 
     // Metodos
-    public void asignarElemento(Material nuevo) {
+    public void asignarElemento(Object nuevo) {
         this.elemento = nuevo;
     }
 
-    public Material verElemento() {
+    public Object verElemento() {
         return this.elemento;
     }
 

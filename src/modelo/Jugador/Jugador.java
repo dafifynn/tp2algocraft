@@ -27,15 +27,14 @@ public class Jugador {
 
         this.coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO, Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
         this.inventario = new Inventario();
-        Forja forja = new Forja();
-        Hacha hachaDeMadera = (Hacha)forja.construirHerramienta(Constantes.HACHA_DE_MADERA);
-        this.herramientaEquipada = hachaDeMadera;
+        this.forja = new Forja();
+        this.herramientaEquipada = forja.construirHerramienta(Constantes.HACHA_DE_MADERA);
         
     }
 
 
     // Getters
-    private Coordenada obtenerCoordenada() {
+    public Coordenada obtenerCoordenada() {
         return this.coordenada;
     }
 

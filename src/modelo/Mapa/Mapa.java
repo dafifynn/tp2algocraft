@@ -1,9 +1,7 @@
 package modelo.Mapa;
 
 import modelo.Jugador.Jugador;
-import modelo.Mapa.Coordenada;
 import modelo.Constantes;
-import modelo.Jugador.Jugador;
 import modelo.Material.Material;
 import modelo.Acciones.Movimiento;
 
@@ -15,6 +13,7 @@ public class Mapa {
     private HashMap<Coordenada, Material> materialesDelMapa;
     private Coordenada coordenadaDelJugador;
     private Jugador jugador;
+
 
     // Constructor
     public Mapa() {
@@ -30,14 +29,17 @@ public class Mapa {
         materialesDelMapa.put(unaCoordenada, unMaterial);
     }
 
+
     // Getter
     public Coordenada ubicacionDelJugador(){
         return this.jugador.obtenerCoordenada();
     }
 
+
     // Metodos publicos
     public void moverJugador (Movimiento movimiento) {
-        Jugador.moverse(movimiento, this.materialesDelMapa);
+
+        movimiento.accion(this.jugador, this.materialesDelMapa);
     }
 
     public void golpear(){
