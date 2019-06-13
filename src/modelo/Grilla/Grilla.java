@@ -1,6 +1,8 @@
 package modelo.Grilla;
 
 
+import modelo.Constantes;
+
 public class Grilla<Object>{
 
     // Atributo
@@ -8,7 +10,7 @@ public class Grilla<Object>{
     private int cantidadColumnas;
 
 
-    private Casilla<Object>[][] elementos;
+    private int[][] elementos;
 
 
     // Constructor
@@ -16,11 +18,11 @@ public class Grilla<Object>{
 
         this.cantidadFilas = cantidadFilas;
         this.cantidadColumnas = cantidadColumnas;
-        this.elementos = new Casilla[cantidadFilas][cantidadColumnas];
+        this.elementos = new int[cantidadFilas][cantidadColumnas];
 
         for(int i = 0; i < cantidadFilas; i++) {
             for(int j = 0; j < cantidadColumnas; j++) {
-                elementos[i][j] = new Casilla<>();
+                elementos[i][j] = Constantes.VACIO;
             }
         }
     }
@@ -35,16 +37,26 @@ public class Grilla<Object>{
         return this.cantidadColumnas;
     }
 
-    public void agregar(Object elemento, int x, int y) {
+    public void agregar(int elemento, int x, int y) {
 
-        elementos[x-1][y-1].asignarElemento(elemento);
+        elementos[x-1][y-1] = elemento;
     }
 
-    public Casilla<Object> obtener(int x, int y) {
+    public int obtener(int x, int y) {
         return this.elementos[x-1][y-1];
     }
 
     public void eliminar(int x, int y) {
-        elementos[x-1][y-1].removerElemento();
+        elementos[x-1][y-1] = Constantes.VACIO;
+    }
+    public String obtenerClave() {
+
+        String clave = null;
+        for (int i = 0; i < cantidadFilas; i++) {
+            for (int j = 0; j < cantidadColumnas; j++) {
+                clave = clave + Integer.toString(elementos[i][j]);
+            }
+        }
+        return clave;
     }
 }
