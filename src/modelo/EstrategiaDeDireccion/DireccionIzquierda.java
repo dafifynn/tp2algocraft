@@ -1,7 +1,8 @@
 package modelo.EstrategiaDeDireccion;
 
 public class DireccionIzquierda extends EstrategiaDeDireccion {
-    public DireccionDerecha () {
+
+    public DireccionIzquierda() {
         this.avanceFila = -1;
         this.avanceColumna = 0;
     }
