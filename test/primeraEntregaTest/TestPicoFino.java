@@ -6,6 +6,7 @@ import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
 import modelo.Jugador.Forja;
 import modelo.Material.*;
+import modelo.PlantillasDeForja.PlantillaPicoFino;
 import org.junit.jupiter.api.Test;
 
 public class TestPicoFino {
@@ -15,7 +16,7 @@ public class TestPicoFino {
     public void seCreaPicoFinoPorDefecto() {
 
         Forja forja = new Forja();
-        Herramienta picoFino = forja.construirHerramienta(Constantes.PICO_FINO);
+        Herramienta picoFino = forja.construirHerramienta(new PlantillaPicoFino());
 
         assertEquals(picoFino.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_PICO_FINO);
         assertEquals(picoFino.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_FINO);
@@ -25,7 +26,7 @@ public class TestPicoFino {
     public void picoFinoSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Forja forja = new Forja();
-        Herramienta picoFino = forja.construirHerramienta(Constantes.PICO_FINO);
+        Herramienta picoFino = forja.construirHerramienta(new PlantillaPicoFino());
         MaterialMadera bloqueDeMadera = new MaterialMadera();
 
         picoFino.impactar(bloqueDeMadera);
@@ -37,7 +38,7 @@ public class TestPicoFino {
     public void picoFinoSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Forja forja = new Forja();
-        Herramienta picoFino = forja.construirHerramienta(Constantes.PICO_FINO);
+        Herramienta picoFino = forja.construirHerramienta(new PlantillaPicoFino());
         MaterialPiedra bloqueDePiedra = new MaterialPiedra();
 
         picoFino.impactar(bloqueDePiedra);
@@ -49,7 +50,7 @@ public class TestPicoFino {
     public void picoFinoSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Forja forja = new Forja();
-        Herramienta picoFino = forja.construirHerramienta(Constantes.PICO_FINO);
+        Herramienta picoFino = forja.construirHerramienta(new PlantillaPicoFino());
         MaterialMetal bloqueDeMetal = new MaterialMetal();
 
         picoFino.impactar(bloqueDeMetal);
@@ -61,7 +62,7 @@ public class TestPicoFino {
     public void picoFinoSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Forja forja = new Forja();
-        Herramienta picoFino = forja.construirHerramienta(Constantes.PICO_FINO);
+        Herramienta picoFino = forja.construirHerramienta(new PlantillaPicoFino());
         MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         picoFino.impactar(bloqueDeDiamante);

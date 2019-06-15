@@ -6,6 +6,7 @@ import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
 import modelo.Jugador.Forja;
 import modelo.Material.*;
+import modelo.PlantillasDeForja.PlantillaPicoMadera;
 import org.junit.jupiter.api.Test;
 
 public class TestPicoDeMadera {
@@ -15,7 +16,7 @@ public class TestPicoDeMadera {
     public void seCreaPicoDeMaderaPorDefecto() {
 
         Forja forja = new Forja();
-        Herramienta picoDeMadera = forja.construirHerramienta(Constantes.PICO_DE_MADERA);
+        Herramienta picoDeMadera = forja.construirHerramienta(new PlantillaPicoMadera());
 
         assertEquals(picoDeMadera.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_PICO_MADERA);
         assertEquals(picoDeMadera.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_MADERA);
@@ -25,7 +26,7 @@ public class TestPicoDeMadera {
     public void picoDeMaderaSeUsaContraMaderaYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Forja forja = new Forja();
-        Herramienta picoDeMadera = forja.construirHerramienta(Constantes.PICO_DE_MADERA);
+        Herramienta picoDeMadera = forja.construirHerramienta(new PlantillaPicoMadera());
         MaterialMadera bloqueDeMadera = new MaterialMadera();
 
         picoDeMadera.impactar(bloqueDeMadera);
@@ -38,7 +39,7 @@ public class TestPicoDeMadera {
     public void picoDeMaderaSeUsaContraPiedraYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Forja forja = new Forja();
-        Herramienta picoDeMadera = forja.construirHerramienta(Constantes.PICO_DE_MADERA);
+        Herramienta picoDeMadera = forja.construirHerramienta(new PlantillaPicoMadera());
         MaterialPiedra bloqueDePiedra = new MaterialPiedra();
 
         picoDeMadera.impactar(bloqueDePiedra);
@@ -51,7 +52,7 @@ public class TestPicoDeMadera {
     public void picoDeMaderaSeUsaContraMetalYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Forja forja = new Forja();
-        Herramienta picoDeMadera = forja.construirHerramienta(Constantes.PICO_DE_MADERA);
+        Herramienta picoDeMadera = forja.construirHerramienta(new PlantillaPicoMadera());
         MaterialMetal bloqueDeMetal = new MaterialMetal();
 
         picoDeMadera.impactar(bloqueDeMetal);
@@ -64,7 +65,7 @@ public class TestPicoDeMadera {
     public void picoDeMaderaSeUsaContraDiamanteYSeReduceSuDurabilidadDeFormaCorrespondiente(){
 
         Forja forja = new Forja();
-        Herramienta picoDeMadera = forja.construirHerramienta(Constantes.PICO_DE_MADERA);
+        Herramienta picoDeMadera = forja.construirHerramienta(new PlantillaPicoMadera());
         MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         picoDeMadera.impactar(bloqueDeDiamante);

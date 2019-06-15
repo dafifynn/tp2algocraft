@@ -6,6 +6,7 @@ import modelo.Jugador.Forja;
 import modelo.Material.MaterialPiedra;
 import modelo.Constantes;
 import modelo.Herramienta.*;
+import modelo.PlantillasDeForja.PlantillaHachaMadera;
 import org.junit.jupiter.api.Test;
 
 public class TestMaterialPiedra {
@@ -15,7 +16,7 @@ public class TestMaterialPiedra {
     public void seGolpeaBloqueDePiedraConHachaDeMetalImpactandoSoloLaHerramienta() {
 
         Forja forja = new Forja();
-        Herramienta hachaDeMetal = forja.construirHerramienta(Constantes.HACHA_DE_METAL);
+        Herramienta hachaDeMetal = forja.construirHerramienta(new PlantillaHachaMadera());
         MaterialPiedra bloqueDePiedra = new MaterialPiedra();
 
         assertEquals(bloqueDePiedra.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_BLOQUE_PIEDRA);
