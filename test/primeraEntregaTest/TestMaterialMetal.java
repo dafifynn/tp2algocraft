@@ -6,7 +6,7 @@ import modelo.Jugador.Forja;
 import modelo.Material.MaterialMetal;
 import modelo.Constantes;
 import modelo.Herramienta.*;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 public class TestMaterialMetal {
 

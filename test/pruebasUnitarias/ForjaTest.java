@@ -7,7 +7,8 @@ import modelo.Herramienta.Pico;
 import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Forja;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ForjaTest {

@@ -7,7 +7,7 @@ import modelo.Herramienta.Herramienta;
 import modelo.Jugador.Forja;
 import modelo.Material.*;
 import modelo.Herramienta.Hacha;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 public class TestHachaDeMetal {
 

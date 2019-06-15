@@ -6,7 +6,7 @@ import modelo.Constantes;
 import modelo.Jugador.Forja;
 import modelo.Material.MaterialDiamante;
 import modelo.Herramienta.*;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 public class TestMaterialDiamante {
 

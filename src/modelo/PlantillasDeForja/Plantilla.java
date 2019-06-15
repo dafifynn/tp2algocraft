@@ -1,20 +1,33 @@
 package modelo.PlantillasDeForja;
 
 
+import modelo.Material.MaterialVacio;
+
 public abstract class Plantilla{
 
     // Atributo
-    protected Casilla[][] plantilla;
+    protected Class[][] plantilla;
 
 
-    // Metodo
-    public boolean compararPlantilla(Plantilla otraPlantilla){
+    // Metodo Privado
+    protected void inicializarPlantilla() {
 
         for (int i = 0; i < 3; i++){
 
             for (int j = 0; j < 3; j++){
 
-                if (otraPlantilla.obtenerElemento(i, j) != this.plantilla[i][j].verElemento()){
+                this.plantilla[i][j] = MaterialVacio.class;
+            }
+        }
+    }
+
+    private boolean sonPlantillasIguales(Class[][] plantilla) {
+
+        for (int i = 0; i < 3; i++) {
+
+            for (int j = 0; j < 3; j++) {
+
+                if (plantilla[i][j] != this.plantilla[i][j]) {
                     return false;
                 }
             }
@@ -23,9 +36,15 @@ public abstract class Plantilla{
         return true;
     }
 
-    public Class obtenerElemento(int i, int j) {
 
-        return this.plantilla[i][j].verElemento();
+    // Metodo Publico
+    @Override
+    public boolean equals (Object o) {
+
+        if(!(o instanceof Plantilla)) { return false;}
+
+        Plantilla otraPlantilla = (Plantilla) o;
+        return otraPlantilla.sonPlantillasIguales(this.plantilla);
     }
 
 }

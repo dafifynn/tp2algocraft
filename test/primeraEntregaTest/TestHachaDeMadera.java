@@ -8,7 +8,7 @@ import modelo.Material.MaterialDiamante;
 import modelo.Material.MaterialMadera;
 import modelo.Material.MaterialMetal;
 import modelo.Material.MaterialPiedra;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

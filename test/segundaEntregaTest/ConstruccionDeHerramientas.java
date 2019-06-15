@@ -6,7 +6,8 @@ import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Pico;
 import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Inventario;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConstruccionDeHerramientas {

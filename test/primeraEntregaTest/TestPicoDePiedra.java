@@ -6,7 +6,7 @@ import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
 import modelo.Jugador.Forja;
 import modelo.Material.*;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 public class TestPicoDePiedra {
 
