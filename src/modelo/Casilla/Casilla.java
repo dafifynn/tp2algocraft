@@ -1,4 +1,4 @@
-package modelo.PlantillasDeForja;
+package modelo.Casilla;
 
 public class Casilla{
 
