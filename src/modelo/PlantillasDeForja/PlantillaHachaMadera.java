@@ -1,15 +1,14 @@
 package modelo.PlantillasDeForja;
 
-
 import modelo.Material.MaterialMadera;
 
-public class PlantillaHachaMadera extends Plantilla{
+
+public class PlantillaHachaMadera extends Plantilla {
 
     // Constructor
     public PlantillaHachaMadera() {
 
-        this.plantilla = new Class[3][3];
-        this.inicializarPlantilla();
+        super();
         this.armarPlantilla();
     }
 

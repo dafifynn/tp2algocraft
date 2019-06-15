@@ -1,12 +1,18 @@
 package modelo.PlantillasDeForja;
 
 
-import modelo.Material.MaterialVacio;
-
 public abstract class Plantilla{
 
     // Atributo
     protected Class[][] plantilla;
+
+
+    // Constructor
+    public Plantilla(){
+
+        this.plantilla = new Class[3][3];
+        this.inicializarPlantilla();
+    }
 
 
     // Metodo Privado
@@ -16,7 +22,7 @@ public abstract class Plantilla{
 
             for (int j = 0; j < 3; j++){
 
-                this.plantilla[i][j] = MaterialVacio.class;
+                this.plantilla[i][j] = null;
             }
         }
     }

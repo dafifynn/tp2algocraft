@@ -1,12 +1,11 @@
 package modelo.PlantillasDeForja;
 
 import modelo.Material.MaterialMadera;
-import modelo.Material.MaterialPiedra;
 
-public class PlantillaHachaPiedra extends Plantilla {
+public class PlantillaPicoMadera extends Plantilla {
 
     // Constructor
-    public PlantillaHachaPiedra() {
+    public PlantillaPicoMadera() {
 
         super();
         this.armarPlantilla();
@@ -16,9 +15,9 @@ public class PlantillaHachaPiedra extends Plantilla {
     // Metodo
     private void armarPlantilla() {
 
-        this.plantilla[0][0] = MaterialPiedra.class;
-        this.plantilla[0][1] = MaterialPiedra.class;
-        this.plantilla[1][0] = MaterialPiedra.class;
+        this.plantilla[0][0] = MaterialMadera.class;
+        this.plantilla[0][1] = MaterialMadera.class;
+        this.plantilla[0][2] = MaterialMadera.class;
         this.plantilla[1][1] = MaterialMadera.class;
         this.plantilla[2][1] = MaterialMadera.class;
     }
