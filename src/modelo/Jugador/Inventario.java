@@ -1,12 +1,18 @@
 package modelo.Jugador;
 
 
-import modelo.Grilla.Grilla;
+import modelo.Excepciones.InventarioHerramientasEstaLlenoException;
+import modelo.Excepciones.InventarioMaterialesEstaLlenoException;
 import modelo.Constantes;
+import modelo.Excepciones.NoHayMaterialParaEliminarException;
 import modelo.Herramienta.Herramienta;
 import modelo.Material.Material;
-import modelo.PlantillasDeForja.PlantillaHachaMadera;
+import modelo.Material.MaterialMadera;
+import modelo.Material.MaterialMetal;
+import modelo.Material.MaterialPiedra;
+import modelo.PlantillasDeForja.PlantillaEditable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,18 +20,23 @@ public class Inventario {
 
     // Atributos
 
-    private Grilla<Herramienta> ranuras;
+    private PlantillaEditable plantilla;
     private HashMap<Material ,Integer> materiales;
     private List<Herramienta> herramientas;
-    private int capacidadUsadaDeInventario;
+    private int capacidadUsadaDeInventarioMateriales;
+    private int capacidadUsadaDeInventarioHerramientas;
 
 
     //Constructor
     public Inventario(){
 
 
-        this.ranuras = new Grilla<>(Constantes.FILAS_INVENTARIO,Constantes.COLUMNAS_INVENTARIO);
-        this.capacidadUsadaDeInventario = Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO;
+        this.plantilla = new PlantillaEditable();
+        this.materiales = new HashMap<>();
+        this.herramientas = new ArrayList<Herramienta>();
+        this.capacidadUsadaDeInventarioMateriales = 0;
+        this.capacidadUsadaDeInventarioHerramientas = 0;
+
 
     }
 
@@ -33,46 +44,76 @@ public class Inventario {
     //Metodos
     public Herramienta extraerHerramienta(int indice ){
 
-        return herramientas.get(indice);
+        Herramienta herramienta = this.herramientas.get(indice);
+        this.herramientas.remove(indice);
+        this.capacidadUsadaDeInventarioHerramientas --;
+
+        return herramienta;
     }
     
     public void agregarMaterial(Material material){
 
-        Integer cantidad =  this.materiales.get(material);
-        this.materiales.put(material,(cantidad +1));
+       if(capacidadUsadaDeInventarioMateriales<= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES){
+           Integer cantidad =  this.materiales.get(material);
+           this.materiales.put(material,(cantidad +1));
+           this.capacidadUsadaDeInventarioMateriales ++;
+       }else{
+           throw new InventarioMaterialesEstaLlenoException();
+       }
 
     }
 
     public void agregarHerramienta(Herramienta herramienta){
 
-        this.herramientas.add(herramienta);
+        if(capacidadUsadaDeInventarioHerramientas<= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS){
+            this.herramientas.add(herramienta);
+            this.capacidadUsadaDeInventarioHerramientas++;
+        }else{
+            throw new InventarioHerramientasEstaLlenoException();
+        }
 
+    }
+
+    public void eliminarHerramienta(Herramienta herramienta){
+
+        this.herramientas.remove(herramienta);
+        this.capacidadUsadaDeInventarioHerramientas--;
+
+    }
+
+    public void eliminarMaterial(Material material){
+
+        Integer cantidad =  this.materiales.get(material);
+        if(cantidad != 0) {
+            this.materiales.put(material, (cantidad - 1));
+        }else{
+            throw new NoHayMaterialParaEliminarException();
+        }
     }
 
     public void guardarPiedraEnGrilla(int fila, int columna){
 
-        ranuras.agregar(Constantes.PIEDRA,fila,columna);
+        plantilla.armarPlantillaEditable(fila,columna, MaterialPiedra.class);
     }
 
     public void guardarMetalEnGrilla(int fila, int columna){
 
-        ranuras.agregar(Constantes.METAL,fila,columna);
+        plantilla.armarPlantillaEditable(fila,columna, MaterialMetal.class);
     }
 
     public void guardarMaderaEnGrilla(int fila, int columna){
 
-        ranuras.agregar(Constantes.MADERA,fila,columna);
+        plantilla.armarPlantillaEditable(fila,columna, MaterialMadera.class);
     }
     public Herramienta obtenerHerramientaDeGrilla(){
 
-        String clave = this.ranuras.obtenerClave();
         Forja forja = new Forja();
-        return forja.construirHerramienta(new PlantillaHachaMadera());
+        Herramienta herramienta = forja.construirHerramienta(this.plantilla);
+        plantilla = new PlantillaEditable();
+        return herramienta;
 
     }
-    public void eliminar(int fila, int columna){
-        ranuras.eliminar(fila,columna);
-    }
+
 
     public void dibujarInventario(){
         //FALTA IMPLEMENTAR
