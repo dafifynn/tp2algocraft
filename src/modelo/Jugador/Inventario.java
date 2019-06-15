@@ -105,6 +105,7 @@ public class Inventario {
 
         plantilla.armarPlantillaEditable(fila,columna, MaterialMadera.class);
     }
+
     public Herramienta obtenerHerramientaDeGrilla(){
 
         Forja forja = new Forja();
@@ -113,7 +114,6 @@ public class Inventario {
         return herramienta;
 
     }
-
 
     public void dibujarInventario(){
         //FALTA IMPLEMENTAR
