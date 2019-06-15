@@ -4,7 +4,6 @@ package modelo.Jugador;
 import modelo.Grilla.Grilla;
 import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
-import modelo.Grilla.Casilla;
 import modelo.Material.Material;
 
 import java.util.HashMap;
