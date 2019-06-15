@@ -1,6 +1,7 @@
 package pruebasUnitarias;
 
 import modelo.Constantes;
+import modelo.Excepciones.PlantillaDeForjaInexistenteException;
 import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Herramienta;
 import modelo.Herramienta.Pico;
@@ -110,4 +111,19 @@ public class ForjaTest {
         assertEquals(hachaDeMadera.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_MADERA);
     }
 
+    @Test
+    public void forjaIntentaCrearHerramientaConPlantillaInexistenteYFalla(){
+        Forja forja = new Forja();
+
+        PlantillaEditable plantillaEditable = new PlantillaEditable();
+        plantillaEditable.armarPlantillaEditable(0,0, MaterialMadera.class);
+
+        try {
+            Herramienta herramienta = forja.construirHerramienta(plantillaEditable);
+        }catch (PlantillaDeForjaInexistenteException e){
+
+            System.out.println("No existe combinacion");
+        }
+
+    }
 }

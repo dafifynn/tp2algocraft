@@ -17,12 +17,4 @@ public class PlantillaEditable extends PlantillaDeForja {
         this.plantilla[i][j] = C;
     }
 
-    @Override
-    public int hashCode(){
-
-        final int prime = 131;
-
-        return prime;
-    }
-
 }

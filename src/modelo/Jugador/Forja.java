@@ -2,6 +2,7 @@ package modelo.Jugador;
 
 import modelo.Constantes;
 import modelo.EstrategiaDeDurabilidad.*;
+import modelo.Excepciones.PlantillaDeForjaInexistenteException;
 import modelo.Herramienta.*;
 import modelo.PlantillasDeForja.*;
 
@@ -20,7 +21,12 @@ public class Forja {
 
 
     // Metodos Publico
-    public Herramienta construirHerramienta(PlantillaDeForja plantillaDeForja){
+    public Herramienta construirHerramienta(PlantillaDeForja plantillaDeForja) throws PlantillaDeForjaInexistenteException {
+
+
+        plantillaDeForja = this.esPlantillaValida(plantillaDeForja);
+
+        if (plantillaDeForja == null) { throw new PlantillaDeForjaInexistenteException(); }
 
         return herramientasPosiblesDeConstruir.get(plantillaDeForja);
     }
@@ -36,6 +42,20 @@ public class Forja {
         herramientasPosiblesDeConstruir.put(new PlantillaPicoPiedra(), this.crearPicoDePiedra());
         herramientasPosiblesDeConstruir.put(new PlantillaPicoMetal(), this.crearPicoDeMetal());
         herramientasPosiblesDeConstruir.put(new PlantillaPicoFino(), this.crearPicoFino());
+    }
+
+    private PlantillaDeForja esPlantillaValida(PlantillaDeForja plantillaDeForja) {
+
+        return recorroHash(plantillaDeForja);
+    }
+
+    private PlantillaDeForja recorroHash (PlantillaDeForja otraPlantilla) {
+
+        for (Object plantilla : herramientasPosiblesDeConstruir.keySet()){
+
+            if (plantilla.equals(otraPlantilla)){ return (PlantillaDeForja) plantilla; }
+        }
+        return null;
     }
 
 
