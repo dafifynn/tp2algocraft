@@ -5,6 +5,7 @@ import modelo.Grilla.Grilla;
 import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
 import modelo.Material.Material;
+import modelo.PlantillasDeForja.PlantillaHachaMadera;
 
 import java.util.HashMap;
 import java.util.List;
@@ -66,7 +67,7 @@ public class Inventario {
 
         String clave = this.ranuras.obtenerClave();
         Forja forja = new Forja();
-        return forja.construirHerramienta(clave);
+        return forja.construirHerramienta(new PlantillaHachaMadera());
 
     }
     public void eliminar(int fila, int columna){

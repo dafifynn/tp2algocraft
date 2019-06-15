@@ -1,9 +1,10 @@
 package modelo.PlantillasDeForja;
 
+import modelo.Constantes;
 import modelo.Material.MaterialMadera;
 import modelo.Material.MaterialMetal;
 
-public class PlantillaPicoMetal extends Plantilla {
+public class PlantillaPicoMetal extends PlantillaDeForja {
 
     // Constructor
     public PlantillaPicoMetal() {
@@ -22,5 +23,15 @@ public class PlantillaPicoMetal extends Plantilla {
         this.plantilla[1][1] = MaterialMadera.class;
         this.plantilla[2][1] = MaterialMadera.class;
     }
+
+    @Override
+    public int hashCode(){
+
+        final int prime = (int) (31 * (Constantes.DURABILIDAD_INICIAL_PICO_METAL + Constantes.FUERZA_INICIAL_PICO_METAL));
+        int result = 1;
+        result = prime * result + (Constantes.PICO_DE_METAL.hashCode());
+        return result;
+    }
+
 
 }

@@ -1,14 +1,14 @@
 package modelo.PlantillasDeForja;
 
 
-public abstract class Plantilla{
+public abstract class PlantillaDeForja {
 
     // Atributo
     protected Class[][] plantilla;
 
 
     // Constructor
-    public Plantilla(){
+    public PlantillaDeForja(){
 
         this.plantilla = new Class[3][3];
         this.inicializarPlantilla();
@@ -47,9 +47,9 @@ public abstract class Plantilla{
     @Override
     public boolean equals (Object o) {
 
-        if(!(o instanceof Plantilla)) { return false;}
+        if(!(o instanceof PlantillaDeForja)) { return false;}
 
-        Plantilla otraPlantilla = (Plantilla) o;
+        PlantillaDeForja otraPlantilla = (PlantillaDeForja) o;
         return otraPlantilla.sonPlantillasIguales(this.plantilla);
     }
 
