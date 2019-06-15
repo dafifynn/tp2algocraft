@@ -1,5 +1,7 @@
 package pruebasUnitarias;
 
+import modelo.Material.MaterialDiamante;
+import modelo.PlantillasDeForja.PlantillaEditable;
 import modelo.PlantillasDeForja.PlantillaHachaMadera;
 import modelo.PlantillasDeForja.PlantillaHachaPiedra;
 
@@ -24,6 +26,20 @@ public class PlatillasDeForjaTest {
         PlantillaHachaPiedra plantillaHachaPiedra = new PlantillaHachaPiedra();
 
         assertEquals(plantillaHachaMadera.equals(plantillaHachaPiedra), false);
+    }
+
+    @Test
+    public void comparoPlantillaEditableConUnaPorDefecto(){
+
+        PlantillaEditable plantillaEditable = new PlantillaEditable();
+        PlantillaHachaMadera plantillaHachaMadera = new PlantillaHachaMadera();
+
+        MaterialDiamante materialDiamante = new MaterialDiamante();
+        plantillaEditable.armarPlantillaEditable(1, 2, materialDiamante.getClass());
+
+        assertEquals(plantillaEditable.equals(plantillaHachaMadera), false);
+
+
     }
 
 }
