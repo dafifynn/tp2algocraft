@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class Forja {
 
-    private static HashMap<Object, Herramienta> herramientasPosiblesDeConstruir;
+    private HashMap<PlantillaDeForja, Herramienta> herramientasPosiblesDeConstruir;
 
     public Forja() {
 
@@ -23,10 +23,7 @@ public class Forja {
     // Metodos Publico
     public Herramienta construirHerramienta(PlantillaDeForja plantillaDeForja) throws PlantillaDeForjaInexistenteException {
 
-
-        plantillaDeForja = this.esPlantillaValida(plantillaDeForja);
-
-        if (plantillaDeForja == null) { throw new PlantillaDeForjaInexistenteException(); }
+        if (!this.esPlantillaValida(plantillaDeForja)) { throw new PlantillaDeForjaInexistenteException(); }
 
         return herramientasPosiblesDeConstruir.get(plantillaDeForja);
     }
@@ -44,18 +41,9 @@ public class Forja {
         herramientasPosiblesDeConstruir.put(new PlantillaPicoFino(), this.crearPicoFino());
     }
 
-    private PlantillaDeForja esPlantillaValida(PlantillaDeForja plantillaDeForja) {
+    private boolean esPlantillaValida(PlantillaDeForja plantillaDeForja) {
 
-        return recorroHash(plantillaDeForja);
-    }
-
-    private PlantillaDeForja recorroHash (PlantillaDeForja otraPlantilla) {
-
-        for (Object plantilla : herramientasPosiblesDeConstruir.keySet()){
-
-            if (plantilla.equals(otraPlantilla)){ return (PlantillaDeForja) plantilla; }
-        }
-        return null;
+        return this.herramientasPosiblesDeConstruir.containsKey(plantillaDeForja);
     }
 
 
