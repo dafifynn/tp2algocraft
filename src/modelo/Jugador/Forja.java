@@ -2,14 +2,16 @@ package modelo.Jugador;
 
 import modelo.Constantes;
 import modelo.EstrategiaDeDurabilidad.*;
+import modelo.Excepciones.PlantillaDeForjaInexistenteException;
 import modelo.Herramienta.*;
+import modelo.PlantillasDeForja.*;
 
 import java.util.HashMap;
 
 
 public class Forja {
 
-    private static HashMap<String, Herramienta> herramientasPosiblesDeConstruir;
+    private static HashMap<Object, Herramienta> herramientasPosiblesDeConstruir;
 
     public Forja() {
 
@@ -18,21 +20,42 @@ public class Forja {
     }
 
 
-    // Metodos
-    public Herramienta construirHerramienta(String combinacionDeMateriales){
+    // Metodos Publico
+    public Herramienta construirHerramienta(PlantillaDeForja plantillaDeForja) throws PlantillaDeForjaInexistenteException {
 
-        return herramientasPosiblesDeConstruir.get(combinacionDeMateriales);
+
+        plantillaDeForja = this.esPlantillaValida(plantillaDeForja);
+
+        if (plantillaDeForja == null) { throw new PlantillaDeForjaInexistenteException(); }
+
+        return herramientasPosiblesDeConstruir.get(plantillaDeForja);
     }
 
+
+    // Metedo Privado
     private void inicializarHashDeCombinacionesPosiblesDeHerramientas(){
 
-        herramientasPosiblesDeConstruir.put(Constantes.HACHA_DE_MADERA, this.crearHachaDeMadera());
-        herramientasPosiblesDeConstruir.put(Constantes.HACHA_DE_PIEDRA, this.crearHachaDePiedra());
-        herramientasPosiblesDeConstruir.put(Constantes.HACHA_DE_METAL, this.crearHachaDeMetal());
-        herramientasPosiblesDeConstruir.put(Constantes.PICO_DE_MADERA, this.crearPicoDeMadera());
-        herramientasPosiblesDeConstruir.put(Constantes.PICO_DE_PIEDRA, this.crearPicoDePiedra());
-        herramientasPosiblesDeConstruir.put(Constantes.PICO_DE_METAL, this.crearPicoDeMetal());
-        herramientasPosiblesDeConstruir.put(Constantes.PICO_FINO, this.crearPicoFino());
+        herramientasPosiblesDeConstruir.put(new PlantillaHachaMadera(), this.crearHachaDeMadera());
+        herramientasPosiblesDeConstruir.put(new PlantillaHachaPiedra(), this.crearHachaDePiedra());
+        herramientasPosiblesDeConstruir.put(new PlantillaHachaMetal(), this.crearHachaDeMetal());
+        herramientasPosiblesDeConstruir.put(new PlantillaPicoMadera(), this.crearPicoDeMadera());
+        herramientasPosiblesDeConstruir.put(new PlantillaPicoPiedra(), this.crearPicoDePiedra());
+        herramientasPosiblesDeConstruir.put(new PlantillaPicoMetal(), this.crearPicoDeMetal());
+        herramientasPosiblesDeConstruir.put(new PlantillaPicoFino(), this.crearPicoFino());
+    }
+
+    private PlantillaDeForja esPlantillaValida(PlantillaDeForja plantillaDeForja) {
+
+        return recorroHash(plantillaDeForja);
+    }
+
+    private PlantillaDeForja recorroHash (PlantillaDeForja otraPlantilla) {
+
+        for (Object plantilla : herramientasPosiblesDeConstruir.keySet()){
+
+            if (plantilla.equals(otraPlantilla)){ return (PlantillaDeForja) plantilla; }
+        }
+        return null;
     }
 
 

@@ -2,7 +2,7 @@ package pruebasUnitarias;
 
 import modelo.Grilla.Grilla;
 import modelo.Juego.Artista;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ArtistaTest {
 

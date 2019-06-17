@@ -99,7 +99,9 @@ public final class Constantes {
 
 
      // Inventario
-    public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO = 36;
+    public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES = 36;
+
+    public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS = 14;
 
     public static final int FILAS_INVENTARIO = 3;
 

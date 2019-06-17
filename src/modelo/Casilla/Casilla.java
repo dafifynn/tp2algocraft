@@ -1,9 +1,9 @@
-package modelo.Grilla;
+package modelo.Casilla;
 
-public class Casilla<Object> {
+public class Casilla{
 
     // Atributos
-    private Object elemento;
+    private Class elemento;
 
 
     // Constructor
@@ -12,18 +12,18 @@ public class Casilla<Object> {
         this.elemento = null;
     }
 
-    public Casilla(Object nuevo) {
+    public Casilla(Class nuevo) {
 
         this.elemento = nuevo;
     }
 
 
     // Metodos
-    public void asignarElemento(Object nuevo) {
+    public void asignarElemento(Class nuevo) {
         this.elemento = nuevo;
     }
 
-    public Object verElemento() {
+    public Class verElemento() {
         return this.elemento;
     }
 

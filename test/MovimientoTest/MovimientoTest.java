@@ -4,7 +4,8 @@ import modelo.Acciones.Movimiento;
 import modelo.EstrategiaDeDireccion.*;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MovimientoTest {

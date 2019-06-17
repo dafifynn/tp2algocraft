@@ -8,6 +8,7 @@ import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
 import modelo.Material.Material;
+import modelo.PlantillasDeForja.PlantillaHachaMadera;
 
 import java.util.HashMap;
 
@@ -27,7 +28,7 @@ public class Jugador {
         this.coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO, Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
         this.inventario = new Inventario();
         this.forja = new Forja();
-        this.herramientaEquipada = forja.construirHerramienta(Constantes.HACHA_DE_MADERA);
+        this.herramientaEquipada = forja.construirHerramienta(new PlantillaHachaMadera());
         
     }
 

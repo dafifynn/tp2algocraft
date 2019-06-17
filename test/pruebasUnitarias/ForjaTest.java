@@ -1,22 +1,26 @@
 package pruebasUnitarias;
 
 import modelo.Constantes;
+import modelo.Excepciones.PlantillaDeForjaInexistenteException;
 import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Herramienta;
 import modelo.Herramienta.Pico;
 import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Forja;
 
-import org.junit.Test;
+import modelo.Material.MaterialMadera;
+import modelo.PlantillasDeForja.*;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ForjaTest {
 
     @Test
-    public void herreroCreaHachaDeMaderaCorrectamente(){
+    public void forjaCreaHachaDeMaderaCorrectamente(){
         Forja forja = new Forja();
 
-        Herramienta hachaDeMadera = forja.construirHerramienta(Constantes.HACHA_DE_MADERA);
+        Herramienta hachaDeMadera = forja.construirHerramienta(new PlantillaHachaMadera());
 
         assertEquals(hachaDeMadera.getClass(), Hacha.class);
         assertEquals(hachaDeMadera.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_MADERA);
@@ -24,10 +28,10 @@ public class ForjaTest {
     }
 
     @Test
-    public void herreroCreaHachaDePiedraCorrectamente(){
+    public void forjaCreaHachaDePiedraCorrectamente(){
         Forja forja = new Forja();
 
-        Hacha hachaDePiedra = (Hacha) forja.construirHerramienta(Constantes.HACHA_DE_PIEDRA);
+        Hacha hachaDePiedra = (Hacha) forja.construirHerramienta(new PlantillaHachaPiedra());
 
         assertEquals(hachaDePiedra.getClass(), Hacha.class);
         assertEquals(hachaDePiedra.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_PIEDRA);
@@ -35,10 +39,10 @@ public class ForjaTest {
     }
 
     @Test
-    public void herreroCreaHachaDeMetalCorrectamente(){
+    public void forjaCreaHachaDeMetalCorrectamente(){
         Forja forja = new Forja();
 
-        Hacha hachaDeMetal = (Hacha) forja.construirHerramienta(Constantes.HACHA_DE_METAL);
+        Hacha hachaDeMetal = (Hacha) forja.construirHerramienta(new PlantillaHachaMetal());
 
         assertEquals(hachaDeMetal.getClass(), Hacha.class);
         assertEquals(hachaDeMetal.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_METAL);
@@ -46,10 +50,10 @@ public class ForjaTest {
     }
 
     @Test
-    public void herreroCreaPicoDeMaderaCorrectamente(){
+    public void forjaCreaPicoDeMaderaCorrectamente(){
         Forja forja = new Forja();
 
-        Pico picoDeMadera = (Pico) forja.construirHerramienta(Constantes.PICO_DE_MADERA);
+        Pico picoDeMadera = (Pico) forja.construirHerramienta(new PlantillaPicoMadera());
 
         assertEquals(picoDeMadera.getClass(), Pico.class);
         assertEquals(picoDeMadera.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_MADERA);
@@ -57,10 +61,10 @@ public class ForjaTest {
     }
 
     @Test
-    public void herreroCreaPicoDePiedraCorrectamente(){
+    public void forjaCreaPicoDePiedraCorrectamente(){
         Forja forja = new Forja();
 
-        Pico picoDePiedra = (Pico) forja.construirHerramienta(Constantes.PICO_DE_PIEDRA);
+        Pico picoDePiedra = (Pico) forja.construirHerramienta(new PlantillaPicoPiedra());
 
         assertEquals(picoDePiedra.getClass(), Pico.class);
         assertEquals(picoDePiedra.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_PIEDRA);
@@ -68,10 +72,10 @@ public class ForjaTest {
     }
 
     @Test
-    public void herreroCreaPicoDeMetalCorrectamente(){
+    public void forjaCreaPicoDeMetalCorrectamente(){
         Forja forja = new Forja();
 
-        Pico picoDeMetal = (Pico) forja.construirHerramienta(Constantes.PICO_DE_METAL);
+        Pico picoDeMetal = (Pico) forja.construirHerramienta(new PlantillaPicoMetal());
 
         assertEquals(picoDeMetal.getClass(), Pico.class);
         assertEquals(picoDeMetal.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_METAL);
@@ -79,14 +83,47 @@ public class ForjaTest {
     }
 
     @Test
-    public void herreroCreaPicoFinoCorrectamente(){
+    public void forjaCreaPicoFinoCorrectamente(){
         Forja forja = new Forja();
 
-        PicoFino picoFino = (PicoFino) forja.construirHerramienta(Constantes.PICO_FINO);
+        PicoFino picoFino = (PicoFino) forja.construirHerramienta(new PlantillaPicoFino());
 
         assertEquals(picoFino.getClass(), PicoFino.class);
         assertEquals(picoFino.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_FINO);
         assertEquals(picoFino.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_PICO_FINO);
     }
 
+    @Test
+    public void forjaCreaHachaMaderaConPlantillaEditable(){
+        Forja forja = new Forja();
+
+        PlantillaEditable plantillaEditable = new PlantillaEditable();
+        plantillaEditable.armarPlantillaEditable(0,0, MaterialMadera.class);
+        plantillaEditable.armarPlantillaEditable(0,1, MaterialMadera.class);
+        plantillaEditable.armarPlantillaEditable(1,0, MaterialMadera.class);
+        plantillaEditable.armarPlantillaEditable(1,1, MaterialMadera.class);
+        plantillaEditable.armarPlantillaEditable(2,1, MaterialMadera.class);
+
+        Herramienta hachaDeMadera = forja.construirHerramienta(plantillaEditable);
+
+        assertEquals(hachaDeMadera.getClass(), Hacha.class);
+        assertEquals(hachaDeMadera.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_MADERA);
+        assertEquals(hachaDeMadera.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_HACHA_MADERA);
+    }
+
+    @Test
+    public void forjaIntentaCrearHerramientaConPlantillaInexistenteYFalla(){
+        Forja forja = new Forja();
+
+        PlantillaEditable plantillaEditable = new PlantillaEditable();
+        plantillaEditable.armarPlantillaEditable(0,0, MaterialMadera.class);
+
+        try {
+            Herramienta herramienta = forja.construirHerramienta(plantillaEditable);
+        }catch (PlantillaDeForjaInexistenteException e){
+
+            System.out.println("No existe combinacion");
+        }
+
+    }
 }

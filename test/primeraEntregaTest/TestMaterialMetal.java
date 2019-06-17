@@ -6,7 +6,8 @@ import modelo.Jugador.Forja;
 import modelo.Material.MaterialMetal;
 import modelo.Constantes;
 import modelo.Herramienta.*;
-import org.junit.*;
+import modelo.PlantillasDeForja.PlantillaPicoMadera;
+import org.junit.jupiter.api.Test;
 
 public class TestMaterialMetal {
 
@@ -16,7 +17,7 @@ public class TestMaterialMetal {
     public void seGolpeaBloqueDeMetalConPicoDeMaderaImpactandoSoloLaHerramienta() {
 
         Forja forja = new Forja();
-        Herramienta picoDeMadera = forja.construirHerramienta(Constantes.PICO_DE_MADERA);
+        Herramienta picoDeMadera = forja.construirHerramienta(new PlantillaPicoMadera());
         MaterialMetal bloqueDeMetal = new MaterialMetal();
 
         assertEquals(bloqueDeMetal.obtenerDurabilidad(),Constantes.DURABILIDAD_INICIAL_BLOQUE_METAL);

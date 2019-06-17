@@ -6,7 +6,8 @@ import modelo.Constantes;
 import modelo.Jugador.Forja;
 import modelo.Material.MaterialDiamante;
 import modelo.Herramienta.*;
-import org.junit.*;
+import modelo.PlantillasDeForja.PlantillaPicoMetal;
+import org.junit.jupiter.api.Test;
 
 public class TestMaterialDiamante {
 
@@ -15,7 +16,7 @@ public class TestMaterialDiamante {
     public void picoDeMetalSeUsaContraDiamanteALaDecimaSeRompe() {
 
         Forja forja = new Forja();
-        Herramienta picoDeMetal = forja.construirHerramienta(Constantes.PICO_DE_METAL);
+        Herramienta picoDeMetal = forja.construirHerramienta(new PlantillaPicoMetal());
         MaterialDiamante bloqueDeDiamante = new MaterialDiamante();
 
         for(int i = 0; i < 9 ; i++){

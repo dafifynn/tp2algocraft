@@ -49,6 +49,7 @@ public class Grilla<Object>{
     public void eliminar(int x, int y) {
         elementos[x-1][y-1] = Constantes.VACIO;
     }
+
     public String obtenerClave() {
 
         String clave = new String();
