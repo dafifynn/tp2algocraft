@@ -1,9 +1,7 @@
 package modelo.Mapa;
 
 import modelo.Excepciones.CoordenadaOcupadaException;
-import modelo.Jugador.Jugador;
 import modelo.Material.Material;
-import modelo.Acciones.Movimiento;
 
 import java.util.HashMap;
 

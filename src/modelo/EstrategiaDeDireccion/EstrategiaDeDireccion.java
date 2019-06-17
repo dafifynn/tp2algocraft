@@ -9,7 +9,7 @@ public abstract class EstrategiaDeDireccion {
 	protected int avanceColumna;
 
     // Metodos
-	public Coordenada crearCoordenadaAdyacente (Coordenada coordenada) {
+	public Coordenada crearCoordenadaSiguiente(Coordenada coordenada) {
 		return coordenada.crearCoordenadaAdyacente(this.avanceFila, this.avanceColumna);
 	}
 }

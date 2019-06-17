@@ -1,12 +1,12 @@
 package modelo.Jugador;
 
-import modelo.Acciones.Accion;
 import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
 import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
+import modelo.Mapa.Mapa;
 import modelo.Material.Material;
 import modelo.PlantillasDeForja.PlantillaHachaMadera;
 
@@ -57,22 +57,20 @@ public class Jugador {
 
 
     private Coordenada crearCoordenadaAdyacente (EstrategiaDeDireccion direccion) {
-        return direccion.crearCoordenadaAdyacente(this.coordenada);
+        return direccion.crearCoordenadaSiguiente(this.coordenada);
     }
 
 
     // Metodos Publicos
-    public void cambiarUbicacion (EstrategiaDeDireccion direccion, HashMap<Coordenada, Material> materialesDelMapa) throws MovimientoInvalidoException {
-        Coordenada nuevaCoordenada = this.crearCoordenadaAdyacente(direccion);
-        if (this.hayMaterialEnLaCoordenada(nuevaCoordenada, materialesDelMapa)) {
+    public void moverse (EstrategiaDeDireccion direccion, Mapa mapa) throws MovimientoInvalidoException {
+
+        Coordenada coordenadaSiguiente = direccion.crearCoordenadaSiguiente(this.coordenada);
+
+        if (mapa.hayMaterialEnCoordenada(coordenadaSiguiente)) {
             throw new MovimientoInvalidoException();
         }
-        this.coordenada = nuevaCoordenada;
-    }
 
-    public void accion (Accion accion, HashMap<Coordenada, Material> materialesDelMapa) {
-
-        accion.accion(this, materialesDelMapa);
+        this.coordenada = coordenadaSiguiente;
     }
 
     public void impactar(EstrategiaDeDireccion direccion, HashMap<Coordenada, Material> materialesDelMapa) {
@@ -96,11 +94,6 @@ public class Jugador {
     public void abrirInventario(){
 
         //this.inventario.dibujar();
-    }
-
-    public void mover(EstrategiaDeDireccion direccion) {
-
-        this.coordenada = direccion.crearCoordenadaAdyacente(this.coordenada);
     }
 
 }
