@@ -23,14 +23,4 @@ public class PlantillaPicoPiedra extends PlantillaDeForja {
         this.plantilla[1][1] = MaterialMadera.class;
         this.plantilla[2][1] = MaterialMadera.class;
     }
-
-    @Override
-    public int hashCode(){
-
-        final int prime = (int) (31 * (Constantes.DURABILIDAD_INICIAL_PICO_PIEDRA + Constantes.FUERZA_INICIAL_PICO_PIEDRA));
-        int result = 1;
-        result = prime * result + (Constantes.PICO_DE_PIEDRA.hashCode());
-        return result;
-    }
-
 }
