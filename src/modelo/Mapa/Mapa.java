@@ -1,5 +1,6 @@
 package modelo.Mapa;
 
+import modelo.Excepciones.CoordenadaOcupadaException;
 import modelo.Jugador.Jugador;
 import modelo.Material.Material;
 import modelo.Acciones.Movimiento;
@@ -10,38 +11,34 @@ public class Mapa {
 
     // Atributo
     private HashMap<Coordenada, Material> materialesDelMapa;
-    private Jugador jugador;
 
 
     // Constructor
     public Mapa() {
 
         this.materialesDelMapa = new HashMap<>();
-        this.jugador = new Jugador();
     }
 
 
     // Setter
-    public void agregarMaterial (Coordenada unaCoordenada, Material unMaterial) {
+    public void agregarMaterial (Coordenada unaCoordenada, Material unMaterial) throws CoordenadaOcupadaException {
+        if (this.hayMaterialEnCoordenada(unaCoordenada)) {
+            throw new CoordenadaOcupadaException();
+        }
         materialesDelMapa.put(unaCoordenada, unMaterial);
     }
 
-    // Getter
-    public Coordenada obtenerCoordenadaDeJugador() {
-
-        return this.jugador.obtenerCoordenada();
-    }
 
     // Metodos publicos
-    public void moverJugador (Movimiento movimiento) {
+    public boolean hayMaterialEnCoordenada (Coordenada coordenada) {
 
-        movimiento.accion(this.jugador, this.materialesDelMapa);
+        return this.materialesDelMapa.containsKey(coordenada);
     }
 
 
-    public void golpear(){
+    public void removerMaterialDelMapa(Coordenada coordenada) {
 
-
+        this.materialesDelMapa.remove(coordenada);
     }
 
 }
