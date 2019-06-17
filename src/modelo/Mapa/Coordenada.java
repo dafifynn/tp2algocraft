@@ -75,4 +75,10 @@ public class Coordenada {
         Coordenada otraCoordenada = (Coordenada) o;
         return otraCoordenada.tienenCoordenadasIguales(this.coordenadaFila, this.coordenadaColumna);
     }
+
+    @Override
+    public int hashCode() {
+        int primo = 31;
+        return primo * (this.coordenadaColumna + this.coordenadaFila);
+    }
 }
