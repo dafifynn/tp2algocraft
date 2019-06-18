@@ -12,6 +12,10 @@ public abstract class Material {
         return this.durabilidad;
     }
 
+
+    public boolean estaRoto() { return this.durabilidad <= 0; }
+
+
     public void esGolpeado(double danio){
 
         if(this.danioAfectaAResistencia(danio)){

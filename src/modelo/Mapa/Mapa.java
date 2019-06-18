@@ -1,6 +1,7 @@
 package modelo.Mapa;
 
 import modelo.Excepciones.CoordenadaOcupadaException;
+import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Material.Material;
 
 import java.util.HashMap;
@@ -18,6 +19,16 @@ public class Mapa {
     }
 
 
+    // Getter
+    public Material obtenerMaterial (Coordenada coordenada) throws MaterialInexistenteException {
+
+        if (!this.hayMaterialEnCoordenada(coordenada)) {
+            throw new MaterialInexistenteException();
+        }
+
+        return this.materialesDelMapa.get(coordenada);
+    }
+
     // Setter
     public void agregarMaterial (Coordenada unaCoordenada, Material unMaterial) throws CoordenadaOcupadaException {
         if (this.hayMaterialEnCoordenada(unaCoordenada)) {
@@ -34,7 +45,11 @@ public class Mapa {
     }
 
 
-    public void removerMaterialDelMapa(Coordenada coordenada) {
+    public void removerMaterialDelMapa(Coordenada coordenada) throws MaterialInexistenteException {
+
+        if (!this.hayMaterialEnCoordenada(coordenada)) {
+            throw new MaterialInexistenteException();
+        }
 
         this.materialesDelMapa.remove(coordenada);
     }

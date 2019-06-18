@@ -4,6 +4,7 @@ import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
 import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Excepciones.MovimientoInvalidoException;
+import modelo.Excepciones.SinHerramientaEquipadaException;
 import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
@@ -50,16 +51,6 @@ public class Jugador {
         return this.herramientaEquipada.getClass().isAssignableFrom(Herramienta.class);
     }
 
-    private boolean hayMaterialEnLaCoordenada(Coordenada coordenada, HashMap<Coordenada, Material> materialesDelMapa) {
-
-		return materialesDelMapa.containsKey(coordenada);
-	}
-
-
-    private Coordenada crearCoordenadaAdyacente (EstrategiaDeDireccion direccion) {
-        return direccion.crearCoordenadaSiguiente(this.coordenada);
-    }
-
 
     // Metodos Publicos
     public void moverse (EstrategiaDeDireccion direccion, Mapa mapa) throws MovimientoInvalidoException {
@@ -73,13 +64,30 @@ public class Jugador {
         this.coordenada = coordenadaSiguiente;
     }
 
-    public void impactar(EstrategiaDeDireccion direccion, HashMap<Coordenada, Material> materialesDelMapa) {
-        Coordenada coordenadaAdyacente = this.crearCoordenadaAdyacente(direccion);
-        if (!this.hayMaterialEnLaCoordenada(coordenadaAdyacente, materialesDelMapa)) {
-            throw new MaterialInexistenteException();
+    private void procesarMaterial (EstrategiaDeDireccion direccion, Mapa mapa) {
+
+        Coordenada coordenadaSiguiente = direccion.crearCoordenadaSiguiente(this.coordenada);
+        Material material = mapa.obtenerMaterial(coordenadaSiguiente);
+        this.herramientaEquipada.impactar(material);
+
+        if (material.estaRoto()) {
+            mapa.removerMaterialDelMapa(coordenadaSiguiente);
+            this.inventario.agregarMaterial(material);
         }
-        this.herramientaEquipada.impactar(materialesDelMapa.get(coordenadaAdyacente));
-        // falta agregar material al inventario y ver que pasa cuando se rompe el material
+    }
+
+    public void impactar (EstrategiaDeDireccion direccion, Mapa mapa) throws SinHerramientaEquipadaException {
+
+        if (herramientaEquipada == null) {
+            throw new SinHerramientaEquipadaException();
+        }
+
+        procesarMaterial(direccion, mapa);
+
+        if (herramientaEquipada.estaRota()) {
+            this.inventario.eliminarHerramienta(this.herramientaEquipada);
+            this.herramientaEquipada = null;
+        }
     }
 
     public void equipar(int posicion){
