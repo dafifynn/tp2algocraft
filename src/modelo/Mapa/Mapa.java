@@ -1,8 +1,8 @@
 package modelo.Mapa;
 
-import modelo.Jugador.Jugador;
+import modelo.Excepciones.CoordenadaOcupadaException;
+import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Material.Material;
-import modelo.Acciones.Movimiento;
 
 import java.util.HashMap;
 
@@ -10,38 +10,48 @@ public class Mapa {
 
     // Atributo
     private HashMap<Coordenada, Material> materialesDelMapa;
-    private Jugador jugador;
 
 
     // Constructor
     public Mapa() {
 
         this.materialesDelMapa = new HashMap<>();
-        this.jugador = new Jugador();
     }
 
 
+    // Getter
+    public Material obtenerMaterial (Coordenada coordenada) throws MaterialInexistenteException {
+
+        if (!this.hayMaterialEnCoordenada(coordenada)) {
+            throw new MaterialInexistenteException();
+        }
+
+        return this.materialesDelMapa.get(coordenada);
+    }
+
     // Setter
-    public void agregarMaterial (Coordenada unaCoordenada, Material unMaterial) {
+    public void agregarMaterial (Coordenada unaCoordenada, Material unMaterial) throws CoordenadaOcupadaException {
+        if (this.hayMaterialEnCoordenada(unaCoordenada)) {
+            throw new CoordenadaOcupadaException();
+        }
         materialesDelMapa.put(unaCoordenada, unMaterial);
     }
 
-    // Getter
-    public Coordenada obtenerCoordenadaDeJugador() {
-
-        return this.jugador.obtenerCoordenada();
-    }
 
     // Metodos publicos
-    public void moverJugador (Movimiento movimiento) {
+    public boolean hayMaterialEnCoordenada (Coordenada coordenada) {
 
-        movimiento.accion(this.jugador, this.materialesDelMapa);
+        return this.materialesDelMapa.containsKey(coordenada);
     }
 
 
-    public void golpear(){
+    public void removerMaterialDelMapa(Coordenada coordenada) throws MaterialInexistenteException {
 
+        if (!this.hayMaterialEnCoordenada(coordenada)) {
+            throw new MaterialInexistenteException();
+        }
 
+        this.materialesDelMapa.remove(coordenada);
     }
 
 }

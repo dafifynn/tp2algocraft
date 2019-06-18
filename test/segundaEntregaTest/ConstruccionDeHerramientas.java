@@ -16,11 +16,11 @@ public class ConstruccionDeHerramientas {
     public void construirHachaDeMadera (){
 
         Inventario inventario = new Inventario();
+        inventario.guardarMaderaEnGrilla(0,0);
+        inventario.guardarMaderaEnGrilla(0,1);
+        inventario.guardarMaderaEnGrilla(1,0);
         inventario.guardarMaderaEnGrilla(1,1);
-        inventario.guardarMaderaEnGrilla(1,2);
         inventario.guardarMaderaEnGrilla(2,1);
-        inventario.guardarMaderaEnGrilla(2,2);
-        inventario.guardarMaderaEnGrilla(3,2);
 
         Hacha hachaMadera = (Hacha) inventario.obtenerHerramientaDeGrilla();
 
@@ -33,11 +33,11 @@ public class ConstruccionDeHerramientas {
     public void construirPicoDeMadera (){
 
         Inventario inventario = new Inventario();
+        inventario.guardarMaderaEnGrilla(0,0);
+        inventario.guardarMaderaEnGrilla(0,1);
+        inventario.guardarMaderaEnGrilla(0,2);
         inventario.guardarMaderaEnGrilla(1,1);
-        inventario.guardarMaderaEnGrilla(1,2);
-        inventario.guardarMaderaEnGrilla(1,3);
-        inventario.guardarMaderaEnGrilla(2,2);
-        inventario.guardarMaderaEnGrilla(3,2);
+        inventario.guardarMaderaEnGrilla(2,1);
 
         Pico picoMadera = (Pico) inventario.obtenerHerramientaDeGrilla();
 
@@ -51,11 +51,11 @@ public class ConstruccionDeHerramientas {
     public void construirHachaDePiedra(){
 
         Inventario inventario = new Inventario();
-        inventario.guardarPiedraEnGrilla(1,1);
-        inventario.guardarPiedraEnGrilla(1,2);
-        inventario.guardarPiedraEnGrilla(2,1);
-        inventario.guardarMaderaEnGrilla(2,2);
-        inventario.guardarMaderaEnGrilla(3,2);
+        inventario.guardarPiedraEnGrilla(0,0);
+        inventario.guardarPiedraEnGrilla(0,1);
+        inventario.guardarPiedraEnGrilla(1,0);
+        inventario.guardarMaderaEnGrilla(1,1);
+        inventario.guardarMaderaEnGrilla(2,1);
 
         Hacha hachaDePiedra = (Hacha)inventario.obtenerHerramientaDeGrilla();
 
@@ -68,11 +68,11 @@ public class ConstruccionDeHerramientas {
     public void construirPicoDePiedra(){
 
         Inventario inventario = new Inventario();
-        inventario.guardarPiedraEnGrilla(1,1);
-        inventario.guardarPiedraEnGrilla(1,2);
-        inventario.guardarPiedraEnGrilla(1,3);
-        inventario.guardarMaderaEnGrilla(2,2);
-        inventario.guardarMaderaEnGrilla(3,2);
+        inventario.guardarPiedraEnGrilla(0,0);
+        inventario.guardarPiedraEnGrilla(0,1);
+        inventario.guardarPiedraEnGrilla(0,2);
+        inventario.guardarMaderaEnGrilla(1,1);
+        inventario.guardarMaderaEnGrilla(2,1);
 
         Pico PicoDePiedra = (Pico)inventario.obtenerHerramientaDeGrilla();
 
@@ -85,11 +85,11 @@ public class ConstruccionDeHerramientas {
     public void contruirHachaDeMetal() {
 
         Inventario inventario = new Inventario();
-        inventario.guardarMetalEnGrilla(1,1);
-        inventario.guardarMetalEnGrilla(1,2);
-        inventario.guardarMetalEnGrilla(2,1);
-        inventario.guardarMaderaEnGrilla(2,2);
-        inventario.guardarMaderaEnGrilla(3,2);
+        inventario.guardarMetalEnGrilla(0,0);
+        inventario.guardarMetalEnGrilla(0,1);
+        inventario.guardarMetalEnGrilla(1,0);
+        inventario.guardarMaderaEnGrilla(1,1);
+        inventario.guardarMaderaEnGrilla(2,1);
 
         Hacha HachaDeMetal = (Hacha)inventario.obtenerHerramientaDeGrilla();
 
@@ -98,14 +98,15 @@ public class ConstruccionDeHerramientas {
         assertEquals(HachaDeMetal.obtenerFuerza(), Constantes.FUERZA_INICIAL_HACHA_METAL);
     }
 
+    @Test
     public void construirPicoDeMetal() {
 
         Inventario inventario = new Inventario();
-        inventario.guardarMetalEnGrilla(1,1);
-        inventario.guardarMetalEnGrilla(1,2);
-        inventario.guardarMetalEnGrilla(1,3);
-        inventario.guardarMaderaEnGrilla(2,2);
-        inventario.guardarMaderaEnGrilla(3,2);
+        inventario.guardarMetalEnGrilla(0,0);
+        inventario.guardarMetalEnGrilla(0,1);
+        inventario.guardarMetalEnGrilla(0,2);
+        inventario.guardarMaderaEnGrilla(1,1);
+        inventario.guardarMaderaEnGrilla(2,1);
 
         Pico PicoDeMetal = (Pico)inventario.obtenerHerramientaDeGrilla();
 
@@ -114,20 +115,21 @@ public class ConstruccionDeHerramientas {
         assertEquals(PicoDeMetal.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_METAL);
     }
 
+    @Test
     public void construirPicoFino() {
 
         Inventario inventario = new Inventario();
-        inventario.guardarMetalEnGrilla(1,1);
-        inventario.guardarMetalEnGrilla(1,2);
-        inventario.guardarMetalEnGrilla(1,3);
-        inventario.guardarPiedraEnGrilla(2,1);
-        inventario.guardarMaderaEnGrilla(2,2);
-        inventario.guardarMaderaEnGrilla(3,2);
+        inventario.guardarMetalEnGrilla(0,0);
+        inventario.guardarMetalEnGrilla(0,1);
+        inventario.guardarMetalEnGrilla(0,2);
+        inventario.guardarPiedraEnGrilla(1,0);
+        inventario.guardarMaderaEnGrilla(1,1);
+        inventario.guardarMaderaEnGrilla(2,1);
 
-        PicoFino PicoFino = (PicoFino)inventario.obtenerHerramientaDeGrilla();
+        PicoFino picoFino = (PicoFino)inventario.obtenerHerramientaDeGrilla();
 
-        assertEquals(PicoFino.getClass().isAssignableFrom(Pico.class),true);
-        assertEquals(PicoFino.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_PICO_FINO);
-        assertEquals(PicoFino.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_FINO);
+        assertEquals(picoFino.getClass().isAssignableFrom(PicoFino.class),true);
+        assertEquals(picoFino.obtenerDurabilidad(), Constantes.DURABILIDAD_INICIAL_PICO_FINO);
+        assertEquals(picoFino.obtenerFuerza(), Constantes.FUERZA_INICIAL_PICO_FINO);
     }
 }

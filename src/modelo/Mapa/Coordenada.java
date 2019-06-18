@@ -1,7 +1,7 @@
 package modelo.Mapa;
 
 import modelo.Constantes;
-import modelo.Excepciones.CoordenadaInvalidaException;
+import modelo.Excepciones.CoordenadaFueraDelLimiteException;
 
 public class Coordenada {
 
@@ -11,10 +11,10 @@ public class Coordenada {
 
 
     // Constructor
-    public Coordenada (int coordenadaFila, int coordenadaColumna) throws CoordenadaInvalidaException {
+    public Coordenada (int coordenadaFila, int coordenadaColumna) throws CoordenadaFueraDelLimiteException {
 
         if (!estaEnRango(coordenadaFila, coordenadaColumna)) {
-            throw new CoordenadaInvalidaException();
+            throw new CoordenadaFueraDelLimiteException();
         }
         this.coordenadaFila = coordenadaFila;
         this.coordenadaColumna = coordenadaColumna;
@@ -34,7 +34,7 @@ public class Coordenada {
     }
 
 
-    private boolean estaEnRango (int coordenadaFila, int coordenadaColumna) throws CoordenadaInvalidaException {
+    private boolean estaEnRango (int coordenadaFila, int coordenadaColumna) throws CoordenadaFueraDelLimiteException {
 
         return this.esCoordenadaFilaValida(coordenadaFila) && this.esCoordenadaColumnaValida(coordenadaColumna);
     }
@@ -74,5 +74,11 @@ public class Coordenada {
 
         Coordenada otraCoordenada = (Coordenada) o;
         return otraCoordenada.tienenCoordenadasIguales(this.coordenadaFila, this.coordenadaColumna);
+    }
+
+    @Override
+    public int hashCode() {
+        int primo = 31;
+        return primo * (this.coordenadaColumna + this.coordenadaFila);
     }
 }

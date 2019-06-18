@@ -1,12 +1,13 @@
 package modelo.Jugador;
 
-import modelo.Acciones.Accion;
 import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
 import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Excepciones.MovimientoInvalidoException;
+import modelo.Excepciones.SinHerramientaEquipadaException;
 import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
+import modelo.Mapa.Mapa;
 import modelo.Material.Material;
 import modelo.PlantillasDeForja.PlantillaHachaMadera;
 
@@ -50,38 +51,43 @@ public class Jugador {
         return this.herramientaEquipada.getClass().isAssignableFrom(Herramienta.class);
     }
 
-    private boolean hayMaterialEnLaCoordenada(Coordenada coordenada, HashMap<Coordenada, Material> materialesDelMapa) {
-
-		return materialesDelMapa.containsKey(coordenada);
-	}
-
-
-    private Coordenada crearCoordenadaAdyacente (EstrategiaDeDireccion direccion) {
-        return direccion.crearCoordenadaAdyacente(this.coordenada);
-    }
-
 
     // Metodos Publicos
-    public void cambiarUbicacion (EstrategiaDeDireccion direccion, HashMap<Coordenada, Material> materialesDelMapa) throws MovimientoInvalidoException {
-        Coordenada nuevaCoordenada = this.crearCoordenadaAdyacente(direccion);
-        if (this.hayMaterialEnLaCoordenada(nuevaCoordenada, materialesDelMapa)) {
+    public void moverse (EstrategiaDeDireccion direccion, Mapa mapa) throws MovimientoInvalidoException {
+
+        Coordenada coordenadaSiguiente = direccion.crearCoordenadaSiguiente(this.coordenada);
+
+        if (mapa.hayMaterialEnCoordenada(coordenadaSiguiente)) {
             throw new MovimientoInvalidoException();
         }
-        this.coordenada = nuevaCoordenada;
+
+        this.coordenada = coordenadaSiguiente;
     }
 
-    public void accion (Accion accion, HashMap<Coordenada, Material> materialesDelMapa) {
+    private void procesarMaterial (EstrategiaDeDireccion direccion, Mapa mapa) {
 
-        accion.accion(this, materialesDelMapa);
-    }
+        Coordenada coordenadaSiguiente = direccion.crearCoordenadaSiguiente(this.coordenada);
+        Material material = mapa.obtenerMaterial(coordenadaSiguiente);
+        this.herramientaEquipada.impactar(material);
 
-    public void impactar(EstrategiaDeDireccion direccion, HashMap<Coordenada, Material> materialesDelMapa) {
-        Coordenada coordenadaAdyacente = this.crearCoordenadaAdyacente(direccion);
-        if (!this.hayMaterialEnLaCoordenada(coordenadaAdyacente, materialesDelMapa)) {
-            throw new MaterialInexistenteException();
+        if (material.estaRoto()) {
+            mapa.removerMaterialDelMapa(coordenadaSiguiente);
+            this.inventario.agregarMaterial(material);
         }
-        this.herramientaEquipada.impactar(materialesDelMapa.get(coordenadaAdyacente));
-        // falta agregar material al inventario y ver que pasa cuando se rompe el material
+    }
+
+    public void impactar (EstrategiaDeDireccion direccion, Mapa mapa) throws SinHerramientaEquipadaException {
+
+        if (herramientaEquipada == null) {
+            throw new SinHerramientaEquipadaException();
+        }
+
+        procesarMaterial(direccion, mapa);
+
+        if (herramientaEquipada.estaRota()) {
+            this.inventario.eliminarHerramienta(this.herramientaEquipada);
+            this.herramientaEquipada = null;
+        }
     }
 
     public void equipar(int posicion){
@@ -96,11 +102,6 @@ public class Jugador {
     public void abrirInventario(){
 
         //this.inventario.dibujar();
-    }
-
-    public void mover(EstrategiaDeDireccion direccion) {
-
-        this.coordenada = direccion.crearCoordenadaAdyacente(this.coordenada);
     }
 
 }

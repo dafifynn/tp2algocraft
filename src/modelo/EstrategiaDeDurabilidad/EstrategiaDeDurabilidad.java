@@ -23,6 +23,11 @@ public abstract class EstrategiaDeDurabilidad {
 
 
     // Metodos
+    public boolean estaSinDurabilidad () {
+        return this.total <= 0;
+    }
+
+
     public abstract void desgastar();
   
 }

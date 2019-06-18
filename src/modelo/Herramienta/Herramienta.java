@@ -48,4 +48,8 @@ public abstract class Herramienta{
         this.estrategiaDeDurabilidad.desgastar();
     }
 
+
+    public boolean estaRota() {
+        return this.estrategiaDeDurabilidad.estaSinDurabilidad();
+    }
 }
