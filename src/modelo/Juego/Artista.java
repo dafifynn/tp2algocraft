@@ -1,8 +1,13 @@
 package modelo.Juego;
 
 import modelo.Grilla.Grilla;
+import modelo.Mapa.Coordenada;
+import modelo.Mapa.Mapa;
+import modelo.Material.MaterialMadera;
+import modelo.Material.MaterialMetal;
+import modelo.Material.MaterialPiedra;
 
-public class Artista {
+public abstract class Artista {
 
 //    public static void dibujarMundo(Grilla<Object> mapa) {
 //
@@ -24,4 +29,129 @@ public class Artista {
 //            System.out.println();
 //        }
 //    }
+
+    static void crearTerreno(Mapa mapa) {
+
+        crearMaderaEnTerreno(mapa);
+        crearPiedraEnTerreno(mapa);
+        crearMetalEnTerreno(mapa);
+        crearDiamanteEnTerreno(mapa);
+
+
+    }
+
+    static void crearMaderaEnTerreno(Mapa mapa){
+
+        for(int i = 3; i < 8; i ++){
+            for(int j = 0; j < 22; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+
+        for(int i = 0; i < 3; i ++){
+            for(int j = 7; j < 30; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+        for(int i = 3; i < 12; i ++){
+            for(int j = 26; j < 30; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+        for(int i = 24; i < 29; i ++){
+            for(int j = 0; j < 4; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+        for(int i = 23; i < 29; i ++){
+            for(int j = 7; j < 13; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+        for(int i = 23; i < 25; i ++){
+            for(int j = 4; j < 7; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+        int j = 28;
+        for(int i = 4; i < 7; i ++){
+            mapa.agregarMaterial(new Coordenada(j,i), new MaterialMadera());
+
+        }
+
+    }
+
+    static void crearPiedraEnTerreno(Mapa mapa){
+
+        for(int i = 3; i < 8; i ++){
+            for(int j = 22; j < 26; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialPiedra());
+            }
+        }
+
+        for(int i = 14; i < 21; i ++){
+            for(int j = 3; j < 8; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialPiedra());
+            }
+        }
+
+        for(int i = 10; i < 16; i ++){
+            for(int j = 13; j < 18; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialPiedra());
+            }
+        }
+
+        for(int i = 16; i < 30; i ++){
+            for(int j = 19; j < 21; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialPiedra());
+            }
+        }
+
+        for(int i = 16; i < 19; i ++){
+            for(int j = 21; j < 25; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialPiedra());
+            }
+        }
+    }
+
+    static void crearMetalEnTerreno(Mapa mapa){
+
+        for(int i = 9; i < 14; i ++){
+            for(int j = 0; j < 5; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMetal());
+            }
+        }
+
+        for(int i = 16; i < 19; i ++){
+            for(int j = 25; j < 30; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMetal());
+            }
+        }
+        int i = 19;
+        for(int j = 21; j < 30; j ++){
+            mapa.agregarMaterial(new Coordenada(i,j), new MaterialMetal());
+
+        }
+        i= 21;
+        for(int j = 19; j < 30; j ++){
+            mapa.agregarMaterial(new Coordenada(j,i), new MaterialMetal());
+
+        }
+
+    }
+
+    static void crearDiamanteEnTerreno(Mapa mapa){
+
+        for(int i = 21; i < 27; i ++){
+            for(int j = 23; j < 28; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMetal());
+            }
+        }
+    }
 }
