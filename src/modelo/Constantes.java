@@ -26,7 +26,7 @@ public final class Constantes {
 
     public static final String GOLP_DER = "L";
 
-    public static final String FIN_DE_JUEGOS = "T";
+    public static final String FIN_DE_JUEGO = "T";
 
 
     // Jugador

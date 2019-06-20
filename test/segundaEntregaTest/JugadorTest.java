@@ -10,16 +10,17 @@ import modelo.Material.Material;
 import modelo.Material.MaterialMadera;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JugadorTest {
+
+    // MOVIMIENTO DEL JUGADOR
     @Test
     public void JugadorPorDefectoTieneCoordenadasX0Y0() {
         Jugador jugador = new Jugador();
         Coordenada coordenada = new Coordenada(0,0);
 
-        assertEquals(true, coordenada.equals(jugador.obtenerCoordenada()));
+        assertTrue(coordenada.equals(jugador.obtenerCoordenada()));
     }
 
     @Test
@@ -32,7 +33,7 @@ public class JugadorTest {
 
         Coordenada coordenadaEsperada = new Coordenada(0,1);
 
-        assertEquals(true, coordenadaEsperada.equals(jugador.obtenerCoordenada()));
+        assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
     }
 
     @Test
@@ -45,7 +46,7 @@ public class JugadorTest {
 
         Coordenada coordenadaEsperada = new Coordenada(1,0);
 
-        assertEquals(true, coordenadaEsperada.equals(jugador.obtenerCoordenada()));
+        assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
     }
 
     @Test
@@ -73,11 +74,15 @@ public class JugadorTest {
         Coordenada coordenadaDelMaterial = new Coordenada(0,1);
         mapa.agregarMaterial(coordenadaDelMaterial, madera);
 
-        assertEquals(true, mapa.hayMaterialEnCoordenada(coordenadaDelMaterial));
+        assertTrue(mapa.hayMaterialEnCoordenada(coordenadaDelMaterial));
 
         Jugador jugador = new Jugador();
         EstrategiaDeDireccion direccion = new DireccionArriba();
 
         assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion,mapa);});
     }
+
+    // GOLPEA MATERIAL EL JUGADOR
+
+
 }

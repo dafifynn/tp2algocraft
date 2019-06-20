@@ -34,78 +34,16 @@ public class Juego {
     // Metodos Publicos
     public void iniciarPartida() {
 
+        Controlador controlador = new Controlador();
         this.imprimirComando();
 
         while (!this.finDeJuego) {
 
             String comandoDeEntrada = JOptionPane.showInputDialog(null, "Ingresar");
-            this.analizarComando(comandoDeEntrada);
+            this.finDeJuego = controlador.analizarComando(comandoDeEntrada, this.mapa, this.jugador);
         }
 
 
-    }
-
-
-    // Metodo Privado
-    private void analizarComando(String comandoDeEntrada) {
-
-        switch (comandoDeEntrada.toUpperCase())
-        {
-
-            case Constantes.FIN_DE_JUEGOS:
-                {
-                    this.finDeJuego = true;
-                }
-
-            case Constantes.MOV_ARRIBA:
-            {
-                DireccionArriba direccion = new DireccionArriba();
-                this.jugador.moverse(direccion, this.mapa);
-            }
-
-            case Constantes.MOV_ABAJO:
-            {
-                DireccionAbajo direccion = new DireccionAbajo();
-                this.jugador.moverse(direccion, this.mapa);
-            }
-
-            case Constantes.MOV_DER:
-            {
-                DireccionDerecha direccion = new DireccionDerecha();
-                this.jugador.moverse(direccion, this.mapa);
-            }
-
-            case Constantes.MOV_IZQ:
-            {
-                DireccionIzquierda direccion = new DireccionIzquierda();
-                this.jugador.moverse(direccion, this.mapa);
-            }
-
-            case Constantes.GOLP_ARRIBA:
-            {
-                DireccionArriba direccion = new DireccionArriba();
-                this.jugador.impactar(direccion, this.mapa);
-            }
-
-            case Constantes.GOLP_ABAJO:
-            {
-                DireccionAbajo direccion = new DireccionAbajo();
-                this.jugador.impactar(direccion, this.mapa);
-            }
-
-            case Constantes.GOLP_DER:
-            {
-                DireccionDerecha direccion = new DireccionDerecha();
-                this.jugador.impactar(direccion, this.mapa);
-            }
-
-            case Constantes.GOLP_IZQ:
-            {
-                DireccionIzquierda direccion = new DireccionIzquierda();
-                this.jugador.impactar(direccion, this.mapa);
-            }
-
-        }
     }
 
 
