@@ -41,30 +41,12 @@ public class Artista {
 
     private void crearMaderaEnTerreno(Mapa mapa){
 
-        for(int i = 3; i < 8; i ++){
-            for(int j = 0; j < 22; j++){
-                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
-            }
-        }
-
-
-        for(int i = 0; i < 3; i ++){
-            for(int j = 7; j < 30; j++){
-                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
-            }
-        }
-
-        for(int i = 3; i < 12; i ++){
-            for(int j = 26; j < 30; j++){
-                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
-            }
-        }
-
         for(int i = 24; i < 29; i ++){
             for(int j = 0; j < 4; j++){
                 mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
             }
         }
+
 
         for(int i = 23; i < 29; i ++){
             for(int j = 7; j < 13; j++){
@@ -78,8 +60,26 @@ public class Artista {
             }
         }
 
-        int j = 28;
-        for(int i = 4; i < 7; i ++){
+        for(int i = 3; i < 12; i ++){
+            for(int j = 26; j < 30; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+        for(int i = 3; i < 8; i ++){
+            for(int j = 0; j < 22; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+        for(int i = 0; i < 3; i ++){
+            for(int j = 7; j < 30; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMadera());
+            }
+        }
+
+        int i = 28;
+        for(int j = 4; j < 7; j ++){
             mapa.agregarMaterial(new Coordenada(j,i), new MaterialMadera());
 
         }
@@ -87,12 +87,6 @@ public class Artista {
     }
 
     private void crearPiedraEnTerreno(Mapa mapa){
-
-        for(int i = 3; i < 8; i ++){
-            for(int j = 22; j < 26; j++){
-                mapa.agregarMaterial(new Coordenada(i,j), new MaterialPiedra());
-            }
-        }
 
         for(int i = 14; i < 21; i ++){
             for(int j = 3; j < 8; j++){
@@ -117,6 +111,12 @@ public class Artista {
                 mapa.agregarMaterial(new Coordenada(i,j), new MaterialPiedra());
             }
         }
+
+        for(int i = 3; i < 8; i ++){
+            for(int j = 22; j < 26; j++){
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialPiedra());
+            }
+        }
     }
 
     private void crearMetalEnTerreno(Mapa mapa){
@@ -137,9 +137,9 @@ public class Artista {
             mapa.agregarMaterial(new Coordenada(i,j), new MaterialMetal());
 
         }
-        i= 21;
-        for(int j = 19; j < 30; j ++){
-            mapa.agregarMaterial(new Coordenada(j,i), new MaterialMetal());
+        int j = 21;
+        for( i = 20; i < 30; i ++){
+            mapa.agregarMaterial(new Coordenada(i,j), new MaterialMetal());
 
         }
 
