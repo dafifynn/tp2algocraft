@@ -30,9 +30,9 @@ public final class Constantes {
 
 
     // Jugador
-    public static final int JUGADOR_COORDENADA_X_DEFECTO = 26;
+    public static final int JUGADOR_COORDENADA_X_DEFECTO = 5;
 
-    public static final int JUGADOR_COORDENADA_Y_DEFECTO = 5;
+    public static final int JUGADOR_COORDENADA_Y_DEFECTO = 26;
 
     public static final String NORTE = "N";
 
