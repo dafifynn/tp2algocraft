@@ -2,7 +2,6 @@ package modelo.Jugador;
 
 import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
-import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Excepciones.SinHerramientaEquipadaException;
 import modelo.Herramienta.Herramienta;
@@ -10,8 +9,6 @@ import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
 import modelo.Material.Material;
 import modelo.PlantillasDeForja.PlantillaHachaMadera;
-
-import java.util.HashMap;
 
 
 public class Jugador {
@@ -88,6 +85,7 @@ public class Jugador {
             this.inventario.eliminarHerramienta(this.herramientaEquipada);
             this.herramientaEquipada = null;
         }
+
     }
 
     public void equipar(int posicion){

@@ -9,6 +9,26 @@ public final class Constantes {
     public static final int MAPA_COLUMNAS_DEFECTO = 30;
 
 
+    // Comandos
+    public static final String MOV_ARRIBA = "W";
+
+    public static final String MOV_ABAJO = "S";
+
+    public static final String MOV_IZQ = "A";
+
+    public static final String MOV_DER = "D";
+
+    public static final String GOLP_ARRIBA = "I";
+
+    public static final String GOLP_ABAJO = "K";
+
+    public static final String GOLP_IZQ = "J";
+
+    public static final String GOLP_DER = "L";
+
+    public static final String FIN_DE_JUEGOS = "T";
+
+
     // Jugador
     public static final int JUGADOR_COORDENADA_X_DEFECTO = 0;
 
