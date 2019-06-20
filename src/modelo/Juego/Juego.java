@@ -39,34 +39,34 @@ public class Juego {
 
         while (!this.finDeJuego) {
 
-            String comandoDeEntrada = JOptionPane.showInputDialog(null, "Ingresar");
+            String comandoDeEntrada = JOptionPane.showInputDialog(null, "INGRESAR");
             this.finDeJuego = controlador.analizarComando(comandoDeEntrada, this.mapa, this.jugador);
         }
 
-
+        JOptionPane.showMessageDialog(null, "ADIOS POLLO XD");
     }
 
 
     // Imprimir Comandos
     private void imprimirComando() {
 
-        System.out.println("Comando:");
-        System.out.println(" - Movimiento");
+        System.out.println("COMANDOS:");
+        System.out.println(" - MOVIMIENTO");
         mostrarDireccion(Constantes.MOV_ARRIBA, Constantes.MOV_ABAJO, Constantes.MOV_IZQ, Constantes.MOV_DER);
         System.out.println(" ");
-        System.out.println(" - Golpear Bloque Material");
+        System.out.println(" - GOLPEAR BLOQUE MATERIAL");
         mostrarDireccion(Constantes.GOLP_ARRIBA, Constantes.GOLP_ABAJO, Constantes.GOLP_IZQ, Constantes.GOLP_DER);
         System.out.println(" ");
-        System.out.println((" - Terminar juego:  T"));
+        System.out.println((" - TERMINAR JUEGO:  T"));
         System.out.println(" ");
     }
 
     private void mostrarDireccion(String Arriba, String Abajo, String Izq, String Der) {
 
-        System.out.println("       * Arriba =  " + Arriba);
-        System.out.println("       * Abajo =  " + Abajo);
-        System.out.println("       * Derecha =  " + Der);
-        System.out.println("       * Izquierda =  " + Izq);
+        System.out.println("       * ARRIBA =  " + Arriba);
+        System.out.println("       * ABAJO =  " + Abajo);
+        System.out.println("       * DERECHA =  " + Der);
+        System.out.println("       * IZQUIERDA =  " + Izq);
     }
 
 }

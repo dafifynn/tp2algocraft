@@ -2,6 +2,7 @@ package modelo.Juego;
 
 import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.*;
+import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Excepciones.SinHerramientaEquipadaException;
 import modelo.Jugador.Jugador;
@@ -80,6 +81,7 @@ public class Controlador {
             }
 
         }
+
         return false;
     }
 
@@ -93,8 +95,11 @@ public class Controlador {
         }catch (MovimientoInvalidoException e){
 
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Movimiento no posible");
+            JOptionPane.showMessageDialog(null, "MOVIMIENTO NO POSIBLE");
+            return;
         }
+
+        JOptionPane.showMessageDialog(null, "LISTO!");
     }
 
     private void golpearMaterial(EstrategiaDeDireccion direccion, Mapa mapa, Jugador jugador) {
@@ -105,7 +110,17 @@ public class Controlador {
         }catch (SinHerramientaEquipadaException e){
 
             e.printStackTrace();
-            JOptionPane.showInputDialog("No posees herramienta");
+            JOptionPane.showMessageDialog(null,"NO POSEES HERAMIENTA");
+            return;
         }
+
+        catch (MaterialInexistenteException e){
+
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"NO HAY MATERIAL PARA GOLPEAR");
+            return;
+        }
+
+        JOptionPane.showMessageDialog(null, "LISTO!");
     }
 }
