@@ -7,7 +7,7 @@ import modelo.Material.MaterialMadera;
 import modelo.Material.MaterialMetal;
 import modelo.Material.MaterialPiedra;
 
-public abstract class Artista {
+public class Artista {
 
 //    public static void dibujarMundo(Grilla<Object> mapa) {
 //
@@ -30,17 +30,16 @@ public abstract class Artista {
 //        }
 //    }
 
-    static void crearTerreno(Mapa mapa) {
+    public void crearTerreno(Mapa mapa) {
 
         crearMaderaEnTerreno(mapa);
         crearPiedraEnTerreno(mapa);
         crearMetalEnTerreno(mapa);
         crearDiamanteEnTerreno(mapa);
 
-
     }
 
-    static void crearMaderaEnTerreno(Mapa mapa){
+    private void crearMaderaEnTerreno(Mapa mapa){
 
         for(int i = 3; i < 8; i ++){
             for(int j = 0; j < 22; j++){
@@ -87,7 +86,7 @@ public abstract class Artista {
 
     }
 
-    static void crearPiedraEnTerreno(Mapa mapa){
+    private void crearPiedraEnTerreno(Mapa mapa){
 
         for(int i = 3; i < 8; i ++){
             for(int j = 22; j < 26; j++){
@@ -120,7 +119,7 @@ public abstract class Artista {
         }
     }
 
-    static void crearMetalEnTerreno(Mapa mapa){
+    private void crearMetalEnTerreno(Mapa mapa){
 
         for(int i = 9; i < 14; i ++){
             for(int j = 0; j < 5; j++){
@@ -146,7 +145,7 @@ public abstract class Artista {
 
     }
 
-    static void crearDiamanteEnTerreno(Mapa mapa){
+    private void crearDiamanteEnTerreno(Mapa mapa){
 
         for(int i = 21; i < 27; i ++){
             for(int j = 23; j < 28; j++){

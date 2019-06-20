@@ -24,6 +24,10 @@ public class Juego {
         this.mapa = new Mapa();
         this.jugador = new Jugador();
         this.finDeJuego = false;
+
+        Artista artista = new Artista();
+        artista.crearTerreno(this.mapa);
+
     }
 
 
