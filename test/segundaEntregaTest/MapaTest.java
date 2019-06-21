@@ -8,10 +8,10 @@ import modelo.Material.MaterialMadera;
 import modelo.Material.MaterialMetal;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MapaTest {
+
     @Test
     public void colocarUnMaterialAlMapaVacioInicialmenteEnLaCoordenadaX0Y1 () {
         Material madera = new MaterialMadera();
@@ -20,11 +20,11 @@ public class MapaTest {
         Mapa mapa = new Mapa();
         Coordenada coordenada = new Coordenada(0,1);
 
-        assertEquals(false, mapa.hayMaterialEnCoordenada(coordenada));
+        assertFalse(mapa.hayMaterialEnCoordenada(coordenada));
 
         // Se agrega el material al mapa.
         mapa.agregarMaterial(coordenada, madera);
-        assertEquals(true, mapa.hayMaterialEnCoordenada(coordenada));
+        assertTrue(mapa.hayMaterialEnCoordenada(coordenada));
     }
 
     @Test

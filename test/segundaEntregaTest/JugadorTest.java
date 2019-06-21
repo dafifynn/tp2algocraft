@@ -15,8 +15,8 @@ public class JugadorTest {
     // MOVIMIENTO DEL JUGADOR
     @Test
     public void JugadorPorDefectoTieneCoordenadasXY() {
-        Jugador jugador = new Jugador();
 
+        Jugador jugador = new Jugador();
         Coordenada coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO,Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
 
         assertTrue(coordenada.equals(jugador.obtenerCoordenada()));
@@ -30,14 +30,18 @@ public class JugadorTest {
         EstrategiaDeDireccion direccion = new DireccionArriba();
 
         Coordenada coordenadaInicial = jugador.obtenerCoordenada();
+
         jugador.moverse(direccion, mapa);
 
-        Coordenada coordenadaEsperada = new Coordenada(coordenadaInicial.obtenerFila()
-                ,coordenadaInicial.obtenerColumna()+1);
-        if(!mapa.hayMaterialEnCoordenada(coordenadaEsperada)){
+        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
+
+        if(!mapa.hayMaterialEnCoordenada(coordenadaEsperada)) {
+
             assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
         }
-
+        else{
+            assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion,mapa);});
+        }
     }
 
     @Test
@@ -48,13 +52,16 @@ public class JugadorTest {
         EstrategiaDeDireccion direccion = new DireccionDerecha();
 
         Coordenada coordenadaInicial = jugador.obtenerCoordenada();
+
         jugador.moverse(direccion, mapa);
 
-        Coordenada coordenadaEsperada = new Coordenada(coordenadaInicial.obtenerFila()+1
-                ,coordenadaInicial.obtenerColumna());
+        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
+
         if(!mapa.hayMaterialEnCoordenada(coordenadaEsperada)){
+
             assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
-        }else{
+        }
+        else{
             assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion,mapa);});
         }
     }
@@ -68,16 +75,17 @@ public class JugadorTest {
         EstrategiaDeDireccion direccion = new DireccionAbajo();
 
         Coordenada coordenadaInicial = jugador.obtenerCoordenada();
+
         jugador.moverse(direccion, mapa);
 
-        Coordenada coordenadaEsperada = new Coordenada(coordenadaInicial.obtenerFila()
-                , coordenadaInicial.obtenerColumna()-1);
+        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
+
         if (!mapa.hayMaterialEnCoordenada(coordenadaEsperada)) {
+
             assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
-        } else {
-            assertThrows(MovimientoInvalidoException.class, () -> {
-                jugador.moverse(direccion, mapa);
-            });
+        }
+        else {
+            assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion, mapa);});
         }
     }
 
@@ -90,17 +98,19 @@ public class JugadorTest {
         EstrategiaDeDireccion direccion = new DireccionIzquierda();
 
         Coordenada coordenadaInicial = jugador.obtenerCoordenada();
+
         jugador.moverse(direccion, mapa);
 
-        Coordenada coordenadaEsperada = new Coordenada(coordenadaInicial.obtenerFila() - 1
-                , coordenadaInicial.obtenerColumna());
+        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
+
         if (!mapa.hayMaterialEnCoordenada(coordenadaEsperada)) {
+
             assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
-        } else {
-            assertThrows(MovimientoInvalidoException.class, () -> {
-                jugador.moverse(direccion, mapa);
-            });
+        }
+        else {
+            assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion, mapa);});
         }
     }
+
 }
 

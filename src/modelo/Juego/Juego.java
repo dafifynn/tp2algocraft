@@ -1,10 +1,6 @@
 package modelo.Juego;
 
 import modelo.Constantes;
-import modelo.EstrategiaDeDireccion.DireccionAbajo;
-import modelo.EstrategiaDeDireccion.DireccionArriba;
-import modelo.EstrategiaDeDireccion.DireccionDerecha;
-import modelo.EstrategiaDeDireccion.DireccionIzquierda;
 import modelo.Jugador.Jugador;
 import modelo.Mapa.Mapa;
 
@@ -21,13 +17,10 @@ public class Juego {
 
     // Constructor
     public Juego() {
+
         this.mapa = new Mapa();
         this.jugador = new Jugador();
         this.finDeJuego = false;
-
-        Artista artista = new Artista();
-        artista.crearTerreno(this.mapa);
-
     }
 
 
@@ -46,6 +39,17 @@ public class Juego {
         JOptionPane.showMessageDialog(null, "ADIOS POLLO XD");
     }
 
+
+    // Getter
+    public Mapa obtenerMapa() {
+
+        return this.mapa;
+    }
+
+    public Jugador obtenerJugador(){
+
+        return this.jugador;
+    }
 
     // Imprimir Comandos
     private void imprimirComando() {

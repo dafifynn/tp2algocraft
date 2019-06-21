@@ -41,19 +41,6 @@ public class Coordenada {
 
 
     // Metodos Publicos
-    public void moverCoordenada (int cantMovimientosFila, int cantMovimientosColumna) {
-
-        int nuevaCoordenadaFila = this.coordenadaFila + cantMovimientosFila;
-        int nuevaCoordenadaColumna = this.coordenadaColumna + cantMovimientosColumna;
-
-        if (this.estaEnRango(nuevaCoordenadaFila, nuevaCoordenadaColumna)) {
-
-            this.coordenadaFila = nuevaCoordenadaFila;
-            this.coordenadaColumna = nuevaCoordenadaColumna;
-        }
-    }
-
-
     public Coordenada crearCoordenadaAdyacente (int cantMovimientosFila, int cantMovimientosColumna) {
 
         int nuevaCoordenadaFila = this.coordenadaFila + cantMovimientosFila;
@@ -66,17 +53,7 @@ public class Coordenada {
     private boolean tienenCoordenadasIguales (int coordenadaFila, int coordenadaColumna) {
         return (this.coordenadaFila == coordenadaFila) && (this.coordenadaColumna == coordenadaColumna);
     }
-    
-   
-     //getters
-    public int obtenerFila(){
-        return this.coordenadaFila;
-    }
 
-    public int obtenerColumna(){
-        return this.coordenadaColumna;
-    }
-    
     @Override
     public boolean equals (Object o) {
 

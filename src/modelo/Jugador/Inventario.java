@@ -53,7 +53,7 @@ public class Inventario {
     
     public void agregarMaterial(Material material){
 
-       if(capacidadUsadaDeInventarioMateriales<= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES){
+       if(capacidadUsadaDeInventarioMateriales <= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES){
            Integer cantidad =  this.materiales.get(material);
            this.materiales.put(material,(cantidad +1));
            this.capacidadUsadaDeInventarioMateriales ++;
