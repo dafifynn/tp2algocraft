@@ -46,6 +46,15 @@ public class Juego {
         JOptionPane.showMessageDialog(null, "ADIOS POLLO XD");
     }
 
+ //getters
+
+    public Mapa obtenerMapa(){
+        return this.mapa;
+    }
+
+    public Jugador obtenerJugador(){
+        return this.jugador;
+    }
 
     // Imprimir Comandos
     private void imprimirComando() {
