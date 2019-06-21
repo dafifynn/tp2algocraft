@@ -1,13 +1,11 @@
 package segundaEntregaTest;
 
+import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.*;
-import modelo.Excepciones.CoordenadaFueraDelLimiteException;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Jugador.Jugador;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
-import modelo.Material.Material;
-import modelo.Material.MaterialMadera;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,8 +15,8 @@ public class JugadorTest {
     // MOVIMIENTO DEL JUGADOR
     @Test
     public void JugadorPorDefectoTieneCoordenadasXY() {
-        Juego juego = new Juego();
-        Jugador jugador = juego.obtenerJugador();
+        Jugador jugador = new Jugador();
+
         Coordenada coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO,Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
 
         assertTrue(coordenada.equals(jugador.obtenerCoordenada()));
@@ -26,9 +24,9 @@ public class JugadorTest {
 
     @Test
     public void JugadorEnXYSeMueveHaciaArribaSiEstaVacio () {
-        Juego juego = new Juego();
-        Jugador jugador = juego.obtenerJugador();
-        Mapa mapa = juego.obtenerMapa();
+
+        Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionArriba();
 
         Coordenada coordenadaInicial = jugador.obtenerCoordenada();
@@ -44,9 +42,9 @@ public class JugadorTest {
 
     @Test
     public void JugadorEnXYSeMueveHaciaLaDerechaSiEstaVacio () {
-        Juego juego = new Juego();
-        Jugador jugador = juego.obtenerJugador();
-        Mapa mapa = juego.obtenerMapa();
+
+        Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionDerecha();
 
         Coordenada coordenadaInicial = jugador.obtenerCoordenada();
@@ -64,9 +62,9 @@ public class JugadorTest {
 
     @Test
     public void JugadorEnXYSeMueveHaciaAbajoSiEstaVacio () {
-        Juego juego = new Juego();
-        Jugador jugador = juego.obtenerJugador();
-        Mapa mapa = juego.obtenerMapa();
+
+        Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionAbajo();
 
         Coordenada coordenadaInicial = jugador.obtenerCoordenada();
@@ -85,10 +83,10 @@ public class JugadorTest {
 
 
     @Test
-    public void JugadorEnX0Y0SeMueveHaciaLaIzquierdaSiEstaVacio () {
-        Juego juego = new Juego();
-        Jugador jugador = juego.obtenerJugador();
-        Mapa mapa = juego.obtenerMapa();
+    public void JugadorEnXYSeMueveHaciaLaIzquierdaSiEstaVacio () {
+
+        Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionIzquierda();
 
         Coordenada coordenadaInicial = jugador.obtenerCoordenada();
