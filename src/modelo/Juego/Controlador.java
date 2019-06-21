@@ -2,6 +2,7 @@ package modelo.Juego;
 
 import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.*;
+import modelo.Excepciones.CoordenadaFueraDelLimiteException;
 import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Excepciones.SinHerramientaEquipadaException;
@@ -92,7 +93,7 @@ public class Controlador {
         try{
             jugador.moverse(direccion, mapa);
 
-        }catch (MovimientoInvalidoException e){
+        }catch (MovimientoInvalidoException | CoordenadaFueraDelLimiteException e){
 
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "MOVIMIENTO NO POSIBLE");
@@ -112,9 +113,8 @@ public class Controlador {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,"NO POSEES HERAMIENTA");
             return;
-        }
 
-        catch (MaterialInexistenteException e){
+        }catch (MaterialInexistenteException e){
 
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,"NO HAY MATERIAL PARA GOLPEAR");
