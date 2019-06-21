@@ -33,5 +33,13 @@ public abstract class Material {
 
         return danio >= this.resistencia;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+
+        if(!(o instanceof Material)) { return false;}
+
+        Material otroMaterial = (Material) o;
+        return otroMaterial.getClass() == this.getClass();
+    }
 }

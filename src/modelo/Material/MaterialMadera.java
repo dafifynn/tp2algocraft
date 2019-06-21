@@ -11,4 +11,10 @@ public class MaterialMadera extends Material {
         this.durabilidad = Constantes.DURABILIDAD_INICIAL_BLOQUE_MADERA;
     }
 
+
+    @Override
+    public int hashCode() {
+        int primo = 31;
+        return primo * (int) Constantes.DURABILIDAD_INICIAL_BLOQUE_MADERA;
+    }
 }
