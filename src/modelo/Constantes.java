@@ -117,6 +117,10 @@ public final class Constantes {
 
     public static final double RESISTENCIA_INICIAL_BLOQUE_DIAMANTE = FUERZA_INICIAL_PICO_FINO;
 
+    // MATERIAL VACIO
+    public static final double DURABILIDAD_INICIAL_BLOQUE_VACIO = 9999;
+
+    public static final double RESISTENCIA_INICIAL_BLOQUE_VACIO = 9999;
 
      // Inventario
     public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES = 36;
