@@ -4,7 +4,7 @@ public class DireccionDerecha extends EstrategiaDeDireccion {
 
     public DireccionDerecha () {
 
-        this.avanceFila = 1;
-        this.avanceColumna = 0;
+        this.avanceFila = 0;
+        this.avanceColumna = 1;
     }
 }
