@@ -119,8 +119,8 @@ public class Controlador {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,"NO HAY MATERIAL PARA GOLPEAR");
             return;
-        }
 
+        }
         JOptionPane.showMessageDialog(null, "LISTO!");
     }
 }

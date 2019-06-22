@@ -8,6 +8,7 @@ import modelo.Excepciones.NoHayMaterialParaEliminarException;
 import modelo.Herramienta.Herramienta;
 import modelo.Material.*;
 import modelo.PlantillasDeForja.PlantillaEditable;
+import modelo.PlantillasDeForja.PlantillaHachaMadera;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,11 +33,13 @@ public class Inventario {
 
         this.materiales = new HashMap<>();
         this.inicializarHashMateriales();
+
         this.herramientas = new ArrayList<Herramienta>();
+        Forja forja = new Forja();
+        this.agregarHerramienta(forja.construirHerramienta(new PlantillaHachaMadera()));
+
         this.capacidadUsadaDeInventarioMateriales = 0;
         this.capacidadUsadaDeInventarioHerramientas = 0;
-
-
     }
 
 
@@ -116,14 +119,10 @@ public class Inventario {
     public Herramienta obtenerHerramientaDeGrilla(){
 
         Forja forja = new Forja();
-
-        Herramienta construida = forja.construirHerramienta(clave);
-        this.agregarHerramienta(construida);
-        return construida;
-
         Herramienta herramienta = forja.construirHerramienta(this.plantilla);
         plantilla = new PlantillaEditable();
         return herramienta;
+
     }
 
     public void dibujarInventario(){

@@ -8,14 +8,12 @@ import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
 import modelo.Material.Material;
-import modelo.PlantillasDeForja.PlantillaHachaMadera;
 
 
 public class Jugador {
 
     // Atributo
     private Inventario inventario;
-    private Forja forja;
     private Herramienta herramientaEquipada;
     private Coordenada coordenada;
 
@@ -25,8 +23,7 @@ public class Jugador {
 
         this.coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO, Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
         this.inventario = new Inventario();
-        this.forja = new Forja();
-        this.herramientaEquipada = forja.construirHerramienta(new PlantillaHachaMadera());
+        this.herramientaEquipada = inventario.extraerHerramienta(0);
         
     }
 
