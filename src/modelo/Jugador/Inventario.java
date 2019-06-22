@@ -116,16 +116,14 @@ public class Inventario {
     public Herramienta obtenerHerramientaDeGrilla(){
 
         Forja forja = new Forja();
-<<<<<<< HEAD
+
         Herramienta construida = forja.construirHerramienta(clave);
         this.agregarHerramienta(construida);
         return construida;
-=======
+
         Herramienta herramienta = forja.construirHerramienta(this.plantilla);
         plantilla = new PlantillaEditable();
         return herramienta;
->>>>>>> master
-
     }
 
     public void dibujarInventario(){
