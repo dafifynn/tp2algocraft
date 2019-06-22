@@ -6,10 +6,7 @@ import modelo.Excepciones.InventarioMaterialesEstaLlenoException;
 import modelo.Constantes;
 import modelo.Excepciones.NoHayMaterialParaEliminarException;
 import modelo.Herramienta.Herramienta;
-import modelo.Material.Material;
-import modelo.Material.MaterialMadera;
-import modelo.Material.MaterialMetal;
-import modelo.Material.MaterialPiedra;
+import modelo.Material.*;
 import modelo.PlantillasDeForja.PlantillaEditable;
 
 import java.util.ArrayList;
@@ -32,7 +29,9 @@ public class Inventario {
 
 
         this.plantilla = new PlantillaEditable();
+
         this.materiales = new HashMap<>();
+        this.inicializarHashMateriales();
         this.herramientas = new ArrayList<Herramienta>();
         this.capacidadUsadaDeInventarioMateriales = 0;
         this.capacidadUsadaDeInventarioHerramientas = 0;
@@ -42,6 +41,14 @@ public class Inventario {
 
 
     //Metodos
+    private void inicializarHashMateriales() {
+
+        this.materiales.put(new MaterialMadera(), 0);
+        this.materiales.put(new MaterialPiedra(), 0);
+        this.materiales.put(new MaterialMetal(), 0);
+        this.materiales.put(new MaterialDiamante(), 0);
+    }
+
     public Herramienta extraerHerramienta(int indice ){
 
         Herramienta herramienta = this.herramientas.get(indice);
@@ -53,7 +60,7 @@ public class Inventario {
     
     public void agregarMaterial(Material material){
 
-       if(capacidadUsadaDeInventarioMateriales<= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES){
+       if(capacidadUsadaDeInventarioMateriales <= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES){
            Integer cantidad =  this.materiales.get(material);
            this.materiales.put(material,(cantidad +1));
            this.capacidadUsadaDeInventarioMateriales ++;

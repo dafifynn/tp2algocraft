@@ -1,83 +1,116 @@
 package segundaEntregaTest;
 
+import modelo.Constantes;
 import modelo.EstrategiaDeDireccion.*;
-import modelo.Excepciones.CoordenadaFueraDelLimiteException;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Jugador.Jugador;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
-import modelo.Material.Material;
-import modelo.Material.MaterialMadera;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JugadorTest {
-    @Test
-    public void JugadorPorDefectoTieneCoordenadasX0Y0() {
-        Jugador jugador = new Jugador();
-        Coordenada coordenada = new Coordenada(0,0);
 
-        assertEquals(true, coordenada.equals(jugador.obtenerCoordenada()));
+    // MOVIMIENTO DEL JUGADOR
+    @Test
+    public void JugadorPorDefectoTieneCoordenadasXY() {
+
+        Jugador jugador = new Jugador();
+        Coordenada coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO,Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
+
+        assertTrue(coordenada.equals(jugador.obtenerCoordenada()));
     }
 
     @Test
-    public void JugadorEnX0Y0SeMueveHaciaArriba () {
-        Mapa mapa = new Mapa();
+    public void JugadorEnXYSeMueveHaciaArribaSiEstaVacio () {
+
         Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionArriba();
+
+        Coordenada coordenadaInicial = jugador.obtenerCoordenada();
 
         jugador.moverse(direccion, mapa);
 
-        Coordenada coordenadaEsperada = new Coordenada(0,1);
+        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
 
-        assertEquals(true, coordenadaEsperada.equals(jugador.obtenerCoordenada()));
+        if(!mapa.hayMaterialEnCoordenada(coordenadaEsperada)) {
+
+            assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
+        }
+        else{
+            assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion,mapa);});
+        }
     }
 
     @Test
-    public void JugadorEnX0Y0SeMueveHaciaLaDerecha () {
-        Mapa mapa = new Mapa();
+    public void JugadorEnXYSeMueveHaciaLaDerechaSiEstaVacio () {
+
         Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionDerecha();
 
+        Coordenada coordenadaInicial = jugador.obtenerCoordenada();
+
         jugador.moverse(direccion, mapa);
 
-        Coordenada coordenadaEsperada = new Coordenada(1,0);
+        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
 
-        assertEquals(true, coordenadaEsperada.equals(jugador.obtenerCoordenada()));
+        if(!mapa.hayMaterialEnCoordenada(coordenadaEsperada)){
+
+            assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
+        }
+        else{
+            assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion,mapa);});
+        }
     }
 
+
     @Test
-    public void JugadorEnX0Y0SeMueveHaciaAbajoErrorCoordenadasFueraDeLimite() {
-        Mapa mapa = new Mapa();
+    public void JugadorEnXYSeMueveHaciaAbajoSiEstaVacio () {
+
         Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionAbajo();
 
-        assertThrows(CoordenadaFueraDelLimiteException.class, () -> {jugador.moverse(direccion,mapa);});
+        Coordenada coordenadaInicial = jugador.obtenerCoordenada();
+
+        jugador.moverse(direccion, mapa);
+
+        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
+
+        if (!mapa.hayMaterialEnCoordenada(coordenadaEsperada)) {
+
+            assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
+        }
+        else {
+            assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion, mapa);});
+        }
     }
 
+
     @Test
-    public void  JugadorEnX0Y0SeMueveHaciaIzquieraErrorCoordenadasFueraDelLimie() {
-        Mapa mapa = new Mapa();
+    public void JugadorEnXYSeMueveHaciaLaIzquierdaSiEstaVacio () {
+
         Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionIzquierda();
 
-        assertThrows(CoordenadaFueraDelLimiteException.class, () -> {jugador.moverse(direccion,mapa);});
+        Coordenada coordenadaInicial = jugador.obtenerCoordenada();
+
+        jugador.moverse(direccion, mapa);
+
+        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
+
+        if (!mapa.hayMaterialEnCoordenada(coordenadaEsperada)) {
+
+            assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
+        }
+        else {
+            assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion, mapa);});
+        }
     }
 
-    @Test
-    public void JugadorEnX0Y0MaderaEnX0Y1MoverJugadorHaciaArribaErrorMovimientoInvalido() {
-        Mapa mapa = new Mapa();
-        Material madera = new MaterialMadera();
-        Coordenada coordenadaDelMaterial = new Coordenada(0,1);
-        mapa.agregarMaterial(coordenadaDelMaterial, madera);
-
-        assertEquals(true, mapa.hayMaterialEnCoordenada(coordenadaDelMaterial));
-
-        Jugador jugador = new Jugador();
-        EstrategiaDeDireccion direccion = new DireccionArriba();
-
-        assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion,mapa);});
-    }
 }
+

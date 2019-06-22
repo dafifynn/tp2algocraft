@@ -24,13 +24,13 @@ public class Coordenada {
     // Metodos Privados
     private boolean esCoordenadaColumnaValida (int coordenadaColumna) {
 
-        return (0 <= coordenadaColumna) && (coordenadaColumna <= Constantes.MAPA_COLUMNAS_DEFECTO);
+        return (0 <= coordenadaColumna) && (coordenadaColumna < Constantes.MAPA_COLUMNAS_DEFECTO);
     }
 
 
     private boolean esCoordenadaFilaValida (int coordenadaFila) {
 
-        return (0 <=  coordenadaFila) && (coordenadaFila <= Constantes.MAPA_FILAS_DEFECTO);
+        return (0 <=  coordenadaFila) && (coordenadaFila < Constantes.MAPA_FILAS_DEFECTO);
     }
 
 
@@ -41,19 +41,6 @@ public class Coordenada {
 
 
     // Metodos Publicos
-    public void moverCoordenada (int cantMovimientosFila, int cantMovimientosColumna) {
-
-        int nuevaCoordenadaFila = this.coordenadaFila + cantMovimientosFila;
-        int nuevaCoordenadaColumna = this.coordenadaColumna + cantMovimientosColumna;
-
-        if (this.estaEnRango(nuevaCoordenadaFila, nuevaCoordenadaColumna)) {
-
-            this.coordenadaFila = nuevaCoordenadaFila;
-            this.coordenadaColumna = nuevaCoordenadaColumna;
-        }
-    }
-
-
     public Coordenada crearCoordenadaAdyacente (int cantMovimientosFila, int cantMovimientosColumna) {
 
         int nuevaCoordenadaFila = this.coordenadaFila + cantMovimientosFila;
@@ -63,7 +50,7 @@ public class Coordenada {
     }
 
 
-    public boolean tienenCoordenadasIguales (int coordenadaFila, int coordenadaColumna) {
+    private boolean tienenCoordenadasIguales (int coordenadaFila, int coordenadaColumna) {
         return (this.coordenadaFila == coordenadaFila) && (this.coordenadaColumna == coordenadaColumna);
     }
 

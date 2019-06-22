@@ -2,6 +2,7 @@ package modelo.Mapa;
 
 import modelo.Excepciones.CoordenadaOcupadaException;
 import modelo.Excepciones.MaterialInexistenteException;
+import modelo.Juego.Artista;
 import modelo.Material.Material;
 
 import java.util.HashMap;
@@ -16,6 +17,8 @@ public class Mapa {
     public Mapa() {
 
         this.materialesDelMapa = new HashMap<>();
+        Artista artista = new Artista();
+        artista.crearTerreno(this);
     }
 
 

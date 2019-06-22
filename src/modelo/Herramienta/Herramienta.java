@@ -52,4 +52,19 @@ public abstract class Herramienta{
     public boolean estaRota() {
         return this.estrategiaDeDurabilidad.estaSinDurabilidad();
     }
+    
+    
+     @Override
+    public boolean equals (Object o ) {
+        Herramienta otraHerramienta = (Herramienta) o;
+        if((this.obtenerFuerza() == otraHerramienta.obtenerFuerza())&&
+                (this.obtenerDurabilidad() == otraHerramienta.obtenerDurabilidad())&&
+                    (this.getClass() == otraHerramienta.getClass() )){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 }

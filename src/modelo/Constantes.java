@@ -9,10 +9,30 @@ public final class Constantes {
     public static final int MAPA_COLUMNAS_DEFECTO = 30;
 
 
-    // Jugador
-    public static final int JUGADOR_COORDENADA_X_DEFECTO = 0;
+    // Comandos
+    public static final String MOV_ARRIBA = "W";
 
-    public static final int JUGADOR_COORDENADA_Y_DEFECTO = 0;
+    public static final String MOV_ABAJO = "S";
+
+    public static final String MOV_IZQ = "A";
+
+    public static final String MOV_DER = "D";
+
+    public static final String GOLP_ARRIBA = "I";
+
+    public static final String GOLP_ABAJO = "K";
+
+    public static final String GOLP_IZQ = "J";
+
+    public static final String GOLP_DER = "L";
+
+    public static final String FIN_DE_JUEGO = "T";
+
+
+    // Jugador
+    public static final int JUGADOR_COORDENADA_X_DEFECTO = 5;
+
+    public static final int JUGADOR_COORDENADA_Y_DEFECTO = 26;
 
     public static final String NORTE = "N";
 
@@ -108,31 +128,8 @@ public final class Constantes {
     public static final int COLUMNAS_INVENTARIO = 3;
 
 
-    // Representacion Numerica de las combinaciones de construccion de herramientas
-    public static final int MADERA = 1;
-
-    public static final int PIEDRA = 2;
-
-    public static final int METAL = 3;
-
-    public static final int DIAMANTE = 4;
-
+    // Vacio
     public static final int VACIO = 0;
 
-    // Madera: 1, Piedra: 2, Metal: 3, Diamante: 4, Vacio: 0.
-
-    public static final String HACHA_DE_MADERA = "110110010";
-
-    public static final String HACHA_DE_PIEDRA = "220210010";
-
-    public static final String HACHA_DE_METAL = "330310010";
-
-    public static final String PICO_DE_MADERA = "111010010";
-
-    public static final String PICO_DE_PIEDRA = "222010010";
-
-    public static final String PICO_DE_METAL = "333010010";
-
-    public static final String PICO_FINO = "333210010";
 
 }

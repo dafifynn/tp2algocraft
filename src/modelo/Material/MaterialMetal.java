@@ -11,4 +11,9 @@ public class MaterialMetal extends Material {
         this.durabilidad = Constantes.DURABILIDAD_INICIAL_BLOQUE_METAL;
     }
 
+    @Override
+    public int hashCode() {
+        int primo = 31;
+        return primo * (int) Constantes.DURABILIDAD_INICIAL_BLOQUE_METAL;
+    }
 }
