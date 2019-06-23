@@ -19,8 +19,9 @@ public class Inventario {
     // Atributos
 
     private PlantillaEditable plantilla;
-    private HashMap<Material ,Integer> materiales;
+    private HashMap<Material, Integer> materiales;
     private List<Herramienta> herramientas;
+    private Material materialSeleccionado;
     private int capacidadUsadaDeInventarioMateriales;
     private int capacidadUsadaDeInventarioHerramientas;
 
@@ -37,6 +38,8 @@ public class Inventario {
         this.herramientas = new ArrayList<Herramienta>();
         Forja forja = new Forja();
         this.agregarHerramienta(forja.construirHerramienta(new PlantillaHachaMadera()));
+
+        this.materialSeleccionado = new MaterialVacio();
 
         this.capacidadUsadaDeInventarioMateriales = 0;
         this.capacidadUsadaDeInventarioHerramientas = 0;
@@ -101,19 +104,41 @@ public class Inventario {
         }
     }
 
+    public void seleccionarMadera(){
+
+        this.materialSeleccionado = new MaterialMadera();
+
+    }
+
+    public void seleccionarPiedra(){
+
+        this.materialSeleccionado = new MaterialPiedra();
+
+    }
+
+    public void seleccionarMetal(){
+
+        this.materialSeleccionado = new MaterialMetal();
+
+    }
+
     public void guardarPiedraEnGrilla(int fila, int columna){
 
         plantilla.armarPlantillaEditable(fila,columna, MaterialPiedra.class);
+        this.materialSeleccionado = new MaterialVacio();
+
     }
 
     public void guardarMetalEnGrilla(int fila, int columna){
 
         plantilla.armarPlantillaEditable(fila,columna, MaterialMetal.class);
+        this.materialSeleccionado = new MaterialVacio();
     }
 
     public void guardarMaderaEnGrilla(int fila, int columna){
 
         plantilla.armarPlantillaEditable(fila,columna, MaterialMadera.class);
+        this.materialSeleccionado = new MaterialVacio();
     }
 
     public Herramienta obtenerHerramientaDeGrilla(){
