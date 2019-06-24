@@ -130,9 +130,9 @@ public final class Constantes {
 
     public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS = 10;
 
-    public static final int FILAS_INVENTARIO = 3;
+    public static final int FILAS_INVENTARIO = 30;
 
-    public static final int COLUMNAS_INVENTARIO = 3;
+    public static final int COLUMNAS_INVENTARIO = 30;
 
 
     // Vacio
