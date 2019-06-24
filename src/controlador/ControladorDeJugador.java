@@ -67,6 +67,7 @@ public class ControladorDeJugador {
 
         if(evento.getCode().equals(KeyCode.SPACE)) {
 
+            juego.obtenerJugador().impactar(juego.obtenerMapa());
 
         }
     }

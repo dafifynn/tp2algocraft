@@ -7,18 +7,21 @@ import modelo.Material.Material;
 import modelo.Material.MaterialVacio;
 
 import java.io.Console;
-import java.util.HashMap;
+import java.util.*;
 
-public class Mapa {
+public class Mapa extends Observable {
 
     // Atributo
     private HashMap<Coordenada, Material> materialesDelMapa;
+
+    List<Observer> observadores;
 
 
     // Constructor
     public Mapa() {
 
         this.materialesDelMapa = new HashMap<>();
+        this.observadores = new ArrayList<>();
         Artista artista = new Artista();
         artista.crearTerreno(this);
     }
@@ -58,6 +61,19 @@ public class Mapa {
         }
 
         this.materialesDelMapa.remove(coordenada);
+        this.notificar();
+    }
+
+    public void agregarObservador(Observer nuevo) {
+
+        this.observadores.add(nuevo);
+    }
+
+    public void notificar() {
+
+        for(Observer observador : this.observadores) {
+            observador.update(this,null);
+        }
     }
 
 }

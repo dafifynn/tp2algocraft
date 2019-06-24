@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
 
+import java.util.Observer;
+
 public class JuegoVista {
 
     Stage escenario;
@@ -44,5 +46,13 @@ public class JuegoVista {
     public Scene mundo(){
 
         return this.mundo;
+    }
+
+    public MapaVista obtenerMapaVista() {
+        return this.mapa;
+    }
+
+    public JugadorVista obtenerJugadorVista() {
+        return this.jugador;
     }
 }
