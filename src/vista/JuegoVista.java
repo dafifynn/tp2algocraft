@@ -17,20 +17,25 @@ public class JuegoVista {
     Scene inventario;
 
     Group elementosMundo;
+    Group elementosInventario;
 
     MapaVista mapa;
     JugadorVista jugador;
+    InventarioVista inventarioVista;
 
     public JuegoVista(Stage escenario) {
 
         this.escenario = escenario;
 
         this.elementosMundo = new Group();
+        this.elementosInventario = new Group();
 
         this.mapa = new MapaVista(elementosMundo);
         this.jugador = new JugadorVista(elementosMundo);
+        this.inventarioVista = new InventarioVista(elementosInventario);
 
         mundo = new Scene(elementosMundo, 480, 480);
+        inventario = new Scene(elementosInventario,480,480);
 
         escenario.setScene(mundo);
     }
@@ -42,6 +47,13 @@ public class JuegoVista {
     public void rotarJugador(EstrategiaDeDireccion direccion) {
         jugador.rotarJugador(direccion);
     }
+
+    public void mostrarInventario(){ escenario.setScene(inventario); }
+
+    public void cerrarInventario(){
+        //escenario.setScene(mundo);
+    }
+
 
     public Scene mundo(){
 
