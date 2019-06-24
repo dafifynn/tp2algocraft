@@ -1,6 +1,7 @@
 package modelo.Jugador;
 
 import modelo.Constantes;
+import modelo.EstrategiaDeDireccion.DireccionAbajo;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Excepciones.SinHerramientaEquipadaException;
@@ -16,12 +17,14 @@ public class Jugador {
     private Inventario inventario;
     private Herramienta herramientaEquipada;
     private Coordenada coordenada;
-
+    private EstrategiaDeDireccion direccion;
 
     // Constructor
     public Jugador(){
 
-        this.coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO, Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
+        this.coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_FILA_DEFECTO,
+                                         Constantes.JUGADOR_COORDENADA_COLUMNA_DEFECTO);
+        this.direccion = new DireccionAbajo();
         this.inventario = new Inventario();
         this.herramientaEquipada = inventario.extraerHerramienta(0);
         
@@ -56,11 +59,12 @@ public class Jugador {
         }
 
         this.coordenada = coordenadaSiguiente;
+        this.direccion = direccion;
     }
 
-    private void procesarMaterial (EstrategiaDeDireccion direccion, Mapa mapa) {
+    private void procesarMaterial (Mapa mapa) {
 
-        Coordenada coordenadaSiguiente = direccion.crearCoordenadaSiguiente(this.coordenada);
+        Coordenada coordenadaSiguiente = this.direccion.crearCoordenadaSiguiente(this.coordenada);
         Material material = mapa.obtenerMaterial(coordenadaSiguiente);
         this.herramientaEquipada.impactar(material);
 
@@ -70,13 +74,13 @@ public class Jugador {
         }
     }
 
-    public void impactar (EstrategiaDeDireccion direccion, Mapa mapa) throws SinHerramientaEquipadaException {
+    public void impactar (Mapa mapa) throws SinHerramientaEquipadaException {
 
         if (herramientaEquipada == null) {
             throw new SinHerramientaEquipadaException();
         }
 
-        procesarMaterial(direccion, mapa);
+        procesarMaterial(mapa);
 
         if (herramientaEquipada.estaRota()) {
             this.inventario.eliminarHerramienta(this.herramientaEquipada);

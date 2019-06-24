@@ -4,7 +4,9 @@ import modelo.Excepciones.CoordenadaOcupadaException;
 import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Juego.Artista;
 import modelo.Material.Material;
+import modelo.Material.MaterialVacio;
 
+import java.io.Console;
 import java.util.HashMap;
 
 public class Mapa {
@@ -25,11 +27,12 @@ public class Mapa {
     // Getter
     public Material obtenerMaterial (Coordenada coordenada) throws MaterialInexistenteException {
 
-        if (!this.hayMaterialEnCoordenada(coordenada)) {
-            throw new MaterialInexistenteException();
-        }
+//        if (!this.hayMaterialEnCoordenada(coordenada)) {
+//            throw new MaterialInexistenteException();
+//        }
+        boolean existeMaterial = this.hayMaterialEnCoordenada(coordenada);
 
-        return this.materialesDelMapa.get(coordenada);
+        return existeMaterial ? this.materialesDelMapa.get(coordenada) : new MaterialVacio();
     }
 
     // Setter

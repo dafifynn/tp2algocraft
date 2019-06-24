@@ -3,10 +3,13 @@ package modelo;
 
 public final class Constantes {
 
-    // Mapa
-    public static final int MAPA_FILAS_DEFECTO = 30;
+    // Vista
+    public static final int PIXELES = 16;
 
-    public static final int MAPA_COLUMNAS_DEFECTO = 30;
+    // Mapa
+    public static final int MAPA_FILAS_DEFECTO = 29;
+
+    public static final int MAPA_COLUMNAS_DEFECTO = 29;
 
 
     // Comandos
@@ -30,9 +33,9 @@ public final class Constantes {
 
 
     // Jugador
-    public static final int JUGADOR_COORDENADA_X_DEFECTO = 5;
+    public static final int JUGADOR_COORDENADA_FILA_DEFECTO = 18;
 
-    public static final int JUGADOR_COORDENADA_Y_DEFECTO = 26;
+    public static final int JUGADOR_COORDENADA_COLUMNA_DEFECTO = 15;
 
     public static final String NORTE = "N";
 
@@ -125,7 +128,7 @@ public final class Constantes {
      // Inventario
     public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES = 36;
 
-    public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS = 14;
+    public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS = 10;
 
     public static final int FILAS_INVENTARIO = 3;
 

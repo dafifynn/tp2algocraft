@@ -3,6 +3,7 @@ package modelo.Juego;
 import modelo.Grilla.Grilla;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
+import modelo.Material.MaterialDiamante;
 import modelo.Material.MaterialMadera;
 import modelo.Material.MaterialMetal;
 import modelo.Material.MaterialPiedra;
@@ -150,7 +151,7 @@ public class Artista {
 
         for(int j = 21; j < 27; j ++){
             for(int i = 23; i < 28; i++){
-                mapa.agregarMaterial(new Coordenada(i,j), new MaterialMetal());
+                mapa.agregarMaterial(new Coordenada(i,j), new MaterialDiamante());
             }
         }
     }
