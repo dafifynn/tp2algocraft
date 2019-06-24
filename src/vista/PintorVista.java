@@ -36,6 +36,25 @@ public class PintorVista {
         return bienvenida;
     }
 
+    public static Group crearGrupoInventario(){
+
+        Group grupo = new Group();
+
+        for(int i = 0; i <= Constantes.FILAS_INVENTARIO; i ++){
+            for(int j = 0; j <= Constantes.COLUMNAS_INVENTARIO; j++){
+
+                Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
+                rectangle.setFill(Color.BLUE);
+                rectangle.setLayoutX(i * Constantes.PIXELES);
+                rectangle.setLayoutY(j * Constantes.PIXELES);
+                grupo.getChildren().add(rectangle);
+
+            }
+        }
+        return grupo;
+
+    }
+
     public static Group crearGrupoBasadoEnMapa(Mapa mapa) {
 
         Image madera = new Image("madera.png");
@@ -91,6 +110,7 @@ public class PintorVista {
          }
          return grupo;
     }
+
 
     public static Rectangle crearFiguraJugador(Jugador modelo) {
 
