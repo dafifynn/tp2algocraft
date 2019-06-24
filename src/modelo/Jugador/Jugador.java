@@ -53,13 +53,13 @@ public class Jugador {
     public void moverse (EstrategiaDeDireccion direccion, Mapa mapa) throws MovimientoInvalidoException {
 
         Coordenada coordenadaSiguiente = direccion.crearCoordenadaSiguiente(this.coordenada);
-
+        this.direccion = direccion;
         if (mapa.hayMaterialEnCoordenada(coordenadaSiguiente)) {
             throw new MovimientoInvalidoException();
         }
 
         this.coordenada = coordenadaSiguiente;
-        this.direccion = direccion;
+
     }
 
     private void procesarMaterial (Mapa mapa) {
