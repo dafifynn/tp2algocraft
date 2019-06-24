@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import modelo.EstrategiaDeDireccion.*;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Juego.Juego;
+import vista.InventarioVista;
 import vista.JuegoVista;
 
 import java.util.HashMap;
@@ -19,14 +20,17 @@ public class ControladorDeJugador {
 
     JuegoVista juegoVista;
     Juego juego;
+    Boolean inventarioAbierto;
 
     public ControladorDeJugador(Juego juego, JuegoVista juegoVista) {
 
         this.juegoVista = juegoVista;
         this.juego = juego;
+        this.inventarioAbierto = false;
 
         juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> movimiento(evento));
         juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> impacto(evento));
+        juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> abrirOCerrarInventario(evento));
 
     }
 
@@ -68,6 +72,21 @@ public class ControladorDeJugador {
         if(evento.getCode().equals(KeyCode.SPACE)) {
 
             juego.obtenerJugador().impactar(juego.obtenerMapa());
+
+        }
+    }
+
+    private void abrirOCerrarInventario(KeyEvent evento){
+
+        if((evento.getCode().equals(KeyCode.I))&&( inventarioAbierto == false )){
+
+            this.juegoVista.mostrarInventario();
+            this.inventarioAbierto = true;
+
+        }else if ((evento.getCode().equals(KeyCode.I))&&( inventarioAbierto == true )){
+
+            this.juegoVista.cerrarInventario();
+            this.inventarioAbierto = false;
 
         }
     }
