@@ -39,6 +39,7 @@ public abstract class Herramienta{
         return this.bloquesQuePuedoDaniar.contains(material.getClass());
     }
 
+    
     public void impactar(Material material){
 
         if (this.esBloqueRompible(material)){
