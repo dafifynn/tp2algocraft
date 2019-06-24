@@ -6,10 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import modelo.EstrategiaDeDireccion.DireccionAbajo;
-import modelo.EstrategiaDeDireccion.DireccionArriba;
-import modelo.EstrategiaDeDireccion.DireccionDerecha;
-import modelo.EstrategiaDeDireccion.DireccionIzquierda;
+import modelo.EstrategiaDeDireccion.*;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Juego.Juego;
 import vista.JuegoVista;
@@ -33,65 +30,36 @@ public class ControladorDeJugador {
 
     }
 
-    private void movimiento(KeyEvent evento) {
+    private void movimientoSegunDireccion (EstrategiaDeDireccion direccion) {
+        try {
+            juego.moverJugador(direccion);
+            juegoVista.moverJugador(direccion);
+        }
+        catch (Exception e) {
 
-        boolean actualizarPosicion = true;
+        }
+        finally {
+            juegoVista.rotarJugador(direccion);
+        }
+    }
+
+    private void movimiento(KeyEvent evento) {
 
         if(evento.getCode().equals(KeyCode.W)) {
 
-            try {
-                juego.moverJugador(new DireccionArriba());
-            }
-            catch (Exception e) {
-                actualizarPosicion = false;
-            }
-
-            juegoVista.rotarJugador(new DireccionArriba());
-            if(actualizarPosicion) {
-                juegoVista.moverJugador(new DireccionArriba());
-            }
+            this.movimientoSegunDireccion(new DireccionArriba());
 
         } else if(evento.getCode().equals(KeyCode.S)) {
 
-            try {
-                juego.moverJugador(new DireccionAbajo());
-            }
-            catch (Exception e) {
-                actualizarPosicion = false;
-            }
-
-            juegoVista.rotarJugador(new DireccionAbajo());
-            if(actualizarPosicion) {
-                juegoVista.moverJugador(new DireccionAbajo());
-            }
+            this.movimientoSegunDireccion(new DireccionAbajo());
 
         } else if(evento.getCode().equals(KeyCode.A)) {
 
-            try {
-                juego.moverJugador(new DireccionIzquierda());
-            }
-            catch (Exception e) {
-                actualizarPosicion = false;
-            }
-
-            juegoVista.rotarJugador(new DireccionIzquierda());
-            if(actualizarPosicion) {
-                juegoVista.moverJugador(new DireccionIzquierda());
-            }
+            this.movimientoSegunDireccion(new DireccionIzquierda());
 
         } else if(evento.getCode().equals(KeyCode.D)) {
 
-            try {
-                juego.moverJugador(new DireccionDerecha());
-            }
-            catch (Exception e) {
-                actualizarPosicion = false;
-            }
-
-            juegoVista.rotarJugador(new DireccionDerecha());
-            if(actualizarPosicion) {
-                juegoVista.moverJugador(new DireccionDerecha());
-            }
+            this.movimientoSegunDireccion(new DireccionDerecha());
         }
     }
 
