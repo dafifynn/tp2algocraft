@@ -9,6 +9,7 @@ import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
 import modelo.Material.Material;
+import modelo.Material.MaterialVacio;
 
 
 public class Jugador {
@@ -66,6 +67,9 @@ public class Jugador {
 
         Coordenada coordenadaSiguiente = this.direccion.crearCoordenadaSiguiente(this.coordenada);
         Material material = mapa.obtenerMaterial(coordenadaSiguiente);
+
+        if (material.getClass() == MaterialVacio.class) return;
+
         this.herramientaEquipada.impactar(material);
 
         if (material.estaRoto()) {

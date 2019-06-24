@@ -39,4 +39,8 @@ public class Juego {
         return this.jugador;
     }
 
+    public void jugadorImpactando() {
+
+        this.jugador.impactar(this.mapa);
+    }
 }
