@@ -10,13 +10,15 @@ public class MapaVista implements Observer {
 
     private Group materiales;
 
-    public MapaVista(Group contenedor) {
+    public MapaVista(Group contenedor, Mapa modelo) {
 
-        materiales = PintorVista.crearGrupoBasadoEnMapa(new Mapa());
+        materiales = PintorVista.crearGrupoBasadoEnMapa(modelo);
         contenedor.getChildren().addAll(materiales);
+
+        observar(modelo);
     }
 
-    public void configurarMapaModelo(Observable observable) {
+    public void observar(Observable observable) {
 
         if(observable instanceof Mapa) {
             Mapa modelo = (Mapa) observable;

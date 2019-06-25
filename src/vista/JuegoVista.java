@@ -1,81 +1,62 @@
 package vista;
 
-import javafx.event.EventHandler;
-import javafx.event.EventType;
+import controlador.ControladorDeInventario;
+import controlador.ControladorDeJuego;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
-import modelo.Juego.Artista;
-import modelo.Jugador.Inventario;
-
-import java.util.Observer;
+import modelo.Juego.Juego;
 
 public class JuegoVista {
 
     Stage escenario;
 
     Scene mundo;
-    Scene inventario;
 
     Group elementosMundo;
-    Group elementosInventario;
 
-    MapaVista mapa;
-    JugadorVista jugador;
+    MapaVista mapaVista;
+    JugadorVista jugadorVista;
     InventarioVista inventarioVista;
 
-    public JuegoVista(Stage escenario) {
+    public JuegoVista(Stage escenario, Juego modelo) {
 
         this.escenario = escenario;
 
         this.elementosMundo = new Group();
-        this.elementosInventario = new Group();
 
-        this.mapa = new MapaVista(elementosMundo);
-        this.jugador = new JugadorVista(elementosMundo);
-        this.inventarioVista = new InventarioVista(elementosInventario);
+        this.mapaVista = new MapaVista(this.elementosMundo,modelo.obtenerMapa());
+        this.jugadorVista = new JugadorVista(this.elementosMundo);
+        this.inventarioVista = new InventarioVista();
 
-        mundo = new Scene(elementosMundo, 480, 480);
-        inventario = new Scene(elementosInventario,480,480);
-        mundo.setFill(Color.DARKGRAY);
+        this.mundo = new Scene(this.elementosMundo, 480, 480);
+        this.mundo.setFill(Color.DARKGRAY);
 
-        escenario.setScene(mundo);
+        this.escenario.setScene(this.mundo);
+
+        new ControladorDeJuego(modelo,this);
+        new ControladorDeInventario(modelo, this.inventarioVista, this);
     }
 
     public void moverJugador(EstrategiaDeDireccion direccion) {
-        jugador.moverJugador(elementosMundo,direccion);
+        this.jugadorVista.moverJugador(this.elementosMundo,direccion);
     }
 
     public void rotarJugador(EstrategiaDeDireccion direccion) {
-        jugador.rotarJugador(direccion);
+        this.jugadorVista.rotarJugador(direccion);
     }
 
     public void mostrarInventario(){
-        escenario.setScene(inventario);
+        this.escenario.setScene(this.inventarioVista.visualizacion());
     }
 
     public void cerrarInventario(){
-        escenario.setScene(mundo);
+        this.escenario.setScene(this.mundo);
     }
-
 
     public Scene mundo(){
-
         return this.mundo;
-    }
-
-    public Scene inventario() {
-
-        return this.inventario;
-    }
-
-    public MapaVista obtenerMapaVista() {
-        return this.mapa;
-    }
-
-    public JugadorVista obtenerJugadorVista() {
-        return this.jugador;
     }
 }

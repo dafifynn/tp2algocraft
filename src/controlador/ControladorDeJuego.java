@@ -30,8 +30,6 @@ public class ControladorDeJuego {
         juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> movimiento(evento));
         juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> impacto(evento));
         juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> abrirInventario(evento));
-        juegoVista.inventario().addEventHandler(KeyEvent.KEY_PRESSED, evento -> cerrarInventario(evento));
-
     }
 
     private void movimientoSegunDireccion (EstrategiaDeDireccion direccion) {
@@ -83,13 +81,4 @@ public class ControladorDeJuego {
         }
 
     }
-
-    private void cerrarInventario(KeyEvent evento) {
-
-        if(evento.getCode().equals(KeyCode.E)) {
-            this.juegoVista.cerrarInventario();
-        }
-    }
-
-
 }

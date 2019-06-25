@@ -28,11 +28,8 @@ public class MenuVista {
         botonDeComienzo.setLayoutY(450);
 
         botonDeComienzo.setOnAction(evento -> {
-            JuegoVista juegoVista = new JuegoVista(primario);
             Juego juegoModelo = new Juego();
-            juegoVista.obtenerMapaVista().configurarMapaModelo(juegoModelo.obtenerMapa());
-
-            ControladorDeJuego controlador = new ControladorDeJuego(juegoModelo,juegoVista);
+            new JuegoVista(primario,juegoModelo);
         });
 
         return botonDeComienzo;
