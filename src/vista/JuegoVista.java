@@ -4,8 +4,11 @@ import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import modelo.EstrategiaDeDireccion.EstrategiaDeDireccion;
+import modelo.Juego.Artista;
+import modelo.Jugador.Inventario;
 
 import java.util.Observer;
 
@@ -36,6 +39,7 @@ public class JuegoVista {
 
         mundo = new Scene(elementosMundo, 480, 480);
         inventario = new Scene(elementosInventario,480,480);
+        mundo.setFill(Color.DARKGRAY);
 
         escenario.setScene(mundo);
     }
@@ -48,16 +52,23 @@ public class JuegoVista {
         jugador.rotarJugador(direccion);
     }
 
-    public void mostrarInventario(){ escenario.setScene(inventario); }
+    public void mostrarInventario(){
+        escenario.setScene(inventario);
+    }
 
     public void cerrarInventario(){
-        //escenario.setScene(mundo);
+        escenario.setScene(mundo);
     }
 
 
     public Scene mundo(){
 
         return this.mundo;
+    }
+
+    public Scene inventario() {
+
+        return this.inventario;
     }
 
     public MapaVista obtenerMapaVista() {

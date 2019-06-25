@@ -1,11 +1,10 @@
 package vista;
 
-import controlador.ControladorDeJugador;
+import controlador.ControladorDeJuego;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import modelo.Constantes;
 import modelo.Juego.Juego;
 
 public class MenuVista {
@@ -32,7 +31,8 @@ public class MenuVista {
             JuegoVista juegoVista = new JuegoVista(primario);
             Juego juegoModelo = new Juego();
             juegoVista.obtenerMapaVista().configurarMapaModelo(juegoModelo.obtenerMapa());
-            ControladorDeJugador controlador = new ControladorDeJugador(juegoModelo,juegoVista);
+
+            ControladorDeJuego controlador = new ControladorDeJuego(juegoModelo,juegoVista);
         });
 
         return botonDeComienzo;

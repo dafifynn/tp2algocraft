@@ -3,13 +3,16 @@ package vista;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modelo.Constantes;
+import modelo.Jugador.Inventario;
 import modelo.Jugador.Jugador;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
@@ -109,6 +112,29 @@ public class PintorVista {
              }
          }
          return grupo;
+    }
+
+    public static Group crearGrupoBasadoEnInventario(Inventario inventario) {
+
+        Image casilla = new Image("slot2.png");
+
+        Group elementos = new Group();
+
+        int filasHerramientas = Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS / 9;
+
+        for(int i = 0; i < filasHerramientas; i++) {
+
+            for(int j = 0; j < 9 ; j ++) {
+
+                Button boton = new Button();
+                boton.setLayoutX(24 + (j * 48));
+                boton.setLayoutY( 240 + (i * 48));
+                boton.setGraphic(new ImageView(casilla));
+
+                elementos.getChildren().add(boton);
+            }
+        }
+        return elementos;
     }
 
 

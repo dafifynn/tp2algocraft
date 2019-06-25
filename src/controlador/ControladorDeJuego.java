@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import modelo.EstrategiaDeDireccion.*;
 import modelo.Excepciones.MovimientoInvalidoException;
 import modelo.Juego.Juego;
+import modelo.Jugador.Inventario;
 import vista.InventarioVista;
 import vista.JuegoVista;
 
@@ -16,21 +17,20 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 
-public class ControladorDeJugador {
+public class ControladorDeJuego {
 
     JuegoVista juegoVista;
     Juego juego;
-    Boolean inventarioAbierto;
 
-    public ControladorDeJugador(Juego juego, JuegoVista juegoVista) {
+    public ControladorDeJuego(Juego juego, JuegoVista juegoVista) {
 
         this.juegoVista = juegoVista;
         this.juego = juego;
-        this.inventarioAbierto = false;
 
         juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> movimiento(evento));
         juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> impacto(evento));
-        juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> abrirOCerrarInventario(evento));
+        juegoVista.mundo().addEventHandler(KeyEvent.KEY_PRESSED, evento -> abrirInventario(evento));
+        juegoVista.inventario().addEventHandler(KeyEvent.KEY_PRESSED, evento -> cerrarInventario(evento));
 
     }
 
@@ -76,18 +76,20 @@ public class ControladorDeJugador {
         }
     }
 
-    private void abrirOCerrarInventario(KeyEvent evento){
+    private void abrirInventario(KeyEvent evento) {
 
-        if((evento.getCode().equals(KeyCode.I))&&( inventarioAbierto == false )){
-
+        if(evento.getCode().equals(KeyCode.E)) {
             this.juegoVista.mostrarInventario();
-            this.inventarioAbierto = true;
+        }
 
-        }else if ((evento.getCode().equals(KeyCode.I))&&( inventarioAbierto == true )){
+    }
 
+    private void cerrarInventario(KeyEvent evento) {
+
+        if(evento.getCode().equals(KeyCode.E)) {
             this.juegoVista.cerrarInventario();
-            this.inventarioAbierto = false;
-
         }
     }
+
+
 }

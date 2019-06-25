@@ -93,6 +93,10 @@ public class Jugador {
 
     }
 
+    public Inventario obtenerInventario() {
+        return this.inventario;
+    }
+
     public void equipar(int posicion){
 
         if (this.tengoHerramientaEquipada()){

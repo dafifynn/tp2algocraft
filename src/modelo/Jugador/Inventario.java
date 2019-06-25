@@ -10,13 +10,12 @@ import modelo.Material.*;
 import modelo.PlantillasDeForja.PlantillaEditable;
 import modelo.PlantillasDeForja.PlantillaHachaMadera;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
-public class Inventario {
+public class Inventario extends Observable {
 
     // Atributos
+    private List<Observer> observadores;
 
     private PlantillaEditable plantilla;
     private HashMap<Material, Integer> materiales;
