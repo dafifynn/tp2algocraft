@@ -59,6 +59,8 @@ public class Inventario extends Observable {
         this.materiales.put(new MaterialDiamante(), 0);
     }
 
+    public Material obtenerMaterialSeleccionado(){ return this.materialSeleccionado; }
+
     public Herramienta extraerHerramienta(int indice ){
 
         Herramienta herramienta = this.herramientas.get(indice);
@@ -170,9 +172,8 @@ public class Inventario extends Observable {
     }
     public void guardarSeleccionadoEnGrilla(int fila, int columna) {
 
-
         Material extraido = this.materialSeleccionado;
-        this.materialSeleccionado = null;
+        this.materialSeleccionado = new MaterialVacio();
         plantilla.armarPlantillaEditable(fila,columna, extraido);
     }
 

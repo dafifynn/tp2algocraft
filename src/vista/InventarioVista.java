@@ -2,12 +2,19 @@ package vista;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import modelo.Constantes;
 import modelo.Herramienta.Herramienta;
 import modelo.Jugador.Inventario;
+import modelo.Material.MaterialMadera;
+import modelo.Material.MaterialMetal;
+import modelo.Material.MaterialPiedra;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -74,7 +81,7 @@ public class InventarioVista implements Observer {
         botonMetal.setLayoutX(120);
         botonMetal.setLayoutY(400);
         botonMetal.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMetal.png")));
-        botonMetal.setOnAction(evento -> modelo.seleccionarDiamante());
+        botonMetal.setOnAction(evento -> modelo.seleccionarMetal());
 
         this.elementos.getChildren().add(botonMetal);
 
@@ -178,7 +185,9 @@ public class InventarioVista implements Observer {
         grilla11.setLayoutX(312);
         grilla11.setLayoutY(48);
         grilla11.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla11.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(0,0));
+        grilla11.setOnAction(evento -> {
+            actualizarImagen(grilla11, modelo);
+            modelo.guardarSeleccionadoEnGrilla(0,0);} );
 
         botones.getChildren().add(grilla11);
 
@@ -186,7 +195,10 @@ public class InventarioVista implements Observer {
         grilla12.setLayoutX(360);
         grilla12.setLayoutY(48);
         grilla12.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla12.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(0,1));
+        grilla12.setOnAction(evento ->{
+            actualizarImagen(grilla12,modelo);
+            modelo.guardarSeleccionadoEnGrilla(0,1);
+        } );
 
         botones.getChildren().add(grilla12);
 
@@ -194,7 +206,10 @@ public class InventarioVista implements Observer {
         grilla13.setLayoutX(408);
         grilla13.setLayoutY(48);
         grilla13.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla13.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(0,2));
+        grilla13.setOnAction(evento -> {
+            actualizarImagen(grilla13,modelo);
+            modelo.guardarSeleccionadoEnGrilla(0,2);
+        } );
 
         botones.getChildren().add(grilla13);
 
@@ -202,7 +217,10 @@ public class InventarioVista implements Observer {
         grilla21.setLayoutX(312);
         grilla21.setLayoutY(96);
         grilla21.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla21.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(1,0));
+        grilla21.setOnAction(evento -> {
+            actualizarImagen(grilla21,modelo);
+            modelo.guardarSeleccionadoEnGrilla(1,0);
+        } );
 
         botones.getChildren().add(grilla21);
 
@@ -210,7 +228,10 @@ public class InventarioVista implements Observer {
         grilla22.setLayoutX(360);
         grilla22.setLayoutY(96);
         grilla22.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla22.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(1,1));
+        grilla22.setOnAction(evento -> {
+            actualizarImagen(grilla22,modelo);
+            modelo.guardarSeleccionadoEnGrilla(1,1);
+        } );
 
         botones.getChildren().add(grilla22);
 
@@ -218,7 +239,10 @@ public class InventarioVista implements Observer {
         grilla23.setLayoutX(408);
         grilla23.setLayoutY(96);
         grilla23.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla23.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(1,2));
+        grilla23.setOnAction(evento -> {
+            actualizarImagen(grilla23,modelo);
+            modelo.guardarSeleccionadoEnGrilla(1,2);
+        } );
 
         botones.getChildren().add(grilla23);
 
@@ -226,7 +250,10 @@ public class InventarioVista implements Observer {
         grilla31.setLayoutX(312);
         grilla31.setLayoutY(144);
         grilla31.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla31.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(2,0));
+        grilla31.setOnAction(evento -> {
+            actualizarImagen(grilla31,modelo);
+            modelo.guardarSeleccionadoEnGrilla(2,0);
+        } );
 
         botones.getChildren().add(grilla31);
 
@@ -234,7 +261,10 @@ public class InventarioVista implements Observer {
         grilla32.setLayoutX(360);
         grilla32.setLayoutY(144);
         grilla32.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla32.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(2,1));
+        grilla32.setOnAction(evento -> {
+            actualizarImagen(grilla32,modelo);
+            modelo.guardarSeleccionadoEnGrilla(2,1);
+        } );
 
         botones.getChildren().add(grilla32);
 
@@ -242,18 +272,51 @@ public class InventarioVista implements Observer {
         grilla33.setLayoutX(408);
         grilla33.setLayoutY(144);
         grilla33.setGraphic(new ImageView(new Image("slot2.png")));
-        grilla33.setOnAction(evento -> modelo.guardarSeleccionadoEnGrilla(2,2));
+        grilla33.setOnAction(evento -> {
+            actualizarImagen(grilla33,modelo);
+            modelo.guardarSeleccionadoEnGrilla(2,2);
+        } );
 
         botones.getChildren().add(grilla33);
 
         Button contruir = new Button("Construir");
         contruir.setLayoutX(240);
         contruir.setLayoutY(48);
-        contruir.setOnAction(evento -> modelo.contruirHerramientaDeGrilla());
+        contruir.setOnAction(evento ->{modelo.contruirHerramientaDeGrilla();
+        grilla11.setGraphic(new ImageView(new Image("slot2.png")));
+        grilla12.setGraphic(new ImageView(new Image("slot2.png")));
+        grilla13.setGraphic(new ImageView(new Image("slot2.png")));
+        grilla21.setGraphic(new ImageView(new Image("slot2.png")));
+        grilla22.setGraphic(new ImageView(new Image("slot2.png")));
+        grilla23.setGraphic(new ImageView(new Image("slot2.png")));
+        grilla31.setGraphic(new ImageView(new Image("slot2.png")));
+        grilla32.setGraphic(new ImageView(new Image("slot2.png")));
+        grilla33.setGraphic(new ImageView(new Image("slot2.png")));});
 
         botones.getChildren().add(contruir);
 
         return botones;
+    }
+
+
+    private void actualizarImagen(Button grilla, Inventario modelo){
+
+
+        if(modelo.obtenerMaterialSeleccionado().getClass().isAssignableFrom(MaterialMadera.class) ){
+
+            grilla.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMadera.png")));
+
+        }else if (modelo.obtenerMaterialSeleccionado().getClass().isAssignableFrom(MaterialPiedra.class)){
+
+            grilla.setGraphic(new ImageView(new Image("bloqueMaterial/BloquePiedra.png")));
+
+        }else if(modelo.obtenerMaterialSeleccionado().getClass().isAssignableFrom(MaterialMetal.class)){
+
+            grilla.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMetal.png")));
+        }
+
+        this.elementos.getChildren().remove(grilla);
+        this.elementos.getChildren().add(grilla);
     }
 
     public void observar(Observable observable) {
