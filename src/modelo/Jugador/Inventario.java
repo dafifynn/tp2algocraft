@@ -78,6 +78,7 @@ public class Inventario extends Observable {
            Integer cantidad =  this.materiales.get(material);
            this.materiales.put(material,(cantidad +1));
            this.capacidadUsadaDeInventarioMateriales ++;
+           this.notificar();
        }else{
            throw new InventarioMaterialesEstaLlenoException();
        }

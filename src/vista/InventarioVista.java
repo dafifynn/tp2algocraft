@@ -18,9 +18,17 @@ public class InventarioVista implements Observer {
     private Group elementos;
     //private PlantillaVista plantillaVista;
 
+    private Button botonLabelMadera;
+    private Button botonLabelPiedra;
+    private Button botonLabelMetal;
+    private Button botonLabelDiamante;
+
     public InventarioVista(Inventario modelo) {
 
         this.elementos = crearBotones(modelo);
+        this.inicializarBotonesDeMaterial(modelo);
+        this.inicializarBotonesDeCantidadDeMateriales(modelo);
+        this.actualizarCantidadDeBotonesLabel(modelo);
         this.vista = new Scene(elementos,480,480);
     }
 
@@ -29,8 +37,7 @@ public class InventarioVista implements Observer {
 
         if(observable instanceof Inventario) {
             Inventario actualizado = (Inventario) observable;
-            this.elementos.getChildren().removeAll(this.elementos.getChildren());
-            this.elementos.getChildren().addAll(crearBotones(actualizado));
+            actualizarCantidadDeBotonesLabel(actualizado);
             //TODO: optimizar
         }
     }
@@ -41,6 +48,84 @@ public class InventarioVista implements Observer {
 
     public Group elementos() {
         return this.elementos;
+    }
+
+    private void inicializarBotonesDeMaterial (Inventario modelo) {
+        //boton madera
+        Button botonMadera = new Button();
+        botonMadera.setLayoutX(24);
+        botonMadera.setLayoutY(400);
+        botonMadera.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMadera.png")));
+        botonMadera.setOnAction(evento -> modelo.seleccionarMadera());
+
+        this.elementos.getChildren().add(botonMadera);
+
+        //boton piedra
+        Button botonPiedra = new Button();
+        botonPiedra.setLayoutX(72);
+        botonPiedra.setLayoutY(400);
+        botonPiedra.setGraphic(new ImageView(new Image("bloqueMaterial/BloquePiedra.png")));
+        botonPiedra.setOnAction(evento -> modelo.seleccionarPiedra());
+
+        this.elementos.getChildren().add(botonPiedra);
+
+        //boton metal
+        Button botonMetal = new Button();
+        botonMetal.setLayoutX(120);
+        botonMetal.setLayoutY(400);
+        botonMetal.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMetal.png")));
+        botonMetal.setOnAction(evento -> modelo.seleccionarDiamante());
+
+        this.elementos.getChildren().add(botonMetal);
+
+        //boton diamante
+        Button botonDiamante = new Button();
+        botonDiamante.setLayoutX(168);
+        botonDiamante.setLayoutY(400);
+        botonDiamante.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueDiamante.png")));
+        botonDiamante.setOnAction(evento -> modelo.seleccionarDiamante());
+
+        this.elementos.getChildren().add(botonDiamante);
+    }
+
+
+    private void inicializarBotonesDeCantidadDeMateriales (Inventario modelo) {
+        //label del boton madera
+        botonLabelMadera = new Button();
+        botonLabelMadera.setLayoutX(24);
+        botonLabelMadera.setLayoutY(370);
+
+        this.elementos.getChildren().add(botonLabelMadera);
+
+        //label del boton piedra
+        botonLabelPiedra = new Button();
+        botonLabelPiedra.setLayoutX(72);
+        botonLabelPiedra.setLayoutY(370);
+
+        this.elementos.getChildren().add(botonLabelPiedra);
+
+
+        //label del boton metal
+        botonLabelMetal = new Button();
+        botonLabelMetal.setLayoutX(120);
+        botonLabelMetal.setLayoutY(370);
+
+        this.elementos.getChildren().add(botonLabelMetal);
+
+        //label del boton diamante
+        botonLabelDiamante = new Button();
+        botonLabelDiamante.setLayoutX(168);
+        botonLabelDiamante.setLayoutY(370);
+
+        this.elementos.getChildren().add(botonLabelDiamante);
+
+    }
+
+    private void actualizarCantidadDeBotonesLabel(Inventario modelo) {
+        botonLabelMadera.setText(Integer.toString(modelo.cantidadDeMadera()));
+        botonLabelPiedra.setText(Integer.toString(modelo.cantidadDePiedra()));
+        botonLabelMetal.setText(Integer.toString(modelo.cantidadDeMetal()));
+        botonLabelDiamante.setText(Integer.toString(modelo.cantidadDeDiamante()));
     }
 
     private Group crearBotones(Inventario modelo) {
@@ -87,73 +172,6 @@ public class InventarioVista implements Observer {
             botones.getChildren().add(boton);
         }
 
-        //label del boton madera
-        String i =  Integer.toString(modelo.cantidadDeMadera());
-        Button botonLabelMadera = new Button(i);
-        botonLabelMadera.setLayoutX(24);
-        botonLabelMadera.setLayoutY(370);
-
-        botones.getChildren().add(botonLabelMadera);
-
-        //boton madera
-        Button botonMadera = new Button();
-        botonMadera.setLayoutX(24);
-        botonMadera.setLayoutY(400);
-        botonMadera.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMadera.png")));
-        botonMadera.setOnAction(evento -> modelo.seleccionarMadera());
-
-        botones.getChildren().add(botonMadera);
-
-        //label del boton piedra
-        String j =  Integer.toString(modelo.cantidadDePiedra());
-        Button botonLabelPiedra = new Button(j);
-        botonLabelPiedra.setLayoutX(72);
-        botonLabelPiedra.setLayoutY(370);
-
-        botones.getChildren().add(botonLabelPiedra);
-
-        //boton piedra
-        Button botonPiedra = new Button();
-        botonPiedra.setLayoutX(72);
-        botonPiedra.setLayoutY(400);
-        botonPiedra.setGraphic(new ImageView(new Image("bloqueMaterial/BloquePiedra.png")));
-        botonPiedra.setOnAction(evento -> modelo.seleccionarPiedra());
-
-        botones.getChildren().add(botonPiedra);
-
-        //label del boton metal
-        String k =  Integer.toString(modelo.cantidadDeDiamante());
-        Button botonLabelMetal = new Button(k);
-        botonLabelMetal.setLayoutX(120);
-        botonLabelMetal.setLayoutY(370);
-
-        botones.getChildren().add(botonLabelMetal);
-
-        //boton metal
-        Button botonMetal = new Button();
-        botonMetal.setLayoutX(120);
-        botonMetal.setLayoutY(400);
-        botonMetal.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMetal.png")));
-        botonMetal.setOnAction(evento -> modelo.seleccionarDiamante());
-
-        botones.getChildren().add(botonMetal);
-
-        //label del boton diamante
-        String l =  Integer.toString(modelo.cantidadDeDiamante());
-        Button botonLabelDiamante = new Button(l);
-        botonLabelDiamante.setLayoutX(168);
-        botonLabelDiamante.setLayoutY(370);
-
-        botones.getChildren().add(botonLabelDiamante);
-
-        //boton diamante
-        Button botonDiamante = new Button();
-        botonDiamante.setLayoutX(168);
-        botonDiamante.setLayoutY(400);
-        botonDiamante.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueDiamante.png")));
-        botonDiamante.setOnAction(evento -> modelo.seleccionarDiamante());
-
-        botones.getChildren().add(botonDiamante);
 
         //plantilla
         Button grilla11 = new Button();
