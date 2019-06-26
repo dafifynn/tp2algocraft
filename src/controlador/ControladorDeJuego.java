@@ -7,7 +7,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import modelo.EstrategiaDeDireccion.*;
+import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Excepciones.MovimientoInvalidoException;
+import modelo.Excepciones.SinHerramientaEquipadaException;
 import modelo.Juego.Juego;
 import modelo.Jugador.Inventario;
 import vista.InventarioVista;
@@ -68,8 +70,15 @@ public class ControladorDeJuego {
     private void impacto(KeyEvent evento) {
 
         if(evento.getCode().equals(KeyCode.SPACE)) {
+            try {
+                juego.obtenerJugador().impactar(juego.obtenerMapa());
+            }
+            catch (MaterialInexistenteException e) {
 
-            juego.obtenerJugador().impactar(juego.obtenerMapa());
+            }
+            catch (SinHerramientaEquipadaException e) {
+
+            }
 
         }
     }

@@ -1,6 +1,11 @@
 package vista;
 
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
+import modelo.Constantes;
+import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
 
 import java.util.Observable;
@@ -30,10 +35,16 @@ public class MapaVista implements Observer {
     public void update(Observable observable, Object arg) {
 
         if(observable instanceof Mapa) {
-            Mapa actualizado = (Mapa) observable;
-            this.materiales.getChildren().removeAll(this.materiales.getChildren());
-            materiales.getChildren().addAll(PintorVista.crearGrupoBasadoEnMapa(actualizado));
-            //TODO: optimizar
+            Coordenada coordenada = (Coordenada) arg;
+            this.actualizarCoordenadaMapa(coordenada);
         }
+    }
+
+    private void actualizarCoordenadaMapa (Coordenada coordenada) {
+        Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
+        rectangle.setLayoutX(coordenada.obtenerColumna() * Constantes.PIXELES);
+        rectangle.setLayoutY(coordenada.obtenerFila() * Constantes.PIXELES);
+        rectangle.setFill(new ImagePattern(new Image("file:Resources/mapa/" + "pasto.png")));
+        materiales.getChildren().add(rectangle);
     }
 }

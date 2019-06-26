@@ -20,6 +20,14 @@ public class Coordenada {
         this.coordenadaColumna = coordenadaColumna;
     }
 
+    // Getters
+    public int obtenerFila () {
+        return this.coordenadaFila;
+    }
+
+    public int obtenerColumna() {
+        return this.coordenadaColumna;
+    }
 
     // Metodos Privados
     private boolean esCoordenadaColumnaValida (int coordenadaColumna) {
