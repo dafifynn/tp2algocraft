@@ -59,36 +59,6 @@ public class PintorVista {
 
     }
 
-    private static void aniadirMaterialAlGrupoDelMapa (Mapa mapa, int i, int j, Group grupo) {
-        Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-        rectangle.setLayoutX(i * Constantes.PIXELES);
-        rectangle.setLayoutY(j * Constantes.PIXELES);
-
-        try {
-            Material material = mapa.obtenerMaterial(new Coordenada(j,i));
-            rectangle.setFill(new ImagePattern(new Image(Constantes.URL_MATERIALES_DEL_MAPA + material.getClass().getSimpleName() + ".png")));
-        }
-        catch (MaterialInexistenteException e) {
-            rectangle.setFill(new ImagePattern(new Image(Constantes.URL_VACIO_DEL_MAPA)));
-        }
-
-        grupo.getChildren().add(rectangle);
-    }
-
-    public static Group crearGrupoBasadoEnMapa(Mapa mapa) {
-
-        Group grupo = new Group();
-
-        for(int i = 0; i <= Constantes.MAPA_COLUMNAS_DEFECTO; i++) {
-
-            for(int j = 0; j <= Constantes.MAPA_FILAS_DEFECTO; j++) {
-
-                aniadirMaterialAlGrupoDelMapa(mapa, i, j, grupo);
-            }
-        }
-
-        return grupo;
-    }
 
     public static Group crearGrupoBasadoEnInventario(Inventario inventario) {
 

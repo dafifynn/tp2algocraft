@@ -5,8 +5,10 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import modelo.Constantes;
+import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
+import modelo.Material.Material;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -17,7 +19,9 @@ public class MapaVista implements Observer {
 
     public MapaVista(Group contenedor, Mapa modelo) {
 
-        materiales = PintorVista.crearGrupoBasadoEnMapa(modelo);
+        this.materiales = new Group();
+
+        this.inicializarGrupoBasadoEnMapa(modelo);
         contenedor.getChildren().addAll(materiales);
 
         observar(modelo);
@@ -35,16 +39,37 @@ public class MapaVista implements Observer {
     public void update(Observable observable, Object arg) {
 
         if(observable instanceof Mapa) {
+            Mapa mapa = (Mapa) observable;
             Coordenada coordenada = (Coordenada) arg;
-            this.actualizarCoordenadaMapa(coordenada);
+            this.aniadirMaterialAlGrupoDelMapa(mapa, coordenada.obtenerColumna(), coordenada.obtenerFila());
         }
     }
 
-    private void actualizarCoordenadaMapa (Coordenada coordenada) {
+
+    private void aniadirMaterialAlGrupoDelMapa (Mapa mapa, int i, int j) {
         Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-        rectangle.setLayoutX(coordenada.obtenerColumna() * Constantes.PIXELES);
-        rectangle.setLayoutY(coordenada.obtenerFila() * Constantes.PIXELES);
-        rectangle.setFill(new ImagePattern(new Image("file:Resources/mapa/" + "pasto.png")));
-        materiales.getChildren().add(rectangle);
+        rectangle.setLayoutX(i * Constantes.PIXELES);
+        rectangle.setLayoutY(j * Constantes.PIXELES);
+
+        try {
+            Material material = mapa.obtenerMaterial(new Coordenada(j,i));
+            rectangle.setFill(new ImagePattern(new Image(Constantes.URL_MATERIALES_DEL_MAPA + material.getClass().getSimpleName() + ".png")));
+        }
+        catch (MaterialInexistenteException e) {
+            rectangle.setFill(new ImagePattern(new Image(Constantes.URL_VACIO_DEL_MAPA)));
+        }
+
+        this.materiales.getChildren().add(rectangle);
+    }
+
+    private void  inicializarGrupoBasadoEnMapa(Mapa mapa) {
+
+        for(int i = 0; i <= Constantes.MAPA_COLUMNAS_DEFECTO; i++) {
+
+            for(int j = 0; j <= Constantes.MAPA_FILAS_DEFECTO; j++) {
+
+                aniadirMaterialAlGrupoDelMapa(mapa, i, j);
+            }
+        }
     }
 }
