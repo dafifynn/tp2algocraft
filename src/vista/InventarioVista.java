@@ -59,35 +59,41 @@ public class InventarioVista implements Observer {
 
             int indice = i;
             Herramienta obtenida = modelo.obtenerHerramienta(indice);
-
-                if(obtenida == null) {
-                    boton.setGraphic(new ImageView("slot2.png"));
-                }
-                else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_MADERA) {
-                    boton.setGraphic(new ImageView(Constantes.URL_HERRAMIENTA + "hachaMadera.png"));
-                }
-                else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_PIEDRA) {
-                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "HachaPiedra.png")));
-                }
-                else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_METAL) {
-                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "HachaMetal.png")));
-                }
-                else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_MADERA) {
-                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoMadera.png")));
-                }
-                else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_PIEDRA) {
-                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoPiedra.png")));
-                }
-                else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_METAL) {
-                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoMetal.png")));
-                }
-                else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO) {
-                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoFino.png")));
-                }
-                boton.setOnAction(event -> {});
-                botones.getChildren().add(boton);
+            if(obtenida == null) {
+                boton.setGraphic(new ImageView("slot2.png"));
             }
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_MADERA) {
+                boton.setGraphic(new ImageView(Constantes.URL_HERRAMIENTA + "hachaMadera.png"));
+            }
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_PIEDRA) {
+                boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "HachaPiedra.png")));
+            }
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_METAL) {
+                boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "HachaMetal.png")));
+            }
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_MADERA) {
+                boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoMadera.png")));
+            }
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_PIEDRA) {
+                boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoPiedra.png")));
+            }
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_METAL) {
+                boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoMetal.png")));
+            }
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO) {
+                boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoFino.png")));
+            }
+            boton.setOnAction(event -> {});
+            botones.getChildren().add(boton);
         }
+
+        //label del boton madera
+        String i =  Integer.toString(modelo.cantidadDeMadera());
+        Button botonLabelMadera = new Button(i);
+        botonLabelMadera.setLayoutX(24);
+        botonLabelMadera.setLayoutY(370);
+
+        botones.getChildren().add(botonLabelMadera);
 
         //boton madera
         Button botonMadera = new Button();
@@ -98,6 +104,14 @@ public class InventarioVista implements Observer {
 
         botones.getChildren().add(botonMadera);
 
+        //label del boton piedra
+        String j =  Integer.toString(modelo.cantidadDePiedra());
+        Button botonLabelPiedra = new Button(j);
+        botonLabelPiedra.setLayoutX(72);
+        botonLabelPiedra.setLayoutY(370);
+
+        botones.getChildren().add(botonLabelPiedra);
+
         //boton piedra
         Button botonPiedra = new Button();
         botonPiedra.setLayoutX(72);
@@ -107,6 +121,14 @@ public class InventarioVista implements Observer {
 
         botones.getChildren().add(botonPiedra);
 
+        //label del boton metal
+        String k =  Integer.toString(modelo.cantidadDeDiamante());
+        Button botonLabelMetal = new Button(k);
+        botonLabelMetal.setLayoutX(120);
+        botonLabelMetal.setLayoutY(370);
+
+        botones.getChildren().add(botonLabelMetal);
+
         //boton metal
         Button botonMetal = new Button();
         botonMetal.setLayoutX(120);
@@ -115,6 +137,14 @@ public class InventarioVista implements Observer {
         botonMetal.setOnAction(evento -> modelo.seleccionarDiamante());
 
         botones.getChildren().add(botonMetal);
+
+        //label del boton diamante
+        String l =  Integer.toString(modelo.cantidadDeDiamante());
+        Button botonLabelDiamante = new Button(l);
+        botonLabelDiamante.setLayoutX(168);
+        botonLabelDiamante.setLayoutY(370);
+
+        botones.getChildren().add(botonLabelDiamante);
 
         //boton diamante
         Button botonDiamante = new Button();

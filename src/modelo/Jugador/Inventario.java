@@ -20,7 +20,7 @@ public class Inventario extends Observable {
 
     private PlantillaEditable plantilla;
     private HashMap<Material, Integer> materiales;
-    private List<Herramienta> herramientas;
+    private ArrayList<Herramienta> herramientas;
     private Material materialSeleccionado;
     private int capacidadUsadaDeInventarioMateriales;
     private int capacidadUsadaDeInventarioHerramientas;
@@ -37,7 +37,9 @@ public class Inventario extends Observable {
 
         this.observadores = new ArrayList<>();
 
-        this.herramientas = new ArrayList<Herramienta>();
+        this.herramientas = new ArrayList<>();
+
+
         Forja forja = new Forja();
         this.agregarHerramienta(forja.construirHerramienta(new PlantillaHachaMadera()));
 
@@ -110,6 +112,14 @@ public class Inventario extends Observable {
         }
     }
 
+    public int cantidadDeMadera(){ return this.materiales.get(new MaterialMadera()); }
+
+    public int cantidadDeDiamante(){ return this.materiales.get(new MaterialDiamante()); }
+
+    public int cantidadDePiedra(){ return this.materiales.get(new MaterialPiedra()); }
+
+    public int cantidadDeMetal(){ return this.materiales.get(new MaterialMetal()); }
+
     public void seleccionarMadera(){
 
         this.materialSeleccionado = new MaterialMadera();
@@ -159,7 +169,7 @@ public class Inventario extends Observable {
     }
     public void guardarSeleccionadoEnGrilla(int fila, int columna) {
 
-        //VALIDAR FILA Y COLUMA ENTRE 0 Y 2
+
         Material extraido = this.materialSeleccionado;
         this.materialSeleccionado = null;
         plantilla.armarPlantillaEditable(fila,columna, extraido);
