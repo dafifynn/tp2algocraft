@@ -5,6 +5,7 @@ import modelo.Excepciones.InventarioHerramientasEstaLlenoException;
 import modelo.Excepciones.InventarioMaterialesEstaLlenoException;
 import modelo.Constantes;
 import modelo.Excepciones.NoHayMaterialParaEliminarException;
+import modelo.Excepciones.PlantillaDeForjaInexistenteException;
 import modelo.Herramienta.Herramienta;
 import modelo.Material.*;
 import modelo.PlantillasDeForja.PlantillaEditable;
@@ -34,6 +35,8 @@ public class Inventario extends Observable {
         this.materiales = new HashMap<>();
         this.inicializarHashMateriales();
 
+        this.observadores = new ArrayList<>();
+
         this.herramientas = new ArrayList<Herramienta>();
         Forja forja = new Forja();
         this.agregarHerramienta(forja.construirHerramienta(new PlantillaHachaMadera()));
@@ -62,7 +65,11 @@ public class Inventario extends Observable {
 
         return herramienta;
     }
-    
+
+    public Herramienta obtenerHerramienta(int indice) {
+        return indice < this.herramientas.size() ? this.herramientas.get(indice) : null;
+    }
+
     public void agregarMaterial(Material material){
 
        if(capacidadUsadaDeInventarioMateriales <= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES){
@@ -83,7 +90,7 @@ public class Inventario extends Observable {
         }else{
             throw new InventarioHerramientasEstaLlenoException();
         }
-
+        this.notificar();
     }
 
     public void eliminarHerramienta(Herramienta herramienta){
@@ -121,6 +128,10 @@ public class Inventario extends Observable {
 
     }
 
+    public void seleccionarDiamante() {
+        this.materialSeleccionado = new MaterialDiamante();
+    }
+
     public void guardarPiedraEnGrilla(int fila, int columna){
 
         plantilla.armarPlantillaEditable(fila,columna, MaterialPiedra.class);
@@ -139,6 +150,18 @@ public class Inventario extends Observable {
         plantilla.armarPlantillaEditable(fila,columna, MaterialMadera.class);
         this.materialSeleccionado = new MaterialVacio();
     }
+    public void guardarDiamanteEnGrilla(int fila, int columna){
+
+        plantilla.armarPlantillaEditable(fila,columna, MaterialDiamante.class);
+        this.materialSeleccionado = new MaterialVacio();
+    }
+    public void guardarSeleccionadoEnGrilla(int fila, int columna) {
+
+        //VALIDAR FILA Y COLUMA ENTRE 0 Y 2
+        Material extraido = this.materialSeleccionado;
+        this.materialSeleccionado = null;
+        plantilla.armarPlantillaEditable(fila,columna, extraido.getClass());
+    }
 
     public Herramienta obtenerHerramientaDeGrilla(){
 
@@ -147,6 +170,40 @@ public class Inventario extends Observable {
         plantilla = new PlantillaEditable();
         return herramienta;
 
+    }
+
+    public void contruirHerramientaDeGrilla() {
+
+        Forja forja = new Forja();
+
+        try {
+            Herramienta herramienta = forja.construirHerramienta(this.plantilla);
+            this.agregarHerramienta(herramienta);
+            plantilla = new PlantillaEditable();
+        }
+        catch (PlantillaDeForjaInexistenteException e) {
+
+        }
+    }
+
+    public void agregarObservador(Observer nuevo) {
+        this.observadores.add(nuevo);
+    }
+
+    public void notificar() {
+        for(Observer observador : this.observadores) {
+            observador.update(this,null);
+        }
+    }
+
+    public PlantillaEditable obtenerPlantilla() {
+        return this.plantilla;
+    }
+
+    public void interactuarConPlantilla(int fila, int columna) {
+
+        //TODO:
+        this.notificar();
     }
 
     public void dibujarInventario(){

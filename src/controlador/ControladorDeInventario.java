@@ -15,6 +15,7 @@ public class ControladorDeInventario {
 
         this.vista = inventarioVista;
 
+        inventarioVista.observar(modelo.obtenerJugador().obtenerInventario());
         //teclado
         inventarioVista.visualizacion().addEventHandler(KeyEvent.KEY_PRESSED,
                 evento -> cerrarInventario(evento,vistaDeRetorno));
