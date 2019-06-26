@@ -76,25 +76,25 @@ public class InventarioVista implements Observer {
                     boton.setGraphic(new ImageView(casilla));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_MADERA) {
-                    boton.setGraphic(new ImageView(hachaMadera));
+                    boton.setGraphic(new ImageView("hachaMadera.png"));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_PIEDRA) {
-                    boton.setGraphic(new ImageView(hachaPiedra));
+                    boton.setGraphic(new ImageView(new Image("HachaPiedra.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_METAL) {
-                    boton.setGraphic(new ImageView(hachaMetal));
+                    boton.setGraphic(new ImageView(new Image("HachaMetal.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_MADERA) {
-                    boton.setGraphic(new ImageView(picoMadera));
+                    boton.setGraphic(new ImageView(new Image("PicoMadera.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_PIEDRA) {
-                    boton.setGraphic(new ImageView(picoPiedra));
+                    boton.setGraphic(new ImageView(new Image("PicoPiedra.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_METAL) {
-                    boton.setGraphic(new ImageView(picoMetal));
+                    boton.setGraphic(new ImageView(new Image("PicoMetal.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO) {
-                    boton.setGraphic(new ImageView(picoFino));
+                    boton.setGraphic(new ImageView(new Image("PicoFino.png")));
                 }
                 boton.setOnAction(event -> {});
                 botones.getChildren().add(boton);
