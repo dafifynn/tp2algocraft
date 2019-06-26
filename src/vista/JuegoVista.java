@@ -29,7 +29,7 @@ public class JuegoVista {
 
         this.mapaVista = new MapaVista(this.elementosMundo,modelo.obtenerMapa());
         this.jugadorVista = new JugadorVista(this.elementosMundo);
-        this.inventarioVista = new InventarioVista(modelo.obtenerJugador().obtenerInventario());
+        this.inventarioVista = new InventarioVista(modelo.obtenerJugador().obtenerInventario(), modelo.obtenerJugador());
 
         this.mundo = new Scene(this.elementosMundo, 480, 480);
         this.mundo.setFill(Color.DARKGRAY);

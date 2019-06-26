@@ -2,19 +2,16 @@ package vista;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import modelo.Constantes;
 import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Herramienta;
 import modelo.Herramienta.Pico;
 import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Inventario;
+import modelo.Jugador.Jugador;
 import modelo.Material.MaterialMadera;
 import modelo.Material.MaterialMetal;
 import modelo.Material.MaterialPiedra;
@@ -33,12 +30,16 @@ public class InventarioVista implements Observer {
     private Button botonLabelMetal;
     private Button botonLabelDiamante;
 
-    public InventarioVista(Inventario modelo) {
+    private Jugador modeloJugador;
 
-        this.elementos = crearBotones(modelo);
-        this.inicializarBotonesDeMaterial(modelo);
-        this.inicializarBotonesDeCantidadDeMateriales(modelo);
-        this.actualizarCantidadDeBotonesLabel(modelo);
+    public InventarioVista(Inventario modeloInventario, Jugador modeloJugador) {
+
+        this.modeloJugador = modeloJugador;
+
+        this.elementos = crearBotones(modeloInventario, modeloJugador);
+        this.inicializarBotonesDeMaterial(modeloJugador.obtenerInventario());
+        this.inicializarBotonesDeCantidadDeMateriales(modeloJugador.obtenerInventario());
+        this.actualizarCantidadDeBotonesLabel(modeloJugador.obtenerInventario());
         this.vista = new Scene(elementos,480,480);
     }
 
@@ -48,7 +49,7 @@ public class InventarioVista implements Observer {
         if(observable instanceof Inventario) {
             Inventario actualizado = (Inventario) observable;
             this.elementos.getChildren().removeAll(this.elementos.getChildren());
-            this.elementos.getChildren().addAll(crearBotones(actualizado));
+            this.elementos.getChildren().addAll(crearBotones(actualizado, modeloJugador));
             //TODO: optimizar
         }
     }
@@ -139,7 +140,7 @@ public class InventarioVista implements Observer {
         botonLabelDiamante.setText(Integer.toString(modelo.cantidadDeDiamante()));
     }
 
-    private Group crearBotones(Inventario modelo) {
+    private Group crearBotones(Inventario modelo, Jugador modeloJugador) {
 
         Group botones = new Group();
 
@@ -179,7 +180,7 @@ public class InventarioVista implements Observer {
             else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO && (obtenida.getClass().isAssignableFrom(PicoFino.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoFino.png")));
             }
-            boton.setOnAction(event -> {});
+            boton.setOnAction(event -> {this.modeloJugador.equipar(indice);});
             botones.getChildren().add(boton);
         }
 
@@ -310,7 +311,6 @@ public class InventarioVista implements Observer {
 
             grilla.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMadera.png")));
             modelo.eliminarMaterial(new MaterialMadera());
-
 
         }else if (modelo.obtenerMaterialSeleccionado().getClass().isAssignableFrom(MaterialPiedra.class)){
 

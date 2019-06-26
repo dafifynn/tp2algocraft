@@ -62,7 +62,6 @@ public class Inventario extends Observable {
     public Material obtenerMaterialSeleccionado(){ return this.materialSeleccionado; }
 
     public Herramienta extraerHerramienta(int indice ){
-
         Herramienta herramienta = this.herramientas.get(indice);
         this.herramientas.remove(indice);
         this.capacidadUsadaDeInventarioHerramientas --;
@@ -147,29 +146,7 @@ public class Inventario extends Observable {
     }
 
 
-    public void guardarPiedraEnGrilla(int fila, int columna){
 
-        plantilla.armarPlantillaEditable(fila,columna, new MaterialPiedra());
-        this.materialSeleccionado = new MaterialVacio();
-
-    }
-
-    public void guardarMetalEnGrilla(int fila, int columna){
-
-        plantilla.armarPlantillaEditable(fila,columna, new MaterialMetal());
-        this.materialSeleccionado = new MaterialVacio();
-    }
-
-    public void guardarMaderaEnGrilla(int fila, int columna){
-
-        plantilla.armarPlantillaEditable(fila,columna, new MaterialMadera());
-        this.materialSeleccionado = new MaterialVacio();
-    }
-    public void guardarDiamanteEnGrilla(int fila, int columna){
-
-        plantilla.armarPlantillaEditable(fila,columna, new MaterialDiamante());
-        this.materialSeleccionado = new MaterialVacio();
-    }
     public void guardarSeleccionadoEnGrilla(int fila, int columna) {
 
         Material extraido = this.materialSeleccionado;
@@ -177,14 +154,7 @@ public class Inventario extends Observable {
         plantilla.armarPlantillaEditable(fila,columna, extraido);
     }
 
-    public Herramienta obtenerHerramientaDeGrilla(){
-
-        Forja forja = new Forja();
-        Herramienta herramienta = forja.construirHerramienta(this.plantilla);
-        plantilla = new PlantillaEditable();
-        return herramienta;
-
-    }
+ 
 
     public void contruirHerramientaDeGrilla() {
 
@@ -194,6 +164,7 @@ public class Inventario extends Observable {
             Herramienta herramienta = forja.construirHerramienta(this.plantilla);
             this.agregarHerramienta(herramienta);
             plantilla = new PlantillaEditable();
+            this.capacidadUsadaDeInventarioMateriales --;
             this.notificar();
         }
         catch (PlantillaDeForjaInexistenteException e) {

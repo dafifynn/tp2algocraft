@@ -46,7 +46,7 @@ public class Jugador {
 
     private boolean tengoHerramientaEquipada(){
 
-        return this.herramientaEquipada.getClass().isAssignableFrom(Herramienta.class);
+        return this.herramientaEquipada != null;
     }
 
 
@@ -85,7 +85,7 @@ public class Jugador {
         procesarMaterial(mapa);
 
         if (herramientaEquipada.estaRota()) {
-            this.inventario.eliminarHerramienta(this.herramientaEquipada);
+		
             this.herramientaEquipada = null;
         }
 
@@ -96,7 +96,7 @@ public class Jugador {
     }
 
     public void equipar(int posicion){
-
+       
         Herramienta herramientaAEquipar = this.inventario.extraerHerramienta(posicion);
 
         if (this.tengoHerramientaEquipada()){
