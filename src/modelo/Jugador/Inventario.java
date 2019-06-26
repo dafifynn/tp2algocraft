@@ -105,7 +105,7 @@ public class Inventario extends Observable {
 
     }
 
-    public void eliminarMaterial(Material material){
+    public void eliminarMaterial(Material material) throws NoHayMaterialParaEliminarException{
 
         Integer cantidad =  this.materiales.get(material);
         if(cantidad != 0) {
@@ -194,6 +194,7 @@ public class Inventario extends Observable {
             Herramienta herramienta = forja.construirHerramienta(this.plantilla);
             this.agregarHerramienta(herramienta);
             plantilla = new PlantillaEditable();
+            this.notificar();
         }
         catch (PlantillaDeForjaInexistenteException e) {
 

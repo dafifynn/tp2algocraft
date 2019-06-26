@@ -309,14 +309,18 @@ public class InventarioVista implements Observer {
         if(modelo.obtenerMaterialSeleccionado().getClass().isAssignableFrom(MaterialMadera.class) ){
 
             grilla.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMadera.png")));
+            modelo.eliminarMaterial(new MaterialMadera());
+
 
         }else if (modelo.obtenerMaterialSeleccionado().getClass().isAssignableFrom(MaterialPiedra.class)){
 
             grilla.setGraphic(new ImageView(new Image("bloqueMaterial/BloquePiedra.png")));
+            modelo.eliminarMaterial(new MaterialPiedra());
 
         }else if(modelo.obtenerMaterialSeleccionado().getClass().isAssignableFrom(MaterialMetal.class)){
 
             grilla.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMetal.png")));
+            modelo.eliminarMaterial(new MaterialMetal());
         }
 
         this.elementos.getChildren().remove(grilla);
