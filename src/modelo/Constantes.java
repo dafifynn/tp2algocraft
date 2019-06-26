@@ -12,6 +12,8 @@ public final class Constantes {
 
     public static final String URL_HERRAMIENTA = "file:Resources/herramientas/";
 
+    public static final String URL_ROTAR_JUGADOR = "file:Resources/jugador/jugador";
+
     // Mapa
     public static final int MAPA_FILAS_DEFECTO = 29;
 

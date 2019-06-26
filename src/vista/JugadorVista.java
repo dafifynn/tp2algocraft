@@ -11,22 +11,16 @@ public class JugadorVista {
 
     private Rectangle figura;
 
-    private static final ImagePattern modeloArriba = new ImagePattern(new Image("jugador/jugadorArriba.png"));
-
-    private static final ImagePattern modeloAbajo = new ImagePattern(new Image("jugador/jugadorAbajo.png"));
-
-    private static final ImagePattern modeloIzquierda = new ImagePattern(new Image("jugador/jugadorIzquierda.png"));
-
-    private static final ImagePattern modeloDerecha = new ImagePattern(new Image("jugador/jugadorDerecha.png"));
-
     JugadorVista(Group contenedor) {
 
         int jugadorX = Constantes.JUGADOR_COORDENADA_COLUMNA_DEFECTO * Constantes.PIXELES;
         int jugadorY = Constantes.JUGADOR_COORDENADA_FILA_DEFECTO * Constantes.PIXELES;
 
-        this.figura = new Rectangle(Constantes.PIXELES,Constantes.PIXELES,this.modeloAbajo);
+        this.figura = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
         this.figura.setLayoutX(jugadorX);
         this.figura.setLayoutY(jugadorY);
+
+        this.rotarJugador(new DireccionAbajo());
 
         contenedor.getChildren().add(figura);
     }
@@ -58,18 +52,9 @@ public class JugadorVista {
 
     public void rotarJugador(EstrategiaDeDireccion direccion) {
 
-        if(direccion.getClass().isAssignableFrom(DireccionArriba.class)) {
-            this.figura.setFill(this.modeloArriba);
-        }
-        else if(direccion.getClass().isAssignableFrom(DireccionAbajo.class)) {
-            this.figura.setFill(this.modeloAbajo);
-        }
-        else if(direccion.getClass().isAssignableFrom(DireccionIzquierda.class)) {
-            this.figura.setFill(this.modeloIzquierda);
-        }
-        else if(direccion.getClass().isAssignableFrom(DireccionDerecha.class)) {
-            this.figura.setFill(this.modeloDerecha);
-        }
+        Image imagen = new Image(Constantes.URL_ROTAR_JUGADOR + direccion.getClass().getSimpleName() + ".png");
+        this.figura.setFill(new ImagePattern(imagen));
+
     }
 
     private void actualizarFigura(double nuevoX, double nuevoY) {
