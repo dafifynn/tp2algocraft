@@ -4,6 +4,7 @@ import controlador.ControladorDeJuego;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelo.Juego.Juego;
 
@@ -16,7 +17,11 @@ public class MenuVista {
 
         menu.getChildren().add(this.crearBotonComienzo(primario));
 
+        primario.setResizable(false);
+        primario.setTitle("AlgoCraft");
+        primario.getIcons().add(new Image("IconoAlgoCraft.png"));
         primario.setScene(visualizacion);
+
         primario.show();
     }
 
@@ -24,8 +29,8 @@ public class MenuVista {
 
         //Se crea boton para iniciar la partida
         Button botonDeComienzo = new Button("Iniciar Partida");
-        botonDeComienzo.setLayoutX(800);
-        botonDeComienzo.setLayoutY(450);
+        botonDeComienzo.setLayoutX(450);
+        botonDeComienzo.setLayoutY(730);
 
         botonDeComienzo.setOnAction(evento -> {
             Juego juegoModelo = new Juego();

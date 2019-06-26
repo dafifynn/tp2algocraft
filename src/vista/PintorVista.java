@@ -23,7 +23,7 @@ public class PintorVista {
 
     public static Canvas crearBienvenida() {
 
-        Canvas bienvenida = new Canvas(1000,500);
+        Canvas bienvenida = new Canvas(1000,780);
 
         GraphicsContext contenidoBienvenida = bienvenida.getGraphicsContext2D();
 
@@ -31,11 +31,11 @@ public class PintorVista {
         contenidoBienvenida.setStroke(Color.BLACK);
         contenidoBienvenida.setLineWidth(2);
         contenidoBienvenida.setFont(Font.font("Verdana", FontWeight.BOLD, 100));
-        contenidoBienvenida.fillText("ALGOCRAFT", 140,130);
-        contenidoBienvenida.strokeText("ALGOCRAFT",140,130);
+        contenidoBienvenida.fillText("ALGOCRAFT", 150,130);
+        contenidoBienvenida.strokeText("ALGOCRAFT",150,130);
 
         Image creeper = new Image("creeper.png");
-        contenidoBienvenida.drawImage(creeper,220,200);
+        contenidoBienvenida.drawImage(creeper,240,200);
 
         return bienvenida;
     }
