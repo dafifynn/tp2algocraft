@@ -29,13 +29,11 @@ public class Mapa extends Observable {
 
     // Getter
     public Material obtenerMaterial (Coordenada coordenada) throws MaterialInexistenteException {
+        if (!this.hayMaterialEnCoordenada(coordenada)) {
+            throw new MaterialInexistenteException();
+        }
 
-//        if (!this.hayMaterialEnCoordenada(coordenada)) {
-//            throw new MaterialInexistenteException();
-//        }
-        boolean existeMaterial = this.hayMaterialEnCoordenada(coordenada);
-
-        return existeMaterial ? this.materialesDelMapa.get(coordenada) : new MaterialVacio();
+        return this.materialesDelMapa.get(coordenada);
     }
 
     // Setter
@@ -61,7 +59,7 @@ public class Mapa extends Observable {
         }
 
         this.materialesDelMapa.remove(coordenada);
-        this.notificar();
+        this.notificar(coordenada);
     }
 
     public void agregarObservador(Observer nuevo) {
@@ -69,10 +67,10 @@ public class Mapa extends Observable {
         this.observadores.add(nuevo);
     }
 
-    public void notificar() {
+    public void notificar(Coordenada coordenada) {
 
         for(Observer observador : this.observadores) {
-            observador.update(this,null);
+            observador.update(this,coordenada);
         }
     }
 

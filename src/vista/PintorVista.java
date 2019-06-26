@@ -12,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modelo.Constantes;
+import modelo.Excepciones.MaterialInexistenteException;
 import modelo.Jugador.Inventario;
 import modelo.Jugador.Jugador;
 import modelo.Mapa.Coordenada;
@@ -58,60 +59,35 @@ public class PintorVista {
 
     }
 
+    private static void aniadirMaterialAlGrupoDelMapa (Mapa mapa, int i, int j, Group grupo) {
+        Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
+        rectangle.setLayoutX(i * Constantes.PIXELES);
+        rectangle.setLayoutY(j * Constantes.PIXELES);
+
+        try {
+            Material material = mapa.obtenerMaterial(new Coordenada(j,i));
+            rectangle.setFill(new ImagePattern(new Image(Constantes.URL_MATERIALES_DEL_MAPA + material.getClass().getSimpleName() + ".png")));
+        }
+        catch (MaterialInexistenteException e) {
+            rectangle.setFill(new ImagePattern(new Image(Constantes.URL_VACIO_DEL_MAPA)));
+        }
+
+        grupo.getChildren().add(rectangle);
+    }
+
     public static Group crearGrupoBasadoEnMapa(Mapa mapa) {
 
-        Image madera = new Image("madera.png");
-        Image pasto = new Image("pasto.png");
-        Image piedra = new Image("piedra.png");
-        Image metal = new Image("metal.png");
-        Image diamante = new Image("diamante.png");
+        Group grupo = new Group();
 
-         Group grupo = new Group();
+        for(int i = 0; i <= Constantes.MAPA_COLUMNAS_DEFECTO; i++) {
 
-         for(int i = 0; i <= Constantes.MAPA_COLUMNAS_DEFECTO; i++) {
+            for(int j = 0; j <= Constantes.MAPA_FILAS_DEFECTO; j++) {
 
-             for(int j = 0; j <= Constantes.MAPA_FILAS_DEFECTO; j++) {
+                aniadirMaterialAlGrupoDelMapa(mapa, i, j, grupo);
+            }
+        }
 
-                 Material material = mapa.obtenerMaterial(new Coordenada(j,i));
-
-                 if(material.equals(new MaterialMadera())) {
-                     Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-                     rectangle.setFill(new ImagePattern(madera));
-                     rectangle.setLayoutX(i * Constantes.PIXELES);
-                     rectangle.setLayoutY(j * Constantes.PIXELES);
-                     grupo.getChildren().add(rectangle);
-                 }
-                 if(material.equals(new MaterialPiedra())) {
-                     Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-                     rectangle.setFill(new ImagePattern(piedra));
-                     rectangle.setLayoutX(i * Constantes.PIXELES);
-                     rectangle.setLayoutY(j * Constantes.PIXELES);
-                     grupo.getChildren().add(rectangle);
-                 }
-                 if(material.equals(new MaterialMetal())) {
-                     Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-                     rectangle.setFill(new ImagePattern(metal));
-                     rectangle.setLayoutX(i * Constantes.PIXELES);
-                     rectangle.setLayoutY(j * Constantes.PIXELES);
-                     grupo.getChildren().add(rectangle);
-                 }
-                 if(material.equals(new MaterialDiamante())){
-                     Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-                     rectangle.setFill(new ImagePattern(diamante));
-                     rectangle.setLayoutX(i * Constantes.PIXELES);
-                     rectangle.setLayoutY(j * Constantes.PIXELES);
-                     grupo.getChildren().add(rectangle);
-                 }
-                 if(material.equals(new MaterialVacio())) {
-                     Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-                     rectangle.setFill(new ImagePattern(pasto));
-                     rectangle.setLayoutX(i * Constantes.PIXELES);
-                     rectangle.setLayoutY(j * Constantes.PIXELES);
-                     grupo.getChildren().add(rectangle);
-                 }
-             }
-         }
-         return grupo;
+        return grupo;
     }
 
     public static Group crearGrupoBasadoEnInventario(Inventario inventario) {

@@ -6,6 +6,10 @@ public final class Constantes {
     // Vista
     public static final int PIXELES = 16;
 
+    public static final String URL_MATERIALES_DEL_MAPA = "file:Resources/mapa/";
+
+    public static final String URL_VACIO_DEL_MAPA = "file:Resources/mapa/pasto.png";
+
     // Mapa
     public static final int MAPA_FILAS_DEFECTO = 29;
 
