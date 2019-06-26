@@ -11,13 +11,13 @@ public class JugadorVista {
 
     private Rectangle figura;
 
-    private static final ImagePattern modeloArriba = new ImagePattern(new Image("jugadorArriba.png"));
+    private static final ImagePattern modeloArriba = new ImagePattern(new Image("jugador/jugadorArriba.png"));
 
-    private static final ImagePattern modeloAbajo = new ImagePattern(new Image("jugadorAbajo.png"));
+    private static final ImagePattern modeloAbajo = new ImagePattern(new Image("jugador/jugadorAbajo.png"));
 
-    private static final ImagePattern modeloIzquierda = new ImagePattern(new Image("jugadorIzquierda.png"));
+    private static final ImagePattern modeloIzquierda = new ImagePattern(new Image("jugador/jugadorIzquierda.png"));
 
-    private static final ImagePattern modeloDerecha = new ImagePattern(new Image("jugadorDerecha.png"));
+    private static final ImagePattern modeloDerecha = new ImagePattern(new Image("jugador/jugadorDerecha.png"));
 
     JugadorVista(Group contenedor) {
 

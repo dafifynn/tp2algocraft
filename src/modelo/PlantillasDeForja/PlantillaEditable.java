@@ -1,6 +1,7 @@
 package modelo.PlantillasDeForja;
 
 import modelo.Constantes;
+import modelo.Material.Material;
 
 public class PlantillaEditable extends PlantillaDeForja {
 
@@ -12,9 +13,9 @@ public class PlantillaEditable extends PlantillaDeForja {
 
 
     // Metodo Publico
-    public void armarPlantillaEditable(int i, int j, Class C){
+    public void armarPlantillaEditable(int i, int j, Material M){
 
-        this.plantilla[i][j] = C;
+        this.plantilla[i][j] = M;
     }
 
 }

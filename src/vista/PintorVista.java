@@ -116,7 +116,7 @@ public class PintorVista {
 
     public static Rectangle crearFiguraJugador(Jugador modelo) {
 
-        Image jugador = new Image("jugadorAbajo.png");
+        Image jugador = new Image("jugador/jugadorAbajo.png");
 
         Rectangle vista = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
         vista.setFill(new ImagePattern(jugador));

@@ -16,7 +16,7 @@ public class InventarioVista implements Observer {
 
     private Scene vista;
     private Group elementos;
-    private PlantillaVista plantillaVista;
+    //private PlantillaVista plantillaVista;
 
     public InventarioVista(Inventario modelo) {
 
@@ -46,13 +46,13 @@ public class InventarioVista implements Observer {
     private Group crearBotones(Inventario modelo) {
 
         Image casilla = new Image("slot2.png");
-        Image hachaMadera = new Image("HachaMadera.png");
-        Image hachaPiedra = new Image("HachaPiedra.png");
-        Image hachaMetal = new Image("HachaMetal.png");
-        Image picoMadera = new Image("PicoMadera.png");
-        Image picoPiedra = new Image("PicoPiedra.png");
-        Image picoMetal = new Image("PicoMetal.png");
-        Image picoFino = new Image("PicoFino.png");
+        Image hachaMadera = new Image("herramientas/HachaMadera.png");
+        Image hachaPiedra = new Image("herramientas/HachaPiedra.png");
+        Image hachaMetal = new Image("herramientas/HachaMetal.png");
+        Image picoMadera = new Image("herramientas/PicoMadera.png");
+        Image picoPiedra = new Image("herramientas/PicoPiedra.png");
+        Image picoMetal = new Image("herramientas/PicoMetal.png");
+        Image picoFino = new Image("herramientas/PicoFino.png");
 
         Group botones = new Group();
 
@@ -105,7 +105,7 @@ public class InventarioVista implements Observer {
         Button botonMadera = new Button();
         botonMadera.setLayoutX(24);
         botonMadera.setLayoutY(400);
-        botonMadera.setGraphic(new ImageView(new Image("BloqueMadera.png")));
+        botonMadera.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMadera.png")));
         botonMadera.setOnAction(evento -> modelo.seleccionarMadera());
 
         botones.getChildren().add(botonMadera);
@@ -114,7 +114,7 @@ public class InventarioVista implements Observer {
         Button botonPiedra = new Button();
         botonPiedra.setLayoutX(72);
         botonPiedra.setLayoutY(400);
-        botonPiedra.setGraphic(new ImageView(new Image("BloquePiedra.png")));
+        botonPiedra.setGraphic(new ImageView(new Image("bloqueMaterial/BloquePiedra.png")));
         botonPiedra.setOnAction(evento -> modelo.seleccionarPiedra());
 
         botones.getChildren().add(botonPiedra);
@@ -123,7 +123,7 @@ public class InventarioVista implements Observer {
         Button botonMetal = new Button();
         botonMetal.setLayoutX(120);
         botonMetal.setLayoutY(400);
-        botonMetal.setGraphic(new ImageView(new Image("BloqueMetal.png")));
+        botonMetal.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMetal.png")));
         botonMetal.setOnAction(evento -> modelo.seleccionarDiamante());
 
         botones.getChildren().add(botonMetal);
@@ -132,7 +132,7 @@ public class InventarioVista implements Observer {
         Button botonDiamante = new Button();
         botonDiamante.setLayoutX(168);
         botonDiamante.setLayoutY(400);
-        botonDiamante.setGraphic(new ImageView(new Image("BloqueDiamante.png")));
+        botonDiamante.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueDiamante.png")));
         botonDiamante.setOnAction(evento -> modelo.seleccionarDiamante());
 
         botones.getChildren().add(botonDiamante);

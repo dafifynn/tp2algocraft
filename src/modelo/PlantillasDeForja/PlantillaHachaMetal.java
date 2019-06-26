@@ -17,10 +17,10 @@ public class PlantillaHachaMetal extends PlantillaDeForja {
     // Metodo
     private void armarPlantilla() {
 
-        this.plantilla[0][0] = MaterialMetal.class;
-        this.plantilla[0][1] = MaterialMetal.class;
-        this.plantilla[1][0] = MaterialMetal.class;
-        this.plantilla[1][1] = MaterialMadera.class;
-        this.plantilla[2][1] = MaterialMadera.class;
+        this.plantilla[0][0] = new MaterialMetal();
+        this.plantilla[0][1] = new MaterialMetal();
+        this.plantilla[1][0] = new MaterialMetal();
+        this.plantilla[1][1] = new MaterialMadera();
+        this.plantilla[2][1] = new MaterialMadera();
     }
 }

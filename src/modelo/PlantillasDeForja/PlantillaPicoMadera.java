@@ -16,10 +16,10 @@ public class PlantillaPicoMadera extends PlantillaDeForja {
     // Metodo
     private void armarPlantilla() {
 
-        this.plantilla[0][0] = MaterialMadera.class;
-        this.plantilla[0][1] = MaterialMadera.class;
-        this.plantilla[0][2] = MaterialMadera.class;
-        this.plantilla[1][1] = MaterialMadera.class;
-        this.plantilla[2][1] = MaterialMadera.class;
+        this.plantilla[0][0] = new MaterialMadera();
+        this.plantilla[0][1] = new MaterialMadera();
+        this.plantilla[0][2] = new MaterialMadera();
+        this.plantilla[1][1] = new MaterialMadera();
+        this.plantilla[2][1] = new MaterialMadera();
     }
 }

@@ -2,21 +2,18 @@ package modelo.PlantillasDeForja;
 
 
 import modelo.Constantes;
-import modelo.Material.MaterialDiamante;
-import modelo.Material.MaterialMadera;
-import modelo.Material.MaterialMetal;
-import modelo.Material.MaterialPiedra;
+import modelo.Material.*;
 
 public abstract class PlantillaDeForja {
 
     // Atributo
-    protected Class[][] plantilla;
+    protected Object[][] plantilla;
 
 
     // Constructor
     public PlantillaDeForja(){
 
-        this.plantilla = new Class[3][3];
+        this.plantilla = new Object[3][3];
         this.inicializarPlantilla();
     }
 
@@ -28,18 +25,18 @@ public abstract class PlantillaDeForja {
 
             for (int j = 0; j < 3; j++){
 
-                this.plantilla[i][j] = null;
+                this.plantilla[i][j] = new MaterialVacio();
             }
         }
     }
 
-    private boolean sonPlantillasIguales(Class[][] plantilla) {
+    private boolean sonPlantillasIguales(Object[][] plantilla) {
 
         for (int i = 0; i < 3; i++) {
 
             for (int j = 0; j < 3; j++) {
 
-                if (plantilla[i][j] != this.plantilla[i][j]) {
+                if (!plantilla[i][j].equals(this.plantilla[i][j])) {
                     return false;
                 }
             }
@@ -67,16 +64,16 @@ public abstract class PlantillaDeForja {
 
             for (int j = 0; j < 3; j++) {
 
-                if (plantilla[i][j] == MaterialMadera.class) {
+                if (plantilla[i][j].equals(new MaterialMadera())) {
                     resultado += Constantes.DURABILIDAD_INICIAL_BLOQUE_MADERA;
                 }
-                else if (plantilla[i][j] == MaterialPiedra.class) {
+                else if (plantilla[i][j].equals(new MaterialPiedra())) {
                     resultado += Constantes.DURABILIDAD_INICIAL_BLOQUE_PIEDRA;
                 }
-                else if (plantilla[i][j] == MaterialMetal.class) {
+                else if (plantilla[i][j].equals(new MaterialMetal())) {
                     resultado += Constantes.DURABILIDAD_INICIAL_BLOQUE_METAL;
                 }
-                else if (plantilla[i][j] == MaterialDiamante.class) {
+                else if (plantilla[i][j].equals(new MaterialDiamante())) {
                     resultado += Constantes.DURABILIDAD_INICIAL_BLOQUE_DIAMANTE;
                 }
             }
