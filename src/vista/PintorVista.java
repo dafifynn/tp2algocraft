@@ -23,7 +23,7 @@ public class PintorVista {
 
     public static Canvas crearBienvenida() {
 
-        Canvas bienvenida = new Canvas(1000,780);
+        Canvas bienvenida = new Canvas(1000,600);
 
         GraphicsContext contenidoBienvenida = bienvenida.getGraphicsContext2D();
 

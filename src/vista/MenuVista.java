@@ -30,7 +30,7 @@ public class MenuVista {
         //Se crea boton para iniciar la partida
         Button botonDeComienzo = new Button("Iniciar Partida");
         botonDeComienzo.setLayoutX(450);
-        botonDeComienzo.setLayoutY(730);
+        botonDeComienzo.setLayoutY(550);
 
         botonDeComienzo.setOnAction(evento -> {
             Juego juegoModelo = new Juego();
