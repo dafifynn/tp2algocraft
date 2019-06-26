@@ -10,7 +10,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modelo.Constantes;
+import modelo.Herramienta.Hacha;
 import modelo.Herramienta.Herramienta;
+import modelo.Herramienta.Pico;
+import modelo.Herramienta.PicoFino;
 import modelo.Jugador.Inventario;
 import modelo.Material.MaterialMadera;
 import modelo.Material.MaterialMetal;
@@ -44,7 +47,8 @@ public class InventarioVista implements Observer {
 
         if(observable instanceof Inventario) {
             Inventario actualizado = (Inventario) observable;
-            actualizarCantidadDeBotonesLabel(actualizado);
+            this.elementos.getChildren().removeAll(this.elementos.getChildren());
+            this.elementos.getChildren().addAll(crearBotones(actualizado));
             //TODO: optimizar
         }
     }
@@ -154,25 +158,25 @@ public class InventarioVista implements Observer {
             if(obtenida == null) {
                 boton.setGraphic(new ImageView("slot2.png"));
             }
-            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_MADERA) {
+            else if((obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_MADERA) && (obtenida.getClass().isAssignableFrom(Hacha.class))){
                 boton.setGraphic(new ImageView(Constantes.URL_HERRAMIENTA + "hachaMadera.png"));
             }
-            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_PIEDRA) {
+            else if((obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_PIEDRA) && (obtenida.getClass().isAssignableFrom(Hacha.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "HachaPiedra.png")));
             }
-            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_METAL) {
+            else if((obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_METAL) && (obtenida.getClass().isAssignableFrom(Hacha.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "HachaMetal.png")));
             }
-            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_MADERA) {
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_MADERA && (obtenida.getClass().isAssignableFrom(Pico.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoMadera.png")));
             }
-            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_PIEDRA) {
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_PIEDRA && (obtenida.getClass().isAssignableFrom(Pico.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoPiedra.png")));
             }
-            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_METAL) {
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_METAL && (obtenida.getClass().isAssignableFrom(Pico.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoMetal.png")));
             }
-            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO) {
+            else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO && (obtenida.getClass().isAssignableFrom(PicoFino.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoFino.png")));
             }
             boton.setOnAction(event -> {});
