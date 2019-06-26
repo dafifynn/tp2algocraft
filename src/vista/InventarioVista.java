@@ -45,35 +45,23 @@ public class InventarioVista implements Observer {
 
     private Group crearBotones(Inventario modelo) {
 
-        Image casilla = new Image("slot2.png");
-        Image hachaMadera = new Image("herramientas/HachaMadera.png");
-        Image hachaPiedra = new Image("herramientas/HachaPiedra.png");
-        Image hachaMetal = new Image("herramientas/HachaMetal.png");
-        Image picoMadera = new Image("herramientas/PicoMadera.png");
-        Image picoPiedra = new Image("herramientas/PicoPiedra.png");
-        Image picoMetal = new Image("herramientas/PicoMetal.png");
-        Image picoFino = new Image("herramientas/PicoFino.png");
-
         Group botones = new Group();
 
-        int filasHerramientas = Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS / 9;
+
 
         //TODO: Group botonesDePlantilla = plantillaVista.crearBotones();
 
-        for(int i = 0; i < filasHerramientas; i++) {
+        for(int i = 0; i < Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS ; i++) {
 
-            for(int j = 0; j < 9 ; j ++) {
+            Button boton = new Button();
+            boton.setLayoutX(24 + (i * 48));
+            boton.setLayoutY(240);
 
-                Button boton = new Button();
-                boton.setLayoutX(24 + (j * 48));
-                boton.setLayoutY( 240 + (i * 48));
-
-                int indice = 0;
-                indice = (i * 9) + j;
-                Herramienta obtenida = modelo.obtenerHerramienta(indice);
+            int indice = i;
+            Herramienta obtenida = modelo.obtenerHerramienta(indice);
 
                 if(obtenida == null) {
-                    boton.setGraphic(new ImageView(casilla));
+                    boton.setGraphic(new ImageView("slot2.png"));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_MADERA) {
                     boton.setGraphic(new ImageView(Constantes.URL_HERRAMIENTA + "hachaMadera.png"));
