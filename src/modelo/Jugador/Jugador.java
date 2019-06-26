@@ -68,8 +68,6 @@ public class Jugador {
         Coordenada coordenadaSiguiente = this.direccion.crearCoordenadaSiguiente(this.coordenada);
         Material material = mapa.obtenerMaterial(coordenadaSiguiente);
 
-        if (material.getClass() == MaterialVacio.class) return;
-
         this.herramientaEquipada.impactar(material);
 
         if (material.estaRoto()) {

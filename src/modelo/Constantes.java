@@ -10,6 +10,8 @@ public final class Constantes {
 
     public static final String URL_VACIO_DEL_MAPA = "file:Resources/mapa/pasto.png";
 
+    public static final String URL_HERRAMIENTA = "file:Resources/herramientas/";
+
     // Mapa
     public static final int MAPA_FILAS_DEFECTO = 29;
 

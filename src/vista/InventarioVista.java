@@ -76,25 +76,25 @@ public class InventarioVista implements Observer {
                     boton.setGraphic(new ImageView(casilla));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_MADERA) {
-                    boton.setGraphic(new ImageView("hachaMadera.png"));
+                    boton.setGraphic(new ImageView(Constantes.URL_HERRAMIENTA + "hachaMadera.png"));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_PIEDRA) {
-                    boton.setGraphic(new ImageView(new Image("HachaPiedra.png")));
+                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "HachaPiedra.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_METAL) {
-                    boton.setGraphic(new ImageView(new Image("HachaMetal.png")));
+                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "HachaMetal.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_MADERA) {
-                    boton.setGraphic(new ImageView(new Image("PicoMadera.png")));
+                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoMadera.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_PIEDRA) {
-                    boton.setGraphic(new ImageView(new Image("PicoPiedra.png")));
+                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoPiedra.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_METAL) {
-                    boton.setGraphic(new ImageView(new Image("PicoMetal.png")));
+                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoMetal.png")));
                 }
                 else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO) {
-                    boton.setGraphic(new ImageView(new Image("PicoFino.png")));
+                    boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoFino.png")));
                 }
                 boton.setOnAction(event -> {});
                 botones.getChildren().add(boton);
