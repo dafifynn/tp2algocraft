@@ -99,13 +99,20 @@ public class Jugador {
 
     public void equipar(int posicion){
 
+        Herramienta herramientaAEquipar = this.inventario.extraerHerramienta(posicion);
+
         if (this.tengoHerramientaEquipada()){
             this.guardarEnInventario();
         }
 
-        //this.herramientaEquipada = this.inventario.extraerHerramienta(posicion);
+        this.herramientaEquipada = herramientaAEquipar;
     }
 
+    public void desequipar(){
+
+        this.guardarEnInventario();
+        this.herramientaEquipada = null;
+    }
     public void abrirInventario(){
 
         //this.inventario.dibujar();
