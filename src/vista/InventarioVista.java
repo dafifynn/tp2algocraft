@@ -187,7 +187,7 @@ public class InventarioVista implements Observer {
                         actualizarImagenesDeHerramientas(modelo);
                     }
                     catch (NoHayMaterialParaEliminarException e) {
-
+                        CajaMusical.reproducir(CajaMusical.vidrio);
                     }
 
 

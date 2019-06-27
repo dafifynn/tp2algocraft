@@ -4,8 +4,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-import java.net.URL;
-
 public class RepetidorAudio {
 
     public RepetidorAudio(Media audio) {

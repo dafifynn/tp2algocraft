@@ -33,6 +33,8 @@ public final class Constantes {
 
     public static final String SONIDO_SIN_HERRAMIENTA = "sinHerramienta.mp3";
 
+    public static final String SONIDO_VIDRIO = "vidrio.mp3";
+
     // Mapa
     public static final int MAPA_FILAS_DEFECTO = 29;
 
