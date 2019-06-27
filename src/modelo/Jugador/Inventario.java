@@ -46,7 +46,7 @@ public class Inventario extends Observable {
         this.materialSeleccionado = new MaterialVacio();
 
         this.capacidadUsadaDeInventarioMateriales = 0;
-        this.capacidadUsadaDeInventarioHerramientas = 0;
+        this.capacidadUsadaDeInventarioHerramientas = 1;
     }
 
 
@@ -61,7 +61,10 @@ public class Inventario extends Observable {
 
     public Material obtenerMaterialSeleccionado(){ return this.materialSeleccionado; }
 
-    public Herramienta extraerHerramienta(int indice ){
+    public Herramienta extraerHerramienta(int indice) {
+
+        if (this.capacidadUsadaDeInventarioHerramientas == 0){ return null; }
+
         Herramienta herramienta = this.herramientas.get(indice);
         this.herramientas.remove(indice);
         this.capacidadUsadaDeInventarioHerramientas --;
