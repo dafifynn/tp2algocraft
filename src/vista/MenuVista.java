@@ -17,7 +17,6 @@ public class MenuVista {
 
         menu.getChildren().add(this.crearBotonComienzo(primario));
 
-        primario.setResizable(false);
         primario.setTitle("AlgoCraft");
         primario.getIcons().add(new Image("IconoAlgoCraft.png"));
         primario.setScene(visualizacion);
