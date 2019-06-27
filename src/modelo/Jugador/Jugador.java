@@ -10,14 +10,21 @@ import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
 import modelo.Material.Material;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Jugador {
+
+public class Jugador extends Observable {
 
     // Atributo
     private Inventario inventario;
     private Herramienta herramientaEquipada;
     private Coordenada coordenada;
     private EstrategiaDeDireccion direccion;
+
+    private List<Observer> observadores;
 
 
     // Constructor
@@ -28,7 +35,8 @@ public class Jugador {
         this.direccion = new DireccionAbajo();
         this.inventario = new Inventario();
         this.herramientaEquipada = inventario.extraerHerramienta(0);
-        
+
+        this.observadores = new ArrayList<>();
     }
 
 
@@ -86,6 +94,7 @@ public class Jugador {
         if (herramientaEquipada.estaRota()) {
 
             this.herramientaEquipada = null;
+            this.notificar();
         }
     }
 
@@ -102,6 +111,18 @@ public class Jugador {
         }
 
         this.herramientaEquipada = herramientaAEquipar;
+    }
+
+    public void agregarObservador(Observer nuevo) {
+
+        this.observadores.add(nuevo);
+    }
+
+    public void notificar() {
+
+        for(Observer observador : this.observadores) {
+            observador.update(this,null);
+        }
     }
 
 }
