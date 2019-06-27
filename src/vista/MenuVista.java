@@ -14,7 +14,8 @@ public class MenuVista {
         Group menu = new Group(PintorVista.crearBienvenida());
         Scene visualizacion = new Scene(menu);
 
-        new RepetidorAudio(CajaMusical.principal);
+        // TODO: silenciado por problemas de compatibilidad
+        // new RepetidorAudio(CajaMusical.principal);
 
 
         menu.getChildren().add(this.crearBotonComienzo(primario));

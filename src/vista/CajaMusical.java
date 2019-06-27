@@ -33,9 +33,9 @@ public final class CajaMusical {
     public static final Media sinHerramienta = new Media(
             new File(Constantes.URL_AUDIO + Constantes.SONIDO_SIN_HERRAMIENTA).toURI().toString());
 
-
+    //TODO: silenciado por problemas de compatibilidad
     public static void reproducir(Media audio) {
-        new MediaPlayer(audio).play();
+        //new MediaPlayer(audio).play();
     }
 
 }
