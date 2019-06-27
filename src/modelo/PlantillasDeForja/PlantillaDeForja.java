@@ -9,7 +9,6 @@ public abstract class PlantillaDeForja {
     // Atributo
     protected Object[][] plantilla;
 
-
     // Constructor
     public PlantillaDeForja(){
 

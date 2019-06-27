@@ -68,7 +68,7 @@ public class Inventario extends Observable {
         Herramienta herramienta = this.herramientas.get(indice);
         this.herramientas.remove(indice);
         this.capacidadUsadaDeInventarioHerramientas --;
-
+        this.notificar();
         return herramienta;
     }
 
@@ -81,7 +81,7 @@ public class Inventario extends Observable {
        if(capacidadUsadaDeInventarioMateriales <= Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES){
            Integer cantidad =  this.materiales.get(material);
            this.materiales.put(material,(cantidad +1));
-           this.capacidadUsadaDeInventarioMateriales ++;
+           this.capacidadUsadaDeInventarioMateriales++;
            this.notificar();
        }else{
            throw new InventarioMaterialesEstaLlenoException();
@@ -98,13 +98,6 @@ public class Inventario extends Observable {
             throw new InventarioHerramientasEstaLlenoException();
         }
         this.notificar();
-    }
-
-    public void eliminarHerramienta(Herramienta herramienta){
-
-        this.herramientas.remove(herramienta);
-        this.capacidadUsadaDeInventarioHerramientas--;
-
     }
 
     public void eliminarMaterial(Material material) throws NoHayMaterialParaEliminarException{
@@ -167,7 +160,7 @@ public class Inventario extends Observable {
             Herramienta herramienta = forja.construirHerramienta(this.plantilla);
             this.agregarHerramienta(herramienta);
             plantilla = new PlantillaEditable();
-            this.capacidadUsadaDeInventarioMateriales --;
+            this.capacidadUsadaDeInventarioMateriales = this.capacidadUsadaDeInventarioMateriales - this.plantilla.getCantDeElementosEnPlantilla();
             this.notificar();
         }
         catch (PlantillaDeForjaInexistenteException e) {
@@ -185,17 +178,4 @@ public class Inventario extends Observable {
         }
     }
 
-    public PlantillaEditable obtenerPlantilla() {
-        return this.plantilla;
-    }
-
-    public void interactuarConPlantilla(int fila, int columna) {
-
-        //TODO:
-        this.notificar();
-    }
-
-    public void dibujarInventario(){
-        //FALTA IMPLEMENTAR
-    }
 }
