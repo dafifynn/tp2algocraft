@@ -1,6 +1,5 @@
 package vista;
 
-import controlador.ControladorDeJuego;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,6 +13,9 @@ public class MenuVista {
 
         Group menu = new Group(PintorVista.crearBienvenida());
         Scene visualizacion = new Scene(menu);
+
+        new RepetidorAudio(CajaMusical.principal);
+
 
         menu.getChildren().add(this.crearBotonComienzo(primario));
 
@@ -32,6 +34,7 @@ public class MenuVista {
         botonDeComienzo.setLayoutY(550);
 
         botonDeComienzo.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.explosion);
             Juego juegoModelo = new Juego();
             new JuegoVista(primario,juegoModelo);
         });

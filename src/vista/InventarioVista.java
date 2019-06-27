@@ -68,7 +68,10 @@ public class InventarioVista implements Observer {
         botonMadera.setLayoutX(266);
         botonMadera.setLayoutY(240);
         botonMadera.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMadera.png")));
-        botonMadera.setOnAction(evento -> modelo.seleccionarMadera());
+        botonMadera.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
+            modelo.seleccionarMadera();
+        });
 
         this.elementos.getChildren().add(botonMadera);
 
@@ -77,7 +80,10 @@ public class InventarioVista implements Observer {
         botonPiedra.setLayoutX(314);
         botonPiedra.setLayoutY(240);
         botonPiedra.setGraphic(new ImageView(new Image("bloqueMaterial/BloquePiedra.png")));
-        botonPiedra.setOnAction(evento -> modelo.seleccionarPiedra());
+        botonPiedra.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
+            modelo.seleccionarPiedra();
+        });
 
         this.elementos.getChildren().add(botonPiedra);
 
@@ -86,7 +92,10 @@ public class InventarioVista implements Observer {
         botonMetal.setLayoutX(362);
         botonMetal.setLayoutY(240);
         botonMetal.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMetal.png")));
-        botonMetal.setOnAction(evento -> modelo.seleccionarMetal());
+        botonMetal.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
+            modelo.seleccionarMetal();
+        });
 
         this.elementos.getChildren().add(botonMetal);
 
@@ -95,7 +104,10 @@ public class InventarioVista implements Observer {
         botonDiamante.setLayoutX(410);
         botonDiamante.setLayoutY(240);
         botonDiamante.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueDiamante.png")));
-        botonDiamante.setOnAction(evento -> modelo.seleccionarDiamante());
+        botonDiamante.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
+            modelo.seleccionarDiamante();
+        });
 
         this.elementos.getChildren().add(botonDiamante);
     }
@@ -180,7 +192,9 @@ public class InventarioVista implements Observer {
             else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO && (obtenida.getClass().isAssignableFrom(PicoFino.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoFino.png")));
             }
-            boton.setOnAction(event -> {this.modeloJugador.equipar(indice);});
+            boton.setOnAction(event -> {
+                CajaMusical.reproducir(CajaMusical.click);
+                this.modeloJugador.equipar(indice);});
             botones.getChildren().add(boton);
         }
 
@@ -197,7 +211,10 @@ public class InventarioVista implements Observer {
         botonMadera.setLayoutX(266);
         botonMadera.setLayoutY(240);
         botonMadera.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMadera.png")));
-        botonMadera.setOnAction(evento -> modelo.seleccionarMadera());
+        botonMadera.setOnAction(evento -> {
+            modelo.seleccionarMadera();
+            CajaMusical.reproducir(CajaMusical.click);
+        });
 
         botones.getChildren().add(botonMadera);
 
@@ -214,7 +231,10 @@ public class InventarioVista implements Observer {
         botonPiedra.setLayoutX(314);
         botonPiedra.setLayoutY(240);
         botonPiedra.setGraphic(new ImageView(new Image("bloqueMaterial/BloquePiedra.png")));
-        botonPiedra.setOnAction(evento -> modelo.seleccionarPiedra());
+        botonPiedra.setOnAction(evento -> {
+            modelo.seleccionarPiedra();
+            CajaMusical.reproducir(CajaMusical.click);
+        });
 
         botones.getChildren().add(botonPiedra);
 
@@ -231,7 +251,10 @@ public class InventarioVista implements Observer {
         botonMetal.setLayoutX(362);
         botonMetal.setLayoutY(240);
         botonMetal.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueMetal.png")));
-        botonMetal.setOnAction(evento -> modelo.seleccionarMetal());
+        botonMetal.setOnAction(evento -> {
+            modelo.seleccionarMetal();
+            CajaMusical.reproducir(CajaMusical.click);
+        });
 
         botones.getChildren().add(botonMetal);
 
@@ -248,7 +271,10 @@ public class InventarioVista implements Observer {
         botonDiamante.setLayoutX(410);
         botonDiamante.setLayoutY(240);
         botonDiamante.setGraphic(new ImageView(new Image("bloqueMaterial/BloqueDiamante.png")));
-        botonDiamante.setOnAction(evento -> modelo.seleccionarDiamante());
+        botonDiamante.setOnAction(evento -> {
+            modelo.seleccionarDiamante();
+            CajaMusical.reproducir(CajaMusical.click);
+        });
 
         botones.getChildren().add(botonDiamante);
 
@@ -258,6 +284,7 @@ public class InventarioVista implements Observer {
         grilla11.setLayoutY(48);
         grilla11.setGraphic(new ImageView(new Image("slot2.png")));
         grilla11.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla11, modelo);
             modelo.guardarSeleccionadoEnGrilla(0,0);} );
 
@@ -268,6 +295,7 @@ public class InventarioVista implements Observer {
         grilla12.setLayoutY(48);
         grilla12.setGraphic(new ImageView(new Image("slot2.png")));
         grilla12.setOnAction(evento ->{
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla12,modelo);
             modelo.guardarSeleccionadoEnGrilla(0,1);
         } );
@@ -279,6 +307,7 @@ public class InventarioVista implements Observer {
         grilla13.setLayoutY(48);
         grilla13.setGraphic(new ImageView(new Image("slot2.png")));
         grilla13.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla13,modelo);
             modelo.guardarSeleccionadoEnGrilla(0,2);
         } );
@@ -290,6 +319,7 @@ public class InventarioVista implements Observer {
         grilla21.setLayoutY(96);
         grilla21.setGraphic(new ImageView(new Image("slot2.png")));
         grilla21.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla21,modelo);
             modelo.guardarSeleccionadoEnGrilla(1,0);
         } );
@@ -301,6 +331,7 @@ public class InventarioVista implements Observer {
         grilla22.setLayoutY(96);
         grilla22.setGraphic(new ImageView(new Image("slot2.png")));
         grilla22.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla22,modelo);
             modelo.guardarSeleccionadoEnGrilla(1,1);
         } );
@@ -312,6 +343,7 @@ public class InventarioVista implements Observer {
         grilla23.setLayoutY(96);
         grilla23.setGraphic(new ImageView(new Image("slot2.png")));
         grilla23.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla23,modelo);
             modelo.guardarSeleccionadoEnGrilla(1,2);
         } );
@@ -323,6 +355,7 @@ public class InventarioVista implements Observer {
         grilla31.setLayoutY(144);
         grilla31.setGraphic(new ImageView(new Image("slot2.png")));
         grilla31.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla31,modelo);
             modelo.guardarSeleccionadoEnGrilla(2,0);
         } );
@@ -334,6 +367,7 @@ public class InventarioVista implements Observer {
         grilla32.setLayoutY(144);
         grilla32.setGraphic(new ImageView(new Image("slot2.png")));
         grilla32.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla32,modelo);
             modelo.guardarSeleccionadoEnGrilla(2,1);
         } );
@@ -345,6 +379,7 @@ public class InventarioVista implements Observer {
         grilla33.setLayoutY(144);
         grilla33.setGraphic(new ImageView(new Image("slot2.png")));
         grilla33.setOnAction(evento -> {
+            CajaMusical.reproducir(CajaMusical.click);
             actualizarImagen(grilla33,modelo);
             modelo.guardarSeleccionadoEnGrilla(2,2);
         } );
@@ -354,7 +389,9 @@ public class InventarioVista implements Observer {
         Button contruir = new Button("Construir");
         contruir.setLayoutX(240);
         contruir.setLayoutY(96);
-        contruir.setOnAction(evento ->{modelo.contruirHerramientaDeGrilla();
+        contruir.setOnAction(evento ->{
+        CajaMusical.reproducir(CajaMusical.click);
+        modelo.contruirHerramientaDeGrilla();
         grilla11.setGraphic(new ImageView(new Image("slot2.png")));
         grilla12.setGraphic(new ImageView(new Image("slot2.png")));
         grilla13.setGraphic(new ImageView(new Image("slot2.png")));
@@ -370,7 +407,10 @@ public class InventarioVista implements Observer {
         Button eliminar = new Button ("Eliminar material");
         eliminar.setLayoutX(266);
         eliminar.setLayoutY(280);
-        eliminar.setOnAction(evento ->{modelo.eliminarMaterial(modelo.obtenerMaterialSeleccionado());});
+        eliminar.setOnAction(evento ->{
+            CajaMusical.reproducir(CajaMusical.click);
+            modelo.eliminarMaterial(modelo.obtenerMaterialSeleccionado());
+        });
 
         botones.getChildren().add(eliminar);
 

@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import modelo.Juego.Juego;
+import vista.CajaMusical;
 import vista.InventarioVista;
 import vista.JuegoVista;
 
@@ -27,6 +28,7 @@ public class ControladorDeInventario {
     private void cerrarInventario(KeyEvent evento, JuegoVista vistaDeRetorno) {
 
         if(evento.getCode().equals(KeyCode.E)) {
+            CajaMusical.reproducir(CajaMusical.cerrar);
             vistaDeRetorno.cerrarInventario();
         }
     }

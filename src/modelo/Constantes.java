@@ -14,6 +14,25 @@ public final class Constantes {
 
     public static final String URL_ROTAR_JUGADOR = "file:Resources/jugador/";
 
+    // Sonidos
+    public static final String URL_AUDIO = "Resources/audio/";
+
+    public static final String MUSICA_PRINCIPAL = "intro.mp3";
+
+    public static final String SONIDO_CAMINAR = "caminar2.mp3";
+
+    public static final String SONIDO_EXPLOSION = "explosion.mp3";
+
+    public static final String SONIDO_CLICK = "click.mp3";
+
+    public static final String SONIDO_ABRIR = "abrir.mp3";
+
+    public static final String SONIDO_CERRAR = "cerrar.mp3";
+
+    public static final String SONIDO_IMPACTO = "impacto.mp3";
+
+    public static final String SONIDO_SIN_HERRAMIENTA = "sinHerramienta.mp3";
+
     // Mapa
     public static final int MAPA_FILAS_DEFECTO = 29;
 
