@@ -61,6 +61,10 @@ public class Inventario extends Observable {
 
     public Material obtenerMaterialSeleccionado(){ return this.materialSeleccionado; }
 
+    private boolean hayMaterial (Material material) {
+        return (this.materiales.get(material) > 0);
+    }
+
     public Herramienta extraerHerramienta(int indice) {
 
         if (this.capacidadUsadaDeInventarioHerramientas == 0 || indice >= this.capacidadUsadaDeInventarioHerramientas ){ return null; }
@@ -105,6 +109,7 @@ public class Inventario extends Observable {
         Integer cantidad =  this.materiales.get(material);
         if(cantidad != 0) {
             this.materiales.put(material, (cantidad - 1));
+            this.notificar();
         }else{
             throw new NoHayMaterialParaEliminarException();
         }

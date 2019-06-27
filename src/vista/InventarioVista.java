@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.Constantes;
+import modelo.Excepciones.NoHayMaterialParaEliminarException;
 import modelo.Herramienta.Herramienta;
 import modelo.Jugador.Inventario;
 import modelo.Jugador.Jugador;
@@ -179,10 +180,17 @@ public class InventarioVista implements Observer {
                 int columna = j;
 
                 this.botonesDePlantilla[i][j].setOnAction(evento -> {
-                    CajaMusical.reproducir(CajaMusical.click);
-                    actualizarImagenGrilla(boton , modelo);
-                    modelo.guardarSeleccionadoEnGrilla(fila,columna);
-                    actualizarImagenesDeHerramientas(modelo);
+                    try{
+                        CajaMusical.reproducir(CajaMusical.click);
+                        actualizarImagenGrilla(boton , modelo);
+                        modelo.guardarSeleccionadoEnGrilla(fila,columna);
+                        actualizarImagenesDeHerramientas(modelo);
+                    }
+                    catch (NoHayMaterialParaEliminarException e) {
+
+                    }
+
+
                 });
 
                 this.elementos.getChildren().add(this.botonesDePlantilla[i][j]);
@@ -199,8 +207,9 @@ public class InventarioVista implements Observer {
     }
 
     private void actualizarImagenGrilla(Button botonGrilla, Inventario modelo){
-        botonGrilla.setGraphic(Libreria.buscarUnidadDeMaterial(modelo.obtenerMaterialSeleccionado()));
+
         modelo.eliminarMaterial(modelo.obtenerMaterialSeleccionado());
+        botonGrilla.setGraphic(Libreria.buscarUnidadDeMaterial(modelo.obtenerMaterialSeleccionado()));
     }
 
     private Group crearBotones(Inventario modelo, Jugador modeloJugador) {
@@ -221,8 +230,13 @@ public class InventarioVista implements Observer {
         eliminar.setLayoutX(266);
         eliminar.setLayoutY(280);
         eliminar.setOnAction(evento ->{
-            CajaMusical.reproducir(CajaMusical.click);
-            modelo.eliminarMaterial(modelo.obtenerMaterialSeleccionado());
+            try {
+                CajaMusical.reproducir(CajaMusical.click);
+                modelo.eliminarMaterial(modelo.obtenerMaterialSeleccionado());
+            }
+            catch (NoHayMaterialParaEliminarException e) {
+
+            }
         });
 
         botones.getChildren().add(eliminar);
