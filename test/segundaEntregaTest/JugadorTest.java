@@ -17,7 +17,7 @@ public class JugadorTest {
     public void JugadorPorDefectoTieneCoordenadasXY() {
 
         Jugador jugador = new Jugador();
-        Coordenada coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO,Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
+        Coordenada coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_FILA_DEFECTO, Constantes.JUGADOR_COORDENADA_COLUMNA_DEFECTO);
 
         assertTrue(coordenada.equals(jugador.obtenerCoordenada()));
     }
@@ -29,19 +29,7 @@ public class JugadorTest {
         Mapa mapa = new Mapa();
         EstrategiaDeDireccion direccion = new DireccionArriba();
 
-        Coordenada coordenadaInicial = jugador.obtenerCoordenada();
-
-        jugador.moverse(direccion, mapa);
-
-        Coordenada coordenadaEsperada = direccion.crearCoordenadaSiguiente(coordenadaInicial);
-
-        if(!mapa.hayMaterialEnCoordenada(coordenadaEsperada)) {
-
-            assertTrue(coordenadaEsperada.equals(jugador.obtenerCoordenada()));
-        }
-        else{
-            assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion,mapa);});
-        }
+        assertThrows(MovimientoInvalidoException.class, () -> {jugador.moverse(direccion,mapa);});
     }
 
     @Test

@@ -41,8 +41,8 @@ public class JuegoTest {
         Juego juego = new Juego();
         Jugador jugador = juego.obtenerJugador();
 
-        Coordenada coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_X_DEFECTO, Constantes.JUGADOR_COORDENADA_Y_DEFECTO);
+        Coordenada coordenada = new Coordenada(Constantes.JUGADOR_COORDENADA_FILA_DEFECTO, Constantes.JUGADOR_COORDENADA_COLUMNA_DEFECTO);
 
-        assertTrue(coordenada.equals(jugador.obtenerCoordenada()));
+        assertTrue(jugador.obtenerCoordenada().equals(coordenada));
     }
 }
