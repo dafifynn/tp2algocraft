@@ -30,73 +30,18 @@ public class PintorVista {
         Image menu = new Image("menu.png");
         contenidoBienvenida.drawImage(menu,0,0);
 
-        contenidoBienvenida.setFill(Color.GREEN);
+        contenidoBienvenida.setFill(Color.WHITE);
         contenidoBienvenida.setStroke(Color.BLACK);
         contenidoBienvenida.setLineWidth(2);
         contenidoBienvenida.setFont(Font.font("Verdana", FontWeight.BOLD, 100));
         contenidoBienvenida.fillText("ALGOCRAFT", 150,130);
         contenidoBienvenida.strokeText("ALGOCRAFT",150,130);
 
-        contenidoBienvenida.setFill(Color.BLACK);
+        contenidoBienvenida.setFill(Color.WHITE);
         contenidoBienvenida.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
         contenidoBienvenida.fillText("Aprobaremos...?", 850,580);
 
         return bienvenida;
     }
 
-    public static Group crearGrupoInventario(){
-
-        Group grupo = new Group();
-
-        for(int i = 0; i <= Constantes.FILAS_INVENTARIO; i ++){
-            for(int j = 0; j <= Constantes.COLUMNAS_INVENTARIO; j++){
-
-                Rectangle rectangle = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-                rectangle.setFill(Color.BLUE);
-                rectangle.setLayoutX(i * Constantes.PIXELES);
-                rectangle.setLayoutY(j * Constantes.PIXELES);
-                grupo.getChildren().add(rectangle);
-
-            }
-        }
-        return grupo;
-
-    }
-
-
-    public static Group crearGrupoBasadoEnInventario(Inventario inventario) {
-
-        Image casilla = new Image("slot2.png");
-
-        Group elementos = new Group();
-
-        int filasHerramientas = Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS / 9;
-
-        for(int i = 0; i < filasHerramientas; i++) {
-
-            for(int j = 0; j < 9 ; j ++) {
-
-                Button boton = new Button();
-                boton.setLayoutX(24 + (j * 48));
-                boton.setLayoutY( 240 + (i * 48));
-                boton.setGraphic(new ImageView(casilla));
-
-                elementos.getChildren().add(boton);
-            }
-        }
-        return elementos;
-    }
-
-
-    public static Rectangle crearFiguraJugador(Jugador modelo) {
-
-        Image jugador = new Image("jugador/jugadorAbajo.png");
-
-        Rectangle vista = new Rectangle(Constantes.PIXELES,Constantes.PIXELES);
-        vista.setFill(new ImagePattern(jugador));
-        vista.setLayoutX(Constantes.JUGADOR_COORDENADA_COLUMNA_DEFECTO * Constantes.PIXELES);
-        vista.setLayoutY(Constantes.JUGADOR_COORDENADA_FILA_DEFECTO * Constantes.PIXELES);
-
-        return vista;
-    }
 }

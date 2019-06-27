@@ -52,9 +52,7 @@ public class JugadorVista {
 
     public void rotarJugador(EstrategiaDeDireccion direccion) {
 
-        Image imagen = new Image(Constantes.URL_ROTAR_JUGADOR + direccion.getClass().getSimpleName() + ".png");
-        this.figura.setFill(new ImagePattern(imagen));
-
+        this.figura.setFill(Libreria.buscar(direccion));
     }
 
     private void actualizarFigura(double nuevoX, double nuevoY) {

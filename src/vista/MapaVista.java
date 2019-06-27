@@ -53,10 +53,10 @@ public class MapaVista implements Observer {
 
         try {
             Material material = mapa.obtenerMaterial(new Coordenada(j,i));
-            rectangle.setFill(new ImagePattern(new Image(Constantes.URL_MATERIALES_DEL_MAPA + material.getClass().getSimpleName() + ".png")));
+            rectangle.setFill(Libreria.buscar(material));
         }
         catch (MaterialInexistenteException e) {
-            rectangle.setFill(new ImagePattern(new Image(Constantes.URL_VACIO_DEL_MAPA)));
+            rectangle.setFill(Libreria.PASTO);
         }
 
         this.materiales.getChildren().add(rectangle);
