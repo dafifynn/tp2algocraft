@@ -36,6 +36,10 @@ public class Jugador {
     public Coordenada obtenerCoordenada() {
         return this.coordenada;
     }
+	
+    public Herramienta obtenerHerramienta(){
+        return this.herramientaEquipada;
+    }
 
 
     // Metodos Privados
@@ -85,8 +89,9 @@ public class Jugador {
         procesarMaterial(mapa);
 
         if (herramientaEquipada.estaRota()) {
-		
+
             this.herramientaEquipada = null;
+
         }
 
     }
@@ -96,7 +101,7 @@ public class Jugador {
     }
 
     public void equipar(int posicion){
-       
+
         Herramienta herramientaAEquipar = this.inventario.extraerHerramienta(posicion);
 
         if (this.tengoHerramientaEquipada()){
@@ -104,16 +109,10 @@ public class Jugador {
         }
 
         this.herramientaEquipada = herramientaAEquipar;
+
     }
 
-    public void desequipar(){
 
-        this.guardarEnInventario();
-        this.herramientaEquipada = null;
-    }
-    public void abrirInventario(){
 
-        //this.inventario.dibujar();
-    }
 
 }

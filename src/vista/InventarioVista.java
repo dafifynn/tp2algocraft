@@ -32,15 +32,17 @@ public class InventarioVista implements Observer {
 
     private Jugador modeloJugador;
 
+
     public InventarioVista(Inventario modeloInventario, Jugador modeloJugador) {
 
         this.modeloJugador = modeloJugador;
 
         this.elementos = crearBotones(modeloInventario, modeloJugador);
         this.inicializarBotonesDeMaterial(modeloJugador.obtenerInventario());
-        this.inicializarBotonesDeCantidadDeMateriales(modeloJugador.obtenerInventario());
+        this.inicializarBotonesDeCantidadDeMateriales(modeloJugador.obtenerInventario(), modeloJugador);
         this.actualizarCantidadDeBotonesLabel(modeloJugador.obtenerInventario());
         this.vista = new Scene(elementos,480,480);
+
     }
 
     @Override
@@ -50,8 +52,10 @@ public class InventarioVista implements Observer {
             Inventario actualizado = (Inventario) observable;
             this.elementos.getChildren().removeAll(this.elementos.getChildren());
             this.elementos.getChildren().addAll(crearBotones(actualizado, modeloJugador));
-            //TODO: optimizar
+
         }
+            //TODO: optimizar
+
     }
 
     public Scene visualizacion() {
@@ -110,10 +114,12 @@ public class InventarioVista implements Observer {
         });
 
         this.elementos.getChildren().add(botonDiamante);
+
+
     }
 
 
-    private void inicializarBotonesDeCantidadDeMateriales (Inventario modelo) {
+    private void inicializarBotonesDeCantidadDeMateriales (Inventario modelo, Jugador modeloJugador ) {
         //label del boton madera
         botonLabelMadera = new Button();
         botonLabelMadera.setLayoutX(266);
@@ -150,6 +156,7 @@ public class InventarioVista implements Observer {
         botonLabelPiedra.setText(Integer.toString(modelo.cantidadDePiedra()));
         botonLabelMetal.setText(Integer.toString(modelo.cantidadDeMetal()));
         botonLabelDiamante.setText(Integer.toString(modelo.cantidadDeDiamante()));
+
     }
 
     private Group crearBotones(Inventario modelo, Jugador modeloJugador) {
@@ -159,6 +166,14 @@ public class InventarioVista implements Observer {
 
 
         //TODO: Group botonesDePlantilla = plantillaVista.crearBotones();
+
+        //boton herramienta actual
+        Button botonHerramientaEquipada = new Button();
+        botonHerramientaEquipada.setLayoutY(24);
+        botonHerramientaEquipada.setLayoutX(24);
+        ponerImagenHerramienta(botonHerramientaEquipada, modeloJugador);
+
+        botones.getChildren().add(botonHerramientaEquipada);
 
         for(int i = 0; i < Constantes.MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS ; i++) {
 
@@ -192,11 +207,20 @@ public class InventarioVista implements Observer {
             else if(obtenida.obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_FINO && (obtenida.getClass().isAssignableFrom(PicoFino.class))) {
                 boton.setGraphic(new ImageView(new Image(Constantes.URL_HERRAMIENTA + "PicoFino.png")));
             }
+
             boton.setOnAction(event -> {
                 CajaMusical.reproducir(CajaMusical.click);
-                this.modeloJugador.equipar(indice);});
+                this.modeloJugador.equipar(indice);
+                ponerImagenHerramienta(botonHerramientaEquipada, modeloJugador);
+                this.elementos.getChildren().remove(botonHerramientaEquipada);
+                this.elementos.getChildren().add(botonHerramientaEquipada);
+            });
+
+
             botones.getChildren().add(boton);
         }
+
+
 
         //label del boton madera
         String i =  Integer.toString(modelo.cantidadDeMadera());
@@ -417,6 +441,52 @@ public class InventarioVista implements Observer {
         return botones;
     }
 
+
+    private void ponerImagenHerramienta(Button herramienta, Jugador jugador ){
+
+        if(jugador.obtenerHerramienta() == null){
+
+            herramienta.setGraphic(new ImageView(new Image("slot3.png")));
+
+
+        }else if ((jugador.obtenerHerramienta().getClass().isAssignableFrom(Hacha.class)) &&
+                (jugador.obtenerHerramienta().obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_PIEDRA)){
+
+            herramienta.setGraphic(new ImageView(new Image("herramientas/HachaPiedraActual.png")));
+
+        }else if((jugador.obtenerHerramienta().getClass().isAssignableFrom(Hacha.class)) &&
+                (jugador.obtenerHerramienta().obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_METAL)){
+
+                herramienta.setGraphic(new ImageView(new Image("herramientas/HachaMetalActual.png")));
+
+        } else if ((jugador.obtenerHerramienta().getClass().isAssignableFrom(Pico.class)) &&
+                (jugador.obtenerHerramienta().obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_MADERA)){
+
+                herramienta.setGraphic(new ImageView(new Image("herramientas/PicoMaderaActual.png")));
+
+        }else if ((jugador.obtenerHerramienta().getClass().isAssignableFrom(Pico.class)) &&
+                (jugador.obtenerHerramienta().obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_PIEDRA)){
+
+                herramienta.setGraphic(new ImageView(new Image("herramientas/PicoPiedraActual.png")));
+
+        }else if((jugador.obtenerHerramienta().getClass().isAssignableFrom(Pico.class)) &&
+                (jugador.obtenerHerramienta().obtenerFuerza() == Constantes.FUERZA_INICIAL_PICO_METAL)){
+
+                herramienta.setGraphic(new ImageView(new Image("herramientas/PicoMetalActual.png")));
+
+
+        }else if (jugador.obtenerHerramienta().getClass().isAssignableFrom(PicoFino.class)){
+
+            herramienta.setGraphic(new ImageView(new Image("herramientas/PicoFinoActual.png")));
+
+        }else if ((jugador.obtenerHerramienta().getClass().isAssignableFrom(Hacha.class)) &&
+                (jugador.obtenerHerramienta().obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_MADERA)){
+
+            herramienta.setGraphic(new ImageView(new Image("herramientas/HachaMaderaActual.png")));
+        }
+
+
+    }
 
     private void actualizarImagen(Button grilla, Inventario modelo){
 
