@@ -51,7 +51,7 @@ public class CoordenadaTest {
 
     @Test
     public void crearCoordenadaFueraDelLimiteDelMapaProduceError() {
-        assertThrows(CoordenadaFueraDelLimiteException.class, () -> {new Coordenada(Constantes.MAPA_FILAS_DEFECTO, Constantes.MAPA_COLUMNAS_DEFECTO);});
+        assertThrows(CoordenadaFueraDelLimiteException.class, () -> new Coordenada(Constantes.MAPA_FILAS_DEFECTO + 1, Constantes.MAPA_COLUMNAS_DEFECTO));
 
     }
 }

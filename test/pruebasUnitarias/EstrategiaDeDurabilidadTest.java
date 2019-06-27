@@ -30,12 +30,10 @@ public class EstrategiaDeDurabilidadTest {
         EstrategiaDeDurabilidad estrategia = new Lineal(valorInicialDeDurabilidadPrueba, constanteDeDesgastePrueba);
 
         estrategia.desgastar();
-        assertEquals(estrategia.obtenerValorActual(), valorInicialDeDurabilidadPrueba -
-                                                            constanteDeDesgastePrueba);
+        assertEquals(estrategia.obtenerValorActual(), valorInicialDeDurabilidadPrueba - constanteDeDesgastePrueba);
 
         estrategia.desgastar();
-        assertEquals(estrategia.obtenerValorActual(), valorInicialDeDurabilidadPrueba -
-                                                            (2 * constanteDeDesgastePrueba));
+        assertEquals(estrategia.obtenerValorActual(), valorInicialDeDurabilidadPrueba - (2 * constanteDeDesgastePrueba));
     }
 
 }

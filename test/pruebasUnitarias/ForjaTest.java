@@ -98,11 +98,11 @@ public class ForjaTest {
         Forja forja = new Forja();
 
         PlantillaEditable plantillaEditable = new PlantillaEditable();
-        plantillaEditable.armarPlantillaEditable(0,0, MaterialMadera.class);
-        plantillaEditable.armarPlantillaEditable(0,1, MaterialMadera.class);
-        plantillaEditable.armarPlantillaEditable(1,0, MaterialMadera.class);
-        plantillaEditable.armarPlantillaEditable(1,1, MaterialMadera.class);
-        plantillaEditable.armarPlantillaEditable(2,1, MaterialMadera.class);
+        plantillaEditable.armarPlantillaEditable(0,0, new MaterialMadera());
+        plantillaEditable.armarPlantillaEditable(0,1, new MaterialMadera());
+        plantillaEditable.armarPlantillaEditable(1,0, new MaterialMadera());
+        plantillaEditable.armarPlantillaEditable(1,1, new MaterialMadera());
+        plantillaEditable.armarPlantillaEditable(2,1, new MaterialMadera());
 
         Herramienta hachaDeMadera = forja.construirHerramienta(plantillaEditable);
 
@@ -116,14 +116,11 @@ public class ForjaTest {
         Forja forja = new Forja();
 
         PlantillaEditable plantillaEditable = new PlantillaEditable();
-        plantillaEditable.armarPlantillaEditable(0,0, MaterialMadera.class);
+        plantillaEditable.armarPlantillaEditable(0,0, new MaterialMadera());
 
         try {
             Herramienta herramienta = forja.construirHerramienta(plantillaEditable);
-        }catch (PlantillaDeForjaInexistenteException e){
-
-            System.out.println("No existe combinacion");
-        }
+        }catch (PlantillaDeForjaInexistenteException e){ }
 
     }
 }

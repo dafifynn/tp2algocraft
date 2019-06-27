@@ -6,7 +6,8 @@ import modelo.PlantillasDeForja.PlantillaHachaMadera;
 import modelo.PlantillasDeForja.PlantillaHachaPiedra;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlatillasDeForjaTest {
 
@@ -16,7 +17,7 @@ public class PlatillasDeForjaTest {
         PlantillaHachaMadera plantilla1 = new PlantillaHachaMadera();
         PlantillaHachaMadera plantilla2 = new PlantillaHachaMadera();
 
-        assertEquals(plantilla1.equals(plantilla2), true);
+        assertTrue(plantilla1.equals(plantilla2));
     }
 
     @Test
@@ -25,7 +26,7 @@ public class PlatillasDeForjaTest {
         PlantillaHachaMadera plantillaHachaMadera = new PlantillaHachaMadera();
         PlantillaHachaPiedra plantillaHachaPiedra = new PlantillaHachaPiedra();
 
-        assertEquals(plantillaHachaMadera.equals(plantillaHachaPiedra), false);
+        assertFalse(plantillaHachaMadera.equals(plantillaHachaPiedra));
     }
 
     @Test
@@ -35,9 +36,9 @@ public class PlatillasDeForjaTest {
         PlantillaHachaMadera plantillaHachaMadera = new PlantillaHachaMadera();
 
         MaterialDiamante materialDiamante = new MaterialDiamante();
-        plantillaEditable.armarPlantillaEditable(1, 2, materialDiamante.getClass());
+        plantillaEditable.armarPlantillaEditable(1, 2, materialDiamante);
 
-        assertEquals(plantillaEditable.equals(plantillaHachaMadera), false);
+        assertFalse(plantillaEditable.equals(plantillaHachaMadera));
 
 
     }
