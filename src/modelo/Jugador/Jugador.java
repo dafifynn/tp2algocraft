@@ -118,6 +118,11 @@ public class Jugador extends Observable {
         this.observadores.add(nuevo);
     }
 
+    public Coordenada obtenerCoordenada(){
+
+        return this.coordenada;
+    }
+
     public void notificar() {
 
         for(Observer observador : this.observadores) {
