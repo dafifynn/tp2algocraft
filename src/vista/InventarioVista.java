@@ -39,7 +39,7 @@ public class InventarioVista implements Observer {
 
         this.elementos = crearBotones(modeloInventario, modeloJugador);
         this.inicializarBotonesDeMaterial(modeloJugador.obtenerInventario());
-        this.inicializarBotonesDeCantidadDeMateriales(modeloJugador.obtenerInventario(), modeloJugador);
+        this.inicializarBotonesDeCantidadDeMateriales();
         this.actualizarCantidadDeBotonesLabel(modeloJugador.obtenerInventario());
         this.vista = new Scene(elementos,480,480);
 
@@ -114,12 +114,10 @@ public class InventarioVista implements Observer {
         });
 
         this.elementos.getChildren().add(botonDiamante);
-
-
     }
 
 
-    private void inicializarBotonesDeCantidadDeMateriales (Inventario modelo, Jugador modeloJugador ) {
+    private void inicializarBotonesDeCantidadDeMateriales () {
         //label del boton madera
         botonLabelMadera = new Button();
         botonLabelMadera.setLayoutX(266);
@@ -219,8 +217,6 @@ public class InventarioVista implements Observer {
 
             botones.getChildren().add(boton);
         }
-
-
 
         //label del boton madera
         String i =  Integer.toString(modelo.cantidadDeMadera());
@@ -447,7 +443,6 @@ public class InventarioVista implements Observer {
         if(jugador.obtenerHerramienta() == null){
 
             herramienta.setGraphic(new ImageView(new Image("slot3.png")));
-
 
         }else if ((jugador.obtenerHerramienta().getClass().isAssignableFrom(Hacha.class)) &&
                 (jugador.obtenerHerramienta().obtenerFuerza() == Constantes.FUERZA_INICIAL_HACHA_PIEDRA)){

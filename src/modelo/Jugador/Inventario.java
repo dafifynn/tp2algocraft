@@ -63,7 +63,7 @@ public class Inventario extends Observable {
 
     public Herramienta extraerHerramienta(int indice) {
 
-        if (this.capacidadUsadaDeInventarioHerramientas == 0){ return null; }
+        if (this.capacidadUsadaDeInventarioHerramientas == 0 || indice >= this.capacidadUsadaDeInventarioHerramientas ){ return null; }
 
         Herramienta herramienta = this.herramientas.get(indice);
         this.herramientas.remove(indice);
@@ -159,8 +159,9 @@ public class Inventario extends Observable {
         try {
             Herramienta herramienta = forja.construirHerramienta(this.plantilla);
             this.agregarHerramienta(herramienta);
+            this.capacidadUsadaDeInventarioMateriales -= this.plantilla.getCantDeElementosEnPlantilla();
             plantilla = new PlantillaEditable();
-            this.capacidadUsadaDeInventarioMateriales = this.capacidadUsadaDeInventarioMateriales - this.plantilla.getCantDeElementosEnPlantilla();
+
             this.notificar();
         }
         catch (PlantillaDeForjaInexistenteException e) {

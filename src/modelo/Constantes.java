@@ -153,7 +153,7 @@ public final class Constantes {
     public static final double RESISTENCIA_INICIAL_BLOQUE_VACIO = 9999;
 
      // Inventario
-    public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES = 50;
+    public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_MATERIALES = 36;
 
     public static final int MAXIMA_CAPACIDAD_DE_INVENTARIO_HERRAMIENTAS = 9;
 

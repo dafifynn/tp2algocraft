@@ -9,7 +9,6 @@ import modelo.Herramienta.Herramienta;
 import modelo.Mapa.Coordenada;
 import modelo.Mapa.Mapa;
 import modelo.Material.Material;
-import modelo.Material.MaterialVacio;
 
 
 public class Jugador {
@@ -19,6 +18,7 @@ public class Jugador {
     private Herramienta herramientaEquipada;
     private Coordenada coordenada;
     private EstrategiaDeDireccion direccion;
+
 
     // Constructor
     public Jugador(){
@@ -33,10 +33,6 @@ public class Jugador {
 
 
     // Getters
-    public Coordenada obtenerCoordenada() {
-        return this.coordenada;
-    }
-	
     public Herramienta obtenerHerramienta(){
         return this.herramientaEquipada;
     }
@@ -64,7 +60,6 @@ public class Jugador {
         }
 
         this.coordenada = coordenadaSiguiente;
-
     }
 
     private void procesarMaterial (Mapa mapa) {
@@ -91,9 +86,7 @@ public class Jugador {
         if (herramientaEquipada.estaRota()) {
 
             this.herramientaEquipada = null;
-
         }
-
     }
 
     public Inventario obtenerInventario() {
@@ -109,10 +102,6 @@ public class Jugador {
         }
 
         this.herramientaEquipada = herramientaAEquipar;
-
     }
-
-
-
 
 }
